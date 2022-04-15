@@ -16,6 +16,9 @@ const Header = () => {
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
             <ul className="navBar flex">
+              {/* 유저 로그인시 */}
+              {/* <div className="user">일반</div>
+              <li>아무개 님 <span></span></li> */}
               <li>회원가입</li>
               <li>로그인</li>
               <li>
@@ -78,7 +81,6 @@ const HeaderDiv = styled.div`
   padding-top: 10px;
 
   box-shadow: 0 1px 5px #cfcfcf;
-  
 
   .flex {
     display: flex;
@@ -97,6 +99,7 @@ const HeaderDiv = styled.div`
 
   .topBar {
     font-size: 12px;
+    cursor: pointer;
 
     div {
       border: 1px solid #4c4c4c;
@@ -112,10 +115,34 @@ const HeaderDiv = styled.div`
 
   .navBar {
     width: 18%;
+    position: relative;
+    li{
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
-    li:nth-child(1) {
+    .user {
+      border: 1px solid #5f0080;
+      padding: 1px 9px 0px;
+      border-radius: 10px;
+      height: 17px;
+      position: relative;
+      left: 7px;
+      top: -2px;
+    }
+
+    li:nth-child(1), li:nth-child(2) {
       color: #5f0080;
       font-weight: 700;
+      &::after {
+        content: "";
+        border-right: 1px solid #aaa;
+        width: 1px;
+        height: 1px;
+
+        padding-left: 15px;
+      }
     }
 
     span {
@@ -133,6 +160,7 @@ const HeaderDiv = styled.div`
       margin: auto;
       height: 79px;
       width: 103px;
+      cursor: pointer;
     }
   }
 
