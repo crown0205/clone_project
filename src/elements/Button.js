@@ -42,6 +42,7 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
+<<<<<<< HEAD
     purple: false,
     text: false,
     children: null,
@@ -51,6 +52,17 @@ Button.defaultProps = {
     padding: false,
     fontSize: false,
     bold: false,
+=======
+  purple: false,
+  text: false,
+  children: null,
+  _onClick: () => {},
+  margin: false,
+  width: "",
+  padding: false,
+  fontSize: "",
+  bold: false,
+>>>>>>> master
 };
 
 const PurpleBtn = styled.button`
