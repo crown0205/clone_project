@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.css";
+import styled from "styled-components";
 
-function App() {
+const ItemDetail = (props) => {
     return (
         <React.Fragment>
             <div></div>
         </React.Fragment>
     );
-}
+};
 
-export default App;
+export default ItemDetail;
