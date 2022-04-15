@@ -1,4 +1,3 @@
-import { size } from "lodash";
 import React from "react";
 import styled from "styled-components";
 
@@ -38,9 +37,9 @@ Button.defaultProps = {
   children: null,
   _onClick: () => {},
   margin: false,
-  width: false,
+  width: "",
   padding: false,
-  fontSize: false,
+  fontSize: "",
   bold: false,
 };
 
