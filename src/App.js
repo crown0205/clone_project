@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.css";
 
+import Detail from "./pages/Detail";
+
 function App() {
     return (
         <React.Fragment>
-            <div></div>
+            <Detail />
         </React.Fragment>
     );
 }

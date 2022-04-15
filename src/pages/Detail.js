@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const ItemDetail = (props) => {
+const Detail = () => {
     return (
         <React.Fragment>
-            <div></div>
+            <h1>Detail</h1>
         </React.Fragment>
     );
 };
 
-export default ItemDetail;
+export default Detail;
