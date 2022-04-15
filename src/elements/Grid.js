@@ -1,30 +1,23 @@
 import React from "react";
-import defaultProps from "react-slick/lib/default-props";
 import styled from "styled-components";
 
 const Grid = (props) => {
-    const { width, height, margin, padding, children, isDetail } = props;
+    const { width, height, margin, padding, children, src, bg, isDetail } =
+        props;
 
-    const style = {
+    const styles = {
+        src: src,
         width: width,
         height: height,
         margin: margin,
         padding: padding,
-        // bg: bg,
+        bg: bg,
         // center: center,
     };
 
-    if (isDetail) {
-        return (
-            <React.Fragment>
-                <DetailGrid>{children}</DetailGrid>
-            </React.Fragment>
-        );
-    }
-
     return (
         <React.Fragment>
-            <div></div>
+            <DetailGrid {...styles}>{children}</DetailGrid>
         </React.Fragment>
     );
 };
@@ -34,6 +27,8 @@ Grid.defaultProps = {
     height: "100%",
     margin: false,
     padding: false,
+    bg: "red",
+    src: "",
     // children: null,
     // is_flex: false,
     // bg: false,
@@ -45,6 +40,8 @@ const DetailGrid = styled.div`
     height: ${(props) => props.height};
     margin: ${(props) => props.margin};
     padding: ${(props) => props.padding};
+    background: ${(props) => props.bg};
+    background-image: url("${(props) => props.src}");
 `;
 
 export default Grid;
