@@ -15,13 +15,8 @@ const Login = () => {
         <Button>회원가입</Button>
       </Wrap>
     </React.Fragment>
-<<<<<<< HEAD
-  )
-}
-=======
   );
 };
->>>>>>> 74c1e080de4f743cf039d1234a849ecef95984e0
 
 const Wrap = styled.div`
     display: flex;

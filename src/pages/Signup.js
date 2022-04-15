@@ -33,12 +33,7 @@ const Signup = () => {
       </div>
       <Button purple>가입하기</Button>
     </React.Fragment>
-<<<<<<< HEAD
-  )
-}
-=======
   );
 };
->>>>>>> 74c1e080de4f743cf039d1234a849ecef95984e0
 
 export default Signup;
