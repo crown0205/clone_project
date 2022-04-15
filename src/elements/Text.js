@@ -2,26 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const Text = (props) => {
-  const { bold, color, size, children, margin } = props;
+  const { weight, color, size, children } = props;
 
-  const styles = { bold: bold, color: color, size: size, margin };
+  const styles = { weight: weight, color: color, size: size };
   return <P {...styles}>{children}</P>;
 };
 
 Text.defaultProps = {
   children: null,
-  bold: false,
-  color: "#222831",
-  size: "14px",
-  margin: false,
+  weight: "400",
+  color: "#333333",
+  size: "16px",
 };
 
 const P = styled.p`
+  font-family: "Noto Sans KR";
+  font-weight: ${(props) => props.weight};
   color: ${(props) => props.color};
   font-size: ${(props) => props.size};
-  font-weight: ${(props) => (props.bold ? "600" : "400")};
-  ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
 `;
 
 export default Text;
-
