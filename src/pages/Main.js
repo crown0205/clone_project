@@ -8,52 +8,28 @@ import "slick-carousel/slick/slick-theme.css";
 
 // 아이콘
 import { BsCart2 } from "react-icons/bs";
+import SmallItem from "../components/SmallItem";
 
 const Main = () => {
-
+  // banner Action
   const banner_settings = {
-      dots: true,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
-  var card_settings = {
+  // Item list Action
+  const card_settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
+
   return (
     <React.Fragment>
       <Wrap>
@@ -62,7 +38,7 @@ const Main = () => {
             <div>
               <img
                 className="card"
-                src="https://res.kurly.com/images/event/2022/0407/tomato/pc/main_v2.png"
+                src="https://img-cf.kurly.com/banner/main/pc/img/46b0eed9-0c77-4731-829b-f6f32727a2c3"
                 alt="#"
               />
             </div>
@@ -95,162 +71,16 @@ const Main = () => {
           <div className="itemListWrap">
             <p className="title">이 상품 어때요?</p>
             <Slider {...card_settings}>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
-              <div>
-                <div className="itemImg">
-                  {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img
-                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
-                    width="249px"
-                    height="320px"
-                  ></img>
-                  <button className="cardBtn">
-                    <BsCart2 />
-                  </button>
-                </div>
-                <div className="itemTitle">
-                  <p>바질</p>
-                </div>
-                <div className="itemPw">
-                  <span className="present">7%</span>
-                  <div className="prise">
-                    1,125<span>원</span>
-                  </div>
-                </div>
-                <div className="unPrise">
-                  1210<span>원</span>
-                </div>
-              </div>
+              <SmallItem />
+              <SmallItem />
+              <SmallItem />
+              <SmallItem />
+              <SmallItem />
+              <SmallItem />
             </Slider>
-            {/* <div className="prevBtn Btn"></div>
-            <div className="nextBtn Btn"></div> */}
           </div>
 
-          <div className="banner"></div>
+          <div className="banner" />
         </div>
       </Wrap>
     </React.Fragment>
@@ -265,15 +95,18 @@ const Wrap = styled.div`
   height: 370px;
 
   .bannerWrap {
-    max-width: 1400px;
-    height: 100%;
+    max-width: 1900px;
+    max-width: auto;
+    /* height: auto; */
+    height: 370px;
     margin: auto;
+    overflow: hidden;
 
     .card {
-      max-width: 1400px;
       min-width: 1050px;
-      width: 100%;
+      max-width: auto;
       height: 370px;
+      width: 100%;
     }
   }
 
@@ -290,7 +123,6 @@ const Wrap = styled.div`
   /* 상품 목록 */
   .innerWrap {
     width: 100%;
-    /* overflow: hidden; */
 
     .itemListWrap {
       max-width: 1100px;
@@ -309,90 +141,26 @@ const Wrap = styled.div`
         margin-bottom: 27px;
       }
 
-      ul {
-        display: flex;
-        /* overflow: hidden; */
-
-        li {
-          width: 267px;
-          height: auto;
-          max-height: 434px;
-          padding: 0 9px;
-
-          .itemImg {
-            width: 249px;
-            height: 320px;
-            /* background-image: url("https://img-cf.kurly.com/shop/data/goods/1493359362774l0.jpg"); */
-            background-color: #eee;
-            background-size: contain;
-            position: relative;
-            margin-bottom: 14px;
-
-            .cardBtn {
-              width: 45px;
-              height: 45px;
-              border: none;
-              border-radius: 50%;
-              font-size: 24px;
-              color: white;
-              background-color: #4200586e;
-              position: absolute;
-              bottom: 15px;
-              right: 15px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-            }
-          }
-
-          .itemTitle {
-            margin-bottom: 8px;
-            p {
-              font-size: 16px;
-              font-weight: 600;
-              letter-spacing: 1px;
-              line-height: 23px;
-              color: #333333;
-            }
-          }
-
-          .itemPw {
-            clear: both;
-            font-weight: 800;
-            font-size: 16px;
-            margin-bottom: 2px;
-            .present {
-              float: left;
-              margin-right: 10px;
-              color: #fa622f;
-            }
-          }
-
-          .unPrise {
-            color: #999999;
-            font-weight: 400;
-            font-size: 14px;
-            text-decoration: line-through;
-          }
-        }
+      .slick-next {
+        right: -6px;
+        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_60_60.svg ");
       }
-      .Btn {
+      .slick-prev {
+        z-index: 9999;
+        left: -28px;
+        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg ");
+      }
+      .slick-prev,
+      .slick-next {
+        top: 40%;
+        border-radius: 50%;
         width: 60px;
         height: 60px;
-        position: absolute;
-        top: 230px;
-        cursor: pointer;
       }
 
-      .prevBtn {
-        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg ");
-        left: -25px;
-      }
-
-      .nextBtn {
-        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_60_60.svg ");
-        right: -35px;
+      .slick-prev:before,
+      .slick-next:before {
+        color: transparent;
       }
     }
 
