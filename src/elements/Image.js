@@ -13,9 +13,7 @@ const Image = (props) => {
 
     return (
         <React.Fragment>
-            {/* <AspectOutter> */}
             <AspectInner {...styles}>{children}</AspectInner>
-            {/* </AspectOutter> */}
         </React.Fragment>
     );
 };

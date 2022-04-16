@@ -31,7 +31,7 @@ const Input = (props) => {
         <Textarea
             {...styles}
             type={type}
-            placeholer={placeholder}
+            placeholder={placeholder}
             value={value}
             onChange={_onChange}
         />

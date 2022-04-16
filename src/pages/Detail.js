@@ -1,124 +1,162 @@
 import React from "react";
 import styled from "styled-components";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Count from "../components/Count";
-import { Image, Text, DetailSpan } from "../elements/Index";
+import DetailSlider from "../components/DetailSlider";
+import { Image, Button, DetailSpan } from "../elements/Index";
 
 const Detail = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+
     return (
         <React.Fragment>
             <ContainerBox>
-                <Container>
-                    <Main>
-                        <ImageBox>
-                            <div>
-                                <Image
-                                    src={
-                                        "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailItemImage.PNG?alt=media&token=c5c771d3-2cf7-4c49-8c59-52024d7d7c68"
-                                    }
-                                />
-                            </div>
-                        </ImageBox>
+                <Main>
+                    <ImageBox>
+                        <div>
+                            <Image
+                                src={
+                                    "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailItemImage.PNG?alt=media&token=c5c771d3-2cf7-4c49-8c59-52024d7d7c68"
+                                }
+                            />
+                        </div>
+                    </ImageBox>
 
-                        <OrderBox>
-                            <TitleBox>
-                                <strong>
-                                    [연세우유 x 마켓컬리] 전용목장우유 900mL
-                                </strong>
-                                <DetailSpan color="#999999">
-                                    가격, 퀄리티 모두 만족스러운 1A등급 우유
-                                </DetailSpan>
-                            </TitleBox>
-                            <Price>
+                    <OrderBox>
+                        <TitleBox>
+                            <strong>
+                                [연세우유 x 마켓컬리] 전용목장우유 900mL
+                            </strong>
+                            <DetailSpan color="#999999">
+                                가격, 퀄리티 모두 만족스러운 1A등급 우유
+                            </DetailSpan>
+                        </TitleBox>
+                        <Price>
+                            <DetailSpan
+                                size="28px"
+                                height="auto"
+                                display="inline"
+                                bold="700"
+                            >
+                                1,970
+                            </DetailSpan>
+                            <DetailSpan display="inline" height="auto">
+                                원
+                            </DetailSpan>
+
+                            <DetailSpan height="27px" color="#5F0080">
+                                로그인 후, 적립혜택이 제공됩니다.
+                            </DetailSpan>
+                        </Price>
+                        <ItemInfo>
+                            <Image
+                                src={
+                                    "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailInfo.PNG?alt=media&token=bf55b666-3e14-493e-ac17-9d86d7d15832"
+                                }
+                            />
+                        </ItemInfo>
+                        <CartList>
+                            <ItemCount>
                                 <DetailSpan
-                                    size="28px"
-                                    height="auto"
+                                    width="140px"
                                     display="inline"
-                                    bold="700"
+                                    color="#666666"
                                 >
-                                    1,970
+                                    구매수량
                                 </DetailSpan>
-                                <DetailSpan display="inline" height="auto">
-                                    원
-                                </DetailSpan>
+                                <div>
+                                    <Count />
+                                </div>
+                            </ItemCount>
 
-                                <DetailSpan height="27px" color="#5F0080">
-                                    로그인 후, 적립혜택이 제공됩니다.
-                                </DetailSpan>
-                            </Price>
-                            <ItemInfo>
-                                <Image
-                                    src={
-                                        "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailInfo.PNG?alt=media&token=bf55b666-3e14-493e-ac17-9d86d7d15832"
-                                    }
-                                />
-                            </ItemInfo>
-                            {/* 컴포넌트 나누기? */}
-                            <CartList>
-                                <ItemCount>
-                                    <DetailSpan width="140px" display="inline">
-                                        구매수량
+                            <TotalPrice>
+                                <PriceBox>
+                                    <DetailSpan bold="700" height="27px">
+                                        <Icon>적립</Icon>
+                                        로그인 후, 회원할인가와 적립혜택 제공
                                     </DetailSpan>
-                                    <div>
-                                        <Count />
-                                    </div>
-                                </ItemCount>
-
-                                <TotalPrice>
-                                    <div>
-                                        <DetailSpan
-                                            size="13px"
-                                            display="inline"
-                                            height="auto"
-                                            bold="700"
-                                        >
-                                            총 상품금액:
-                                        </DetailSpan>
-                                        <DetailSpan
-                                            size="32px"
-                                            height="auto"
-                                            display="inline"
-                                            bold="700"
-                                        >
-                                            1,970
-                                        </DetailSpan>
-                                        <DetailSpan
-                                            size="20px"
-                                            bold="700"
-                                            display="inline"
-                                            height="auto"
-                                        >
-                                            원
-                                        </DetailSpan>
-                                    </div>
-                                    <DetailSpan height="27px">
-                                        로그인 후, 회원할인가와 적립혜택이
-                                        제공됩니다.
+                                </PriceBox>
+                                <div>
+                                    <DetailSpan
+                                        size="13px"
+                                        display="inline"
+                                        height="auto"
+                                        bold="700"
+                                    >
+                                        총 상품금액:
                                     </DetailSpan>
-                                </TotalPrice>
-                                <div>장바구니</div>
-                            </CartList>
-                        </OrderBox>
-                    </Main>
-                    <div>연관상품(배너이미지)</div>
-                    <div>상품설명, 고객리뷰, 문의내용</div>
-                    <div>상세설명이미지</div>
-                    <div>밑에는 어떻게 처리하지?</div>
-                </Container>
+                                    <DetailSpan
+                                        size="32px"
+                                        height="auto"
+                                        display="inline"
+                                        bold="700"
+                                    >
+                                        1,970
+                                    </DetailSpan>
+                                    <DetailSpan
+                                        size="20px"
+                                        bold="700"
+                                        display="inline"
+                                        height="auto"
+                                    >
+                                        원
+                                    </DetailSpan>
+                                </div>
+                            </TotalPrice>
+                            <Cart>
+                                <Button
+                                    purple
+                                    width="432px"
+                                    height="56px"
+                                    size="16px"
+                                >
+                                    장바구니 담기
+                                </Button>
+                            </Cart>
+                        </CartList>
+                    </OrderBox>
+                </Main>
+                <Banner>
+                    <BannerLine></BannerLine>
+                    <h3>RELATED PRODUCT</h3>
+                    <DetailSlider />
+                </Banner>
+                <DetailContainer>
+                    <ButtonBox>
+                        <DetailButton>상품설명</DetailButton>
+                        <DetailButton>고객리뷰</DetailButton>
+                        <DetailButton>문의내용</DetailButton>
+                    </ButtonBox>
+                    <div>상품설명</div>
+                    <div>고객리뷰</div>
+                    <div>문의내용</div>
+                </DetailContainer>
+                <div>상세설명이미지</div>
+                <div>밑에는 어떻게 처리하지?</div>
             </ContainerBox>
         </React.Fragment>
     );
 };
 
 const ContainerBox = styled.div`
-    display: flex;
+    // display: flex;
     justify-content: center;
 `;
-const Container = styled.div`
-    width: 1050px;
-`;
+
 const Main = styled.div`
+    margin: 0 auto;
     width: 1050px;
     height: 850px;
+    padding: 20px 0 0 0;
     display: flex;
 `;
 const ImageBox = styled.div`
@@ -134,14 +172,13 @@ const ImageBox = styled.div`
 
 const OrderBox = styled.div`
     width: 560px;
-    * display: block;
 `;
 
 const TitleBox = styled.p`
     strong {
         display: block;
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 34px;
         height: 34px;
     }
@@ -150,17 +187,18 @@ const TitleBox = styled.p`
 const Price = styled.div``;
 
 const ItemInfo = styled.div`
+    padding: 5px 0;
     width: 560px;
     max-width: 100%;
     height: 440px;
 `;
 
 const CartList = styled.div`
+    padding: 0 0 40px 0;
     display: flex;
     flex-direction: column;
 `;
 
-// const Count = styled.div``;
 const ItemCount = styled.div`
     display: flex;
     align-items: flex-start;
@@ -169,10 +207,85 @@ const ItemCount = styled.div`
 
 const TotalPrice = styled.div`
     height: 117px;
-    // display: flex;
-    align-items: center;
+    padding: 30px 0 20px 0;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column-reverse;
 `;
 
-const Cart = styled.div``;
+const PriceBox = styled.div`
+    padding: 13px 0 0 0;
+`;
+
+const Icon = styled.span`
+    display: inline-block;
+    background: #ffbf00;
+    height: 20px;
+    width: 38px;
+    margin: 0 3px 0 0;
+    padding: 3px 0 0 0;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    font-height: 20px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: 1px;
+`;
+
+const Cart = styled.div`
+    height: 56px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+`;
+
+const Banner = styled.div`
+    width: 1050px;
+    margin: 0 auto;
+    padding: 0 40px 0 0;
+
+    h3 {
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 23.4px;
+        background: #fff;
+        color: #4c4c4c;
+        height: 28.5px;
+        width: 1010px;
+    }
+`;
+
+const BannerLine = styled.div`
+    height: 5px;
+    width: 20px;
+    background: #000;
+`;
+
+const DetailContainer = styled.div`
+    width: 1050px;
+    margin: 0 auto;
+    padding: 100px 40px 0 0;
+`;
+
+const ButtonBox = styled.div`
+    display: flex;
+`;
+
+const DetailButton = styled.a`
+    display: block;
+    height: 60px;
+    width: 335px;
+    min-height: auto;
+    min-width: auto;
+    border: 1px solid #eeeeee;
+    background-position: 0% 0%;
+    color: #666666;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 59px;
+    text-align: center;
+    cursor: pointer;
+`;
 
 export default Detail;
