@@ -24,7 +24,7 @@ DetailSpan.defaultProps = {
     display: "block",
     size: "14px",
     color: "#333333",
-    height: "24px",
+    height: "20px",
     width: "auto",
     bold: false,
 };

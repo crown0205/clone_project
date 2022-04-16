@@ -12,6 +12,9 @@ const Button = (props) => {
         padding,
         fontSize,
         bold,
+        small, //추가했습니다.
+        src, //추가했습니다.
+        size, //추가했습니다.
     } = props;
 
     const styles = {
@@ -20,6 +23,9 @@ const Button = (props) => {
         padding: padding,
         fontSize: fontSize,
         bold: bold,
+        small: small, //추가했습니다.
+        src: src, //추가했습니다.
+        size: size, //추가했습니다.
     };
 
     if (purple) {
@@ -28,6 +34,16 @@ const Button = (props) => {
                 <PurpleBtn {...styles} onClick={_onClick}>
                     {text ? text : children}
                 </PurpleBtn>
+            </React.Fragment>
+        );
+    }
+    // small버튼 추가했습니다.
+    if (small) {
+        return (
+            <React.Fragment>
+                <SmallBtn {...styles} onClick={_onClick}>
+                    {text ? text : children}
+                </SmallBtn>
             </React.Fragment>
         );
     }
@@ -51,6 +67,9 @@ Button.defaultProps = {
     padding: false,
     fontSize: "",
     bold: false,
+    small: false, //추가했습니다.
+    src: false, //추가했습니다.
+    size: false, //추가했습니다.
 };
 
 const PurpleBtn = styled.button`
@@ -85,4 +104,18 @@ const WhiteBtn = styled.button`
     ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
 `;
 
+// SmallBtn 추가했습니다.
+const SmallBtn = styled.button`
+    width: ${(props) => props.size};
+    height: ${(props) => props.size};
+    font-size: 0;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+    background-color: #fff;
+    background-image: url("${(props) => props.src}");
+    // background-position: 50% 50%;
+    // background-repeat: no-repeat;
+`;
 export default Button;

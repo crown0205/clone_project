@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Grid from "../elements/Grid";
-import Image from "../elements/Image";
-import Text from "../elements/Text";
-import DetailSpan from "../elements/DetailSpan";
+import Count from "../components/Count";
+import { Image, Text, DetailSpan } from "../elements/Index";
 
 const Detail = () => {
     return (
@@ -56,22 +54,55 @@ const Detail = () => {
                             </ItemInfo>
                             {/* 컴포넌트 나누기? */}
                             <CartList>
-                                <Count>
-                                    <Text>수량</Text>
-                                </Count>
+                                <ItemCount>
+                                    <DetailSpan width="140px" display="inline">
+                                        구매수량
+                                    </DetailSpan>
+                                    <div>
+                                        <Count />
+                                    </div>
+                                </ItemCount>
+
                                 <TotalPrice>
-                                    <Text>합계</Text>
+                                    <div>
+                                        <DetailSpan
+                                            size="13px"
+                                            display="inline"
+                                            height="auto"
+                                            bold="700"
+                                        >
+                                            총 상품금액:
+                                        </DetailSpan>
+                                        <DetailSpan
+                                            size="32px"
+                                            height="auto"
+                                            display="inline"
+                                            bold="700"
+                                        >
+                                            1,970
+                                        </DetailSpan>
+                                        <DetailSpan
+                                            size="20px"
+                                            bold="700"
+                                            display="inline"
+                                            height="auto"
+                                        >
+                                            원
+                                        </DetailSpan>
+                                    </div>
+                                    <DetailSpan height="27px">
+                                        로그인 후, 회원할인가와 적립혜택이
+                                        제공됩니다.
+                                    </DetailSpan>
                                 </TotalPrice>
-                                <Cart>
-                                    <Text>장바구니 담기</Text>
-                                </Cart>
+                                <div>장바구니</div>
                             </CartList>
                         </OrderBox>
                     </Main>
-                    <Grid>연관상품(배너이미지)</Grid>
-                    <Grid>상품설명, 고객리뷰, 문의내용</Grid>
-                    <Grid>상세설명이미지</Grid>
-                    <Grid>밑에는 어떻게 처리하지?</Grid>
+                    <div>연관상품(배너이미지)</div>
+                    <div>상품설명, 고객리뷰, 문의내용</div>
+                    <div>상세설명이미지</div>
+                    <div>밑에는 어떻게 처리하지?</div>
                 </Container>
             </ContainerBox>
         </React.Fragment>
@@ -124,11 +155,23 @@ const ItemInfo = styled.div`
     height: 440px;
 `;
 
-const CartList = styled.div``;
+const CartList = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
-const Count = styled.div``;
+// const Count = styled.div``;
+const ItemCount = styled.div`
+    display: flex;
+    align-items: flex-start;
+    height: 53px;
+`;
 
-const TotalPrice = styled.div``;
+const TotalPrice = styled.div`
+    height: 117px;
+    // display: flex;
+    align-items: center;
+`;
 
 const Cart = styled.div``;
 
