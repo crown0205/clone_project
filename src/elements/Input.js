@@ -20,6 +20,7 @@ const Input = (props) => {
         return (
             <CountInput
                 type={type}
+                placeholder={placeholder}
                 value={value}
                 onChange={_onChange}
                 {...styles}
@@ -31,7 +32,7 @@ const Input = (props) => {
         <Textarea
             {...styles}
             type={type}
-            placeholer={placeholder}
+            placeholder={placeholder}
             value={value}
             onChange={_onChange}
         />
