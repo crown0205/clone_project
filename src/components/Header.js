@@ -23,10 +23,10 @@ const Header = () => {
               {/* <div className="user">일반</div>
               <li>아무개 님 <span></span></li> */}
               <li onClick={()=> {
-                history.push("/signup")
+                history.push("/signup");
               }}>회원가입</li>
-              <li onClick={()=> {
-                history.push("/login")
+              <li onClick={(e)=> {
+                history.push("/login");
               }}>로그인</li>
               <li>
                 고객센터 <span></span>
