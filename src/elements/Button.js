@@ -9,23 +9,27 @@ const Button = (props) => {
         children,
         margin,
         width,
+        height,
         padding,
         fontSize,
         bold,
-        small, //추가했습니다.
-        src, //추가했습니다.
-        size, //추가했습니다.
+        flex,
+        small,
+        src,
+        size,
     } = props;
 
     const styles = {
-        margin: margin,
-        width: width,
-        padding: padding,
-        fontSize: fontSize,
-        bold: bold,
-        small: small, //추가했습니다.
-        src: src, //추가했습니다.
-        size: size, //추가했습니다.
+        margin,
+        width,
+        height,
+        padding,
+        fontSize,
+        bold,
+        flex,
+        small,
+        src,
+        size,
     };
 
     if (purple) {
@@ -64,9 +68,11 @@ Button.defaultProps = {
     _onClick: () => {},
     margin: false,
     width: "",
+    height: "44px",
     padding: false,
-    fontSize: "",
+    fontSize: "16px",
     bold: false,
+    flex: false,
     small: false, //추가했습니다.
     src: false, //추가했습니다.
     size: false, //추가했습니다.
@@ -74,18 +80,23 @@ Button.defaultProps = {
 
 const PurpleBtn = styled.button`
     width: ${(props) => props.width};
+    height: ${(props) => props.height};
     border: 1px solid #5f0080;
     border-radius: 3px;
     max-width: 100%;
-    height: 54px;
     background-color: #5f0080;
     color: #ffffff;
+    font-family: "Noto Sans KR";
     font-size: ${(props) => props.fontSize};
     font-weight: ${(props) => (props.bold ? "700" : "500")};
     text-align: center;
     box-sizing: border-box;
     ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
     ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
+  ${(props) => (props.flex ? `display: flex;` : "")}
+  &:hover {
+        cursor: pointer;
+    }
 `;
 
 const WhiteBtn = styled.button`
@@ -93,15 +104,23 @@ const WhiteBtn = styled.button`
     border: 1px solid #5f0080;
     border-radius: 3px;
     max-width: 100%;
-    height: 54px;
+    height: 44px;
     background-color: #ffffff;
     color: #5f0080;
-    font-size: 16px;
+    font-family: "Noto Sans KR";
+    font-size: ${(props) => props.fontSize};
     font-weight: bold;
     text-align: center;
     box-sizing: border-box;
     ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
     ${(props) => (props.padding ? `padding: ${props.padding};` : "")}
+  ${(props) =>
+        props.flex
+            ? `display: flex; justify-content: center; align-items: center;`
+            : ""}
+  &:hover {
+        cursor: pointer;
+    }
 `;
 
 // SmallBtn 추가했습니다.

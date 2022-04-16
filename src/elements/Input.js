@@ -11,9 +11,10 @@ const Input = (props) => {
         width,
         height,
         fontSize,
+        margin,
     } = props;
 
-    const styles = { width: width, height: height, fontSize: fontSize };
+    const styles = { width, height, fontSize, margin };
 
     if (countInput) {
         return (
@@ -28,6 +29,7 @@ const Input = (props) => {
 
     return (
         <Textarea
+            {...styles}
             type={type}
             placeholer={placeholder}
             value={value}
@@ -42,16 +44,23 @@ Input.defaultProps = {
     value: "",
     _onChange: () => {},
     width: "332px",
+    height: "44px",
     fontSize: "",
+    margin: false,
 };
 
 const Textarea = styled.input`
     border: 1px solid #333333;
     width: ${(props) => props.width};
     max-width: 100%;
-    height: 44px;
-    padding: 0 14px;
+    height: ${(props) => props.height};
+    margin: ${(props) => props.margin};
+    padding: 0 14px 0 14px;
     box-sizing: border-box;
+    border-radius: 3px;
+    .placeholder {
+        color: #cccccc;
+    }
 `;
 
 const CountInput = styled.input`
@@ -69,4 +78,5 @@ const CountInput = styled.input`
     max-width: 100%;
     border: none;
 `;
+
 export default Input;
