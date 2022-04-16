@@ -102,13 +102,13 @@ const HeaderDiv = styled.div`
     cursor: pointer;
 
     div {
-      border: 1px solid #4c4c4c;
+      border: 1px solid #dedfe1;
       border-radius: 10px;
       padding: 2px 6px;
 
       span {
         color: #5f0080;
-        font-weight: 700;
+        font-weight: 600;
       }
     }
   }
@@ -134,7 +134,7 @@ const HeaderDiv = styled.div`
 
     li:nth-child(1), li:nth-child(2) {
       color: #5f0080;
-      font-weight: 700;
+      font-weight: 600;
       &::after {
         content: "";
         border-right: 1px solid #aaa;
@@ -167,7 +167,8 @@ const HeaderDiv = styled.div`
   .menuBar {
     height: 56px;
     align-items: center;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     margin-top: 10px;
 
     .hamBtn {
