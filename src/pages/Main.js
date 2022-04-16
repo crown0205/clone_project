@@ -343,11 +343,11 @@ const Wrap = styled.div`
     }
 
     .banner {
-      width: 1050px;
+      width: 1099px;
       height: 140px;
       margin: 0 auto 60px;
       background-image: url("https://img-cf.kurly.com/banner/random-band/pc/img/3be8f9eb-9a5e-45c5-ae92-0cba9a5df0aa");
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
     }
   }
