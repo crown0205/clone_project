@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // 아이콘
-import { BsCart2 } from "react-icons/bs";
 import SmallItem from "../components/SmallItem";
 
 const Main = () => {
@@ -33,6 +32,7 @@ const Main = () => {
   return (
     <React.Fragment>
       <Wrap>
+        {/* 메인 배너 */}
         <div className="bannerWrap">
           <Slider {...banner_settings}>
             <div>
@@ -80,6 +80,7 @@ const Main = () => {
             </Slider>
           </div>
 
+          {/* 배너 */}
           <div className="banner" />
         </div>
       </Wrap>
@@ -96,8 +97,6 @@ const Wrap = styled.div`
 
   .bannerWrap {
     max-width: 1900px;
-    max-width: auto;
-    /* height: auto; */
     height: 370px;
     margin: auto;
     overflow: hidden;
@@ -105,8 +104,8 @@ const Wrap = styled.div`
     .card {
       min-width: 1050px;
       max-width: auto;
-      height: 370px;
       width: 100%;
+      height: 370px;
     }
   }
 
@@ -164,6 +163,8 @@ const Wrap = styled.div`
       }
     }
 
+
+    /* 배너 */
     .banner {
       width: 1099px;
       height: 140px;

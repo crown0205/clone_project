@@ -9,8 +9,9 @@ const Category = () => {
     <React.Fragment>
       <Wrap>
         <div className="innerWrap">
+          {/* 카테고리 배너 */}
           <div className="bannerWrap">
-            <img src="https://img-cf.kurly.com/category/banner/pc/62aa0430-3ec9-4029-842f-36d8c21d9318"></img>
+            <img src="https://img-cf.kurly.com/category/banner/pc/62aa0430-3ec9-4029-842f-36d8c21d9318" alt=""></img>
           </div>
 
           <p className="title">신상품</p>
