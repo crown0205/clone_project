@@ -61,7 +61,11 @@ const Main = () => {
               <li>
                 <div className="itemImg">
                   {/* 이미지 class 속성으로 크기 묶어주고, img에 cusur 주기. 반복해서 할꺼닌깐, component로 만들어서 받아오자. 그리고 배너 작업 들어가면 될듯. */}
-                  <img src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg" width="249px" height="320px"></img>
+                  <img
+                    src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
+                    width="249px"
+                    height="320px"
+                  ></img>
                   <button className="cardBtn">
                     <BsCart2 />
                   </button>
@@ -81,7 +85,11 @@ const Main = () => {
               </li>
               <li>
                 <div className="itemImg">
-                <img src="https://img-cf.kurly.com/shop/data/goods/148429633150l0.jpg " width="249px" height="320px"></img>
+                  <img
+                    src="https://img-cf.kurly.com/shop/data/goods/148429633150l0.jpg "
+                    width="249px"
+                    height="320px"
+                  ></img>
 
                   {/* https://img-cf.kurly.com/shop/data/goods/148429633150l0.jpg */}
                   <button className="cardBtn">
@@ -103,7 +111,11 @@ const Main = () => {
               </li>
               <li>
                 <div className="itemImg">
-                <img src="https://img-cf.kurly.com/shop/data/goods/1648202533915l0.jpg " width="249px" height="320px"></img>
+                  <img
+                    src="https://img-cf.kurly.com/shop/data/goods/1648202533915l0.jpg "
+                    width="249px"
+                    height="320px"
+                  ></img>
 
                   {/* https://img-cf.kurly.com/shop/data/goods/1648202533915l0.jpg */}
                   <button className="cardBtn">
@@ -180,18 +192,12 @@ const Main = () => {
                   1210<span>원</span>
                 </div>
               </li>
-              <div className="prevBtn Btn">
-                {/* https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg */}
-              </div>
-              <div className="nextBtn Btn">
-                {/* https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_60_60.svg */}
-              </div>
             </ul>
+            <div className="prevBtn Btn"></div>
+            <div className="nextBtn Btn"></div>
           </div>
 
-          <div className="banner">
-            {/* https://img-cf.kurly.com/banner/random-band/pc/img/3be8f9eb-9a5e-45c5-ae92-0cba9a5df0aa */}
-          </div>
+          <div className="banner"></div>
         </div>
       </Wrap>
     </React.Fragment>
@@ -204,11 +210,9 @@ const Wrap = styled.div`
   /* 캐러셀 */
   width: 100%;
   height: 370px;
-  /* background-color: #aaa; */
 
   .bannerWrap {
     max-width: 1400px;
-    /* width: 100%; */
     height: 100%;
     margin: auto;
 
@@ -233,13 +237,15 @@ const Wrap = styled.div`
   /* 상품 목록 */
   .innerWrap {
     width: 100%;
+    overflow: hidden;
 
     .itemListWrap {
       max-width: 1100px;
       width: 95%;
       height: 584px;
-      margin: 50px auto;
+      margin: 50px auto 0;
       padding: 32px 0px 40px;
+      position: relative;
 
       .title {
         font-weight: 700;
@@ -253,6 +259,7 @@ const Wrap = styled.div`
       ul {
         display: flex;
         overflow: hidden;
+
         li {
           width: 267px;
           height: auto;
@@ -289,7 +296,8 @@ const Wrap = styled.div`
             margin-bottom: 8px;
             p {
               font-size: 16px;
-              font-weight: 700;
+              font-weight: 600;
+              letter-spacing: 1px;
               line-height: 23px;
               color: #333333;
             }
@@ -315,6 +323,32 @@ const Wrap = styled.div`
           }
         }
       }
+      .Btn {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 230px;
+        cursor: pointer;
+      }
+
+      .prevBtn {
+        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg ");
+        left: -25px;
+      }
+
+      .nextBtn {
+        background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_60_60.svg ");
+        right: -35px;
+      }
+    }
+
+    .banner {
+      width: 1050px;
+      height: 140px;
+      margin: 0 auto 60px;
+      background-image: url("https://img-cf.kurly.com/banner/random-band/pc/img/3be8f9eb-9a5e-45c5-ae92-0cba9a5df0aa");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 `;
