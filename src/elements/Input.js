@@ -20,6 +20,7 @@ const Input = (props) => {
         return (
             <CountInput
                 type={type}
+                placeholder={placeholder}
                 value={value}
                 onChange={_onChange}
                 {...styles}
