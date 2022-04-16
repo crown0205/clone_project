@@ -5,8 +5,11 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { history } from "../redux/configureStore"
 
 const Header = () => {
+
+
   return (
     <React.Fragment>
       <HeaderDiv>
@@ -16,15 +19,21 @@ const Header = () => {
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
             <ul className="navBar flex">
-              <li>회원가입</li>
-              <li>로그인</li>
+              <li onClick={()=> {
+                history.push("/signup")
+              }}>회원가입</li>
+              <li onClick={()=> {
+                history.push("/login")
+              }}>로그인</li>
               <li>
                 고객센터 <span></span>
               </li>
             </ul>
           </div>
 
-          <div className="LogoWrap flex">
+          <div className="LogoWrap flex" onClick={()=>{
+            history.push("/")
+          }}>
             {/* <div className="mainLogo"></div> */}
             <img
               className="mainLogo"
@@ -34,15 +43,23 @@ const Header = () => {
 
           <div className="menuBar flex">
             <ul className="flex">
-              <li>
+              <li onClick={()=>{
+                history.push("/category")
+              }}>
                 <span className="hamBtn">
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
               </li>
-              <li>신상품</li>
-              <li>베스트</li>
-              <li>알뜰쇼핑</li>
+              <li onClick={()=>{
+                history.push("/category")
+              }}>신상품</li>
+              <li onClick={()=>{
+                history.push("/category")
+              }}>베스트</li>
+              <li onClick={()=>{
+                history.push("/category")
+              }}>알뜰쇼핑</li>
               <li>특가/혜택</li>
             </ul>
             <form>
@@ -59,7 +76,9 @@ const Header = () => {
               <div id="heartBtn">
                 <AiOutlineHeart />
               </div>
-              <div id="cartBtn">
+              <div id="cartBtn" onClick={()=> {
+                history.push("/cart")
+              }}>
                 <BsCart2 />
               </div>
             </div>
