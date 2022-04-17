@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// 아이콘
+// 컴포넌트
 import SmallItem from "../components/SmallItem";
 
 const Main = () => {
@@ -35,8 +35,8 @@ const Main = () => {
     slidesToScroll: 4,
   };
   
+  // 사이트 접속시 item 목록 불러오기
   React.useEffect(()=> {
-    // console.log("hi")
     dispatch(itemActions.setItemsDB())
   },[])
 
@@ -82,7 +82,6 @@ const Main = () => {
           <div className="itemListWrap">
             <p className="title">이 상품 어때요?</p>
             <Slider {...card_settings}>
-              <SmallItem />
               <SmallItem />
               <SmallItem />
               <SmallItem />
@@ -173,7 +172,6 @@ const Wrap = styled.div`
         color: transparent;
       }
     }
-
 
     /* 배너 */
     .banner {
