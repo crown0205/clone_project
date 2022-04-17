@@ -9,14 +9,6 @@ import DetailSlider from "../components/DetailSlider";
 import { Image, Button, DetailSpan } from "../elements/Index";
 
 const Detail = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
-
     return (
         <React.Fragment>
             <ContainerBox>
