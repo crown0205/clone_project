@@ -92,7 +92,7 @@ const Wrap = styled.div`
       min-height: 120px;
 
       .title {
-        margin: 0 0 10px;
+        margin: 0 0 4px;
         font-size: 18px;
         font-weight: 600;
       }
@@ -104,6 +104,7 @@ const Wrap = styled.div`
         .price {
           font-size: 14px;
           font-weight: 800;
+          padding-top: 6px;
         }
 
         .count {
