@@ -55,10 +55,11 @@ const Buttonbox = styled.div`
     border-radius: 3px;
     width: 88px;
     // height: 32px;
-    max-height: 32px;
+    max-height: 35px;
     // padding: 0px;
     display: flex;
     position: absolute;
+    background: #fff;
 `;
 
 export default Count;

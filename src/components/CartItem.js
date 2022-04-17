@@ -1,5 +1,5 @@
 import React from "react";
-import Package from "../elements/Package";
+import Package from "../components/Package";
 import Count from "../components/Count";
 
 const OrderItem = () => {
@@ -14,7 +14,7 @@ const OrderItem = () => {
                 </div>
                 <Count />
                 <span>가격</span>
-                <button>삭제</button>
+                <button></button>
             </div>
         </React.Fragment>
     );
