@@ -54,9 +54,7 @@ const Buttonbox = styled.div`
     border: 1px solid #e1e1e1;
     border-radius: 3px;
     width: 88px;
-    // height: 32px;
     max-height: 35px;
-    // padding: 0px;
     display: flex;
     background: #fff;
 `;

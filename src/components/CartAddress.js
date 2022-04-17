@@ -8,9 +8,6 @@ const CartAddress = (props) => {
             width="284px"
             padding="23px 19px 20px 19px"
             flexDirection="column"
-            borderTop="1px solid #f2f2f2"
-            borderRight="1px solid #f2f2f2"
-            borderLeff="1px solid #f2f2f2"
         >
             <Grid>
                 <DetailSpan size="16px" bold="700">

@@ -1,6 +1,7 @@
 //장바구니 컴포넌트
 import React from "react";
 import styled from "styled-components";
+import CartButton from "../components/CartButton";
 import CartItems from "../components/CartItems";
 import CartResult from "../components/CartResult";
 import { Grid } from "../elements/Index";
@@ -10,9 +11,18 @@ const Cart = (props) => {
             <Grid width="1050px" height="136px" padding="50px 0 51px 0">
                 <H2>장바구니</H2>
             </Grid>
-            <Grid display="block">
-                <CartItems />
-                <CartResult />
+            <Grid justifyContent="space-between">
+                <Grid flexDirection="column">
+                    <CartButton />
+                    {/* 카테고리 3개 묶은 컴포넌트 만들기 */}
+                    <CartItems />
+                    <CartItems />
+                    <CartItems />
+                    <CartButton />
+                </Grid>
+                <Grid width="284px">
+                    <CartResult />
+                </Grid>
             </Grid>
         </Grid>
     );

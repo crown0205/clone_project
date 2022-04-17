@@ -12,6 +12,8 @@ const DetailSpan = (props) => {
         width,
         bold,
         textAlign,
+        lineHeight,
+        letterSpacing,
     } = props;
 
     const styles = {
@@ -23,6 +25,8 @@ const DetailSpan = (props) => {
         bold: bold,
         textAlign: textAlign,
         padding: padding,
+        lineHeight: lineHeight,
+        letterSpacing: letterSpacing,
     };
 
     return (
@@ -41,6 +45,8 @@ DetailSpan.defaultProps = {
     bold: false,
     textAlign: "",
     padding: "",
+    lineHeight: "",
+    letterSpacing: "",
 };
 
 const Span = styled.span`
@@ -52,6 +58,8 @@ const Span = styled.span`
     ${(props) => (props.bold ? `font-weight: ${props.bold};` : "")}
     text-align:  ${(props) => props.textAlign};
     padding: ${(props) => props.padding};
+    line-height: ${(props) => props.lineHeight};
+    letter-spacing: ${(props) => props.letterSpacing};
 `;
 
 export default DetailSpan;

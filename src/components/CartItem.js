@@ -13,7 +13,6 @@ import {
 const OrderItem = () => {
     return (
         <Grid flexDirection="column">
-            <Package />
             <Grid
                 width="742px"
                 height="128px"

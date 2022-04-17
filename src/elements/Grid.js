@@ -11,10 +11,9 @@ const Grid = (props) => {
         display,
         justifyContent,
         bg,
+        border,
         borderTop,
         borderBottom,
-        borderRight,
-        borderLeft,
         position,
         flexDirection,
         alignItems,
@@ -28,10 +27,9 @@ const Grid = (props) => {
         display: display,
         justifyContent: justifyContent,
         bg: bg,
+        border: border,
         borderTop: borderTop,
         borderBottom: borderBottom,
-        borderRight: borderRight,
-        borderLeft: borderLeft,
         position: position,
         flexDirection: flexDirection,
         alignItems: alignItems,
@@ -48,10 +46,9 @@ Grid.defaultProps = {
     display: "flex",
     justifyContent: "",
     bg: "",
+    border: "",
     borderTop: "",
     borderBottom: "",
-    borderRight: "",
-    borderLeft: "",
     position: "",
     flexDirection: "",
     alignItems: "",
@@ -65,11 +62,10 @@ const GridBox = styled.div`
     display: ${(props) => props.display};
     background: ${(props) => props.bg};
     justify-content: ${(props) => props.justifyContent};
+    border: ${(props) => props.border};
     border-top: ${(props) => props.borderTop};
     border-bottom: ${(props) => props.borderBottom};
-    border-right: ${(props) => props.borderRight};
-    border-left: ${(props) => props.borderLeft};
-    // position: ${(props) => props.position};
+    position: ${(props) => props.position};
     flex-direction: ${(props) => props.flexDirection};
     align-items: ${(props) => props.alignItems};
 `;

@@ -1,30 +1,56 @@
 import React from "react";
 import styled from "styled-components";
 import PriceForm from "./PriceForm";
-import { DetailSpan } from "../elements/Index";
+import { Grid, DetailSpan } from "../elements/Index";
 
 const OrderList = (props) => {
     return (
-        <React.Fragment>
-            <PriceForm />
-            <PriceForm />
-            <PriceForm />
-            <div>
-                <PriceForm />
-            </div>
-            <PriceBox>
-                <DetailSpan bold="700" height="27px">
-                    <Icon>적립</Icon>
-                    로그인 후, 회원할인가와 적립혜택 제공
+        <Grid
+            width="284px"
+            padding="9px 18px 18px 20px"
+            flexDirection="column"
+            bg="#f2f2f2"
+        >
+            <PriceForm>상품금액</PriceForm>
+            <PriceForm>상품할인금액</PriceForm>
+            <PriceForm>배송비</PriceForm>
+            <Grid width="244px">
+                <DetailSpan size="12px" color="#5f0080" padding="0 0 0 70px">
+                    38,030원 추가주문 시,
                 </DetailSpan>
-            </PriceBox>
-        </React.Fragment>
+                <DetailSpan
+                    size="12px"
+                    bold="700"
+                    color="#5f0080"
+                    padding="0 0 0 5px"
+                >
+                    무료배송
+                </DetailSpan>
+            </Grid>
+            <Grid
+                height="48px"
+                margin="17px 0 0 0"
+                padding="17px 0 0 0"
+                borderTop="1px solid #eeeeee"
+            >
+                <PriceForm bold="700">결제예정금액</PriceForm>
+            </Grid>
+            <Grid padding="13px 0 0 0">
+                <DetailSpan
+                    height="27px"
+                    width="244px"
+                    size="12px"
+                    bold="700"
+                    color="#666666"
+                    textAlign="right"
+                >
+                    <Icon>적립</Icon>
+                    로그인 후 회원등급에 따라 적립
+                </DetailSpan>
+            </Grid>
+        </Grid>
     );
 };
-
-const PriceBox = styled.div`
-    padding: 13px 0 0 0;
-`;
 
 const Icon = styled.span`
     display: inline-block;
