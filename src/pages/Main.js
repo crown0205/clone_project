@@ -1,5 +1,9 @@
 import React from "react";
+
+// 패키지
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 캐로셀
 import Slider from "react-slick";
@@ -10,6 +14,8 @@ import "slick-carousel/slick/slick-theme.css";
 import SmallItem from "../components/SmallItem";
 
 const Main = () => {
+  const dispatch = useDispatch()
+
   // banner Action
   const banner_settings = {
     dots: true,
@@ -28,6 +34,11 @@ const Main = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
   };
+  
+  React.useEffect(()=> {
+    // console.log("hi")
+    dispatch(itemActions.setItemsDB())
+  },[])
 
   return (
     <React.Fragment>
