@@ -52,7 +52,9 @@ const Login = (props) => {
         >
           로그인
         </Button>
-        <Button width="340px" height="54px" _onClick={history.push("/signup")}>
+        <Button width="340px" height="54px" _onClick={()=>{
+          history.push("/signup")
+        }}>
           회원가입
         </Button>
       </Wrap>
