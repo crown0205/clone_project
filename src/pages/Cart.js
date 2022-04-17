@@ -10,8 +10,10 @@ const Cart = (props) => {
             <Grid width="1050px" height="136px" padding="50px 0 51px 0">
                 <H2>장바구니</H2>
             </Grid>
-            <CartItems />
-            <CartResult />
+            <Grid display="block">
+                <CartItems />
+                <CartResult />
+            </Grid>
         </Grid>
     );
 };

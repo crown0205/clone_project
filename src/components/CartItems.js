@@ -9,6 +9,7 @@ const CartItems = (props) => {
             <CartButton />
             {/* 냉장 */}
             <CartItem />
+            <CartButton />
         </Div>
     );
 };

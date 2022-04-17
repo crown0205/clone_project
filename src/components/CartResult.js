@@ -2,12 +2,11 @@ import React from "react";
 import CartButton from "./CartButton";
 import CartAddress from "./CartAddress";
 import OrderList from "./OrderList";
-import Button from "../elements/Button";
+import { Grid, Button } from "../elements/Index";
 
 const CartResult = (props) => {
     return (
-        <React.Fragment>
-            <CartButton />
+        <Grid display="block">
             <CartAddress />
             <OrderList />
             <Button></Button>
@@ -19,7 +18,7 @@ const CartResult = (props) => {
                     있습니다.
                 </span>
             </div>
-        </React.Fragment>
+        </Grid>
     );
 };
 

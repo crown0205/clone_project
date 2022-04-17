@@ -105,7 +105,7 @@ const WhiteBtn = styled.button`
     border: 1px solid #5f0080;
     border-radius: 3px;
     max-width: 100%;
-    height: 44px;
+    height: ${(props) => props.height};
     background-color: #ffffff;
     color: #5f0080;
     font-family: "Noto Sans KR";

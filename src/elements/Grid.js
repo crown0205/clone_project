@@ -1,4 +1,3 @@
-import { routerMiddleware } from "connected-react-router";
 import React from "react";
 import styled from "styled-components";
 
@@ -14,6 +13,8 @@ const Grid = (props) => {
         bg,
         borderTop,
         borderBottom,
+        borderRight,
+        borderLeft,
         position,
         flexDirection,
         alignItems,
@@ -29,6 +30,8 @@ const Grid = (props) => {
         bg: bg,
         borderTop: borderTop,
         borderBottom: borderBottom,
+        borderRight: borderRight,
+        borderLeft: borderLeft,
         position: position,
         flexDirection: flexDirection,
         alignItems: alignItems,
@@ -38,7 +41,7 @@ const Grid = (props) => {
 };
 
 Grid.defaultProps = {
-    width: "100%",
+    width: "",
     height: "",
     margin: "",
     padding: "",
@@ -47,6 +50,8 @@ Grid.defaultProps = {
     bg: "",
     borderTop: "",
     borderBottom: "",
+    borderRight: "",
+    borderLeft: "",
     position: "",
     flexDirection: "",
     alignItems: "",
@@ -59,11 +64,12 @@ const GridBox = styled.div`
     padding: ${(props) => props.padding};
     display: ${(props) => props.display};
     background: ${(props) => props.bg};
-    display: ${(props) => props.display};
     justify-content: ${(props) => props.justifyContent};
     border-top: ${(props) => props.borderTop};
     border-bottom: ${(props) => props.borderBottom};
-    position: ${(props) => props.position};
+    border-right: ${(props) => props.borderRight};
+    border-left: ${(props) => props.borderLeft};
+    // position: ${(props) => props.position};
     flex-direction: ${(props) => props.flexDirection};
     align-items: ${(props) => props.alignItems};
 `;
