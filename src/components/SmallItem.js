@@ -1,11 +1,22 @@
-//장바구니 컴포넌트
 import React from "react";
+
+// 패키지
 import styled from "styled-components";
 
 // 아이콘
 import { BsCart2 } from "react-icons/bs";
 
+// 컴포넌트
+import Modal from "./Modal";
+import { useDispatch } from "react-redux";
+
+// 모듈
+import { actionCreators as itemActions } from "../redux/modules/item";
+
+
 const SmallItem = props => {
+  const dispatch = useDispatch()
+
   return (
     <React.Fragment>
       <SmallItemWrap>
@@ -17,7 +28,12 @@ const SmallItem = props => {
               height="320px"
               alt=""
             ></img>
-            <button className="cardBtn">
+            <button
+              className="cardBtn"
+              onClick={() => {
+                dispatch(itemActions.onModal())
+              }}
+            >
               <BsCart2 />
             </button>
           </div>

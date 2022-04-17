@@ -1,9 +1,16 @@
 import React from "react";
 
+// 패키지
 import styled from "styled-components";
 import { BsCart2 } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+
+// 모듈
+import { actionCreators as itemActions } from "../redux/modules/item";
 
 const BigItem = () => {
+  const dispatch = useDispatch()
+
   return (
     <React.Fragment>
       <BigItemWrap>
@@ -12,8 +19,12 @@ const BigItem = () => {
             src="https://img-cf.kurly.com/shop/data/goods/1649919701563l0.jpg "
             width="344px"
             height="433px"
+            alt="음식사진"
           ></img>
-          <button className="cardBtn">
+          <button className="cardBtn" onClick={() => {
+            // onModal 클릭시 아이템 (이름, 가격) 정보 보내줘야됨.
+                dispatch(itemActions.onModal())
+              }}>
             <BsCart2 />
           </button>
         </div>
