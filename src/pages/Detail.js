@@ -51,6 +51,7 @@ const Detail = () => {
                         </Price>
                         <ItemInfo>
                             <Image
+                                width="auto"
                                 src={
                                     "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailInfo.PNG?alt=media&token=bf55b666-3e14-493e-ac17-9d86d7d15832"
                                 }
@@ -195,6 +196,7 @@ const ItemCount = styled.div`
     display: flex;
     align-items: flex-start;
     height: 53px;
+    padding: 10px 0 0 0;
 `;
 
 const TotalPrice = styled.div`

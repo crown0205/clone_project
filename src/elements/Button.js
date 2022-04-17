@@ -131,6 +131,7 @@ const SmallBtn = styled.button`
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    margin: ${(props) => props.margin};
 
     background-color: #fff;
     background-image: url("${(props) => props.src}");

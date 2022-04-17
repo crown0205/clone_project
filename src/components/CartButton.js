@@ -7,12 +7,7 @@ const CartButton = (props) => {
         <Grid width="742px" padding="0 10px 0 2px">
             <CheckLabel>
                 <input type={"checkbox"}></input>
-                <Icons
-                    width="24px"
-                    height="24px"
-                    margin="0 12px 0 0"
-                    src="https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
-                />
+                <Icons checkIcon />
                 <DetailSpan bold="700">전체선택(0/5)</DetailSpan>
             </CheckLabel>
             <DeleteLabel>
@@ -20,7 +15,7 @@ const CartButton = (props) => {
                 <Icons
                     width="24px"
                     height="24px"
-                    margin="0 12px 0 0"
+                    margin="-2px 12px 0 0"
                     src="https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
                 />
                 <DetailSpan bold="700">선택삭제</DetailSpan>

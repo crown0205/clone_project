@@ -1,3 +1,4 @@
+import { routerMiddleware } from "connected-react-router";
 import React from "react";
 import styled from "styled-components";
 
@@ -12,6 +13,10 @@ const Grid = (props) => {
         justifyContent,
         bg,
         borderTop,
+        borderBottom,
+        position,
+        flexDirection,
+        alignItems,
     } = props;
 
     const styles = {
@@ -23,6 +28,10 @@ const Grid = (props) => {
         justifyContent: justifyContent,
         bg: bg,
         borderTop: borderTop,
+        borderBottom: borderBottom,
+        position: position,
+        flexDirection: flexDirection,
+        alignItems: alignItems,
     };
 
     return <GridBox {...styles}>{children}</GridBox>;
@@ -37,6 +46,10 @@ Grid.defaultProps = {
     justifyContent: "",
     bg: "",
     borderTop: "",
+    borderBottom: "",
+    position: "",
+    flexDirection: "",
+    alignItems: "",
 };
 
 const GridBox = styled.div`
@@ -49,6 +62,10 @@ const GridBox = styled.div`
     display: ${(props) => props.display};
     justify-content: ${(props) => props.justifyContent};
     border-top: ${(props) => props.borderTop};
+    border-bottom: ${(props) => props.borderBottom};
+    position: ${(props) => props.position};
+    flex-direction: ${(props) => props.flexDirection};
+    align-items: ${(props) => props.alignItems};
 `;
 
 export default Grid;

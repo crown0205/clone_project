@@ -1,19 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import CartButton from "./CartButton";
 import CartItem from "../components/CartItem";
 
 const CartItems = (props) => {
     return (
-        <React.Fragment>
+        <Div>
             <CartButton />
             {/* 냉장 */}
             <CartItem />
-            {/* 냉동 */}
-            <CartItem />
-            {/* 상온 */}
-            <CartItem />
-        </React.Fragment>
+        </Div>
     );
 };
+
+const Div = styled.div``;
 
 export default CartItems;
