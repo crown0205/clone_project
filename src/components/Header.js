@@ -1,15 +1,17 @@
 import React from "react";
+
+// 패키지
 import styled from "styled-components";
+import { history } from "../redux/configureStore"
+
+// 아이콘
 import { BiSearch } from "react-icons/bi";
 import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { history } from "../redux/configureStore"
 
 const Header = () => {
-
-
   return (
     <React.Fragment>
       <HeaderDiv>
@@ -23,10 +25,10 @@ const Header = () => {
               {/* <div className="user">일반</div>
               <li>아무개 님 <span></span></li> */}
               <li onClick={()=> {
-                history.push("/signup")
+                history.push("/signup");
               }}>회원가입</li>
               <li onClick={()=> {
-                history.push("/login")
+                history.push("/login");
               }}>로그인</li>
               <li>
                 고객센터 <span></span>
@@ -41,6 +43,7 @@ const Header = () => {
             <img
               className="mainLogo"
               src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
+              alt="logo"
             ></img>
           </div>
 

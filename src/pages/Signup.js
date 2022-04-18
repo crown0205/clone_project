@@ -7,14 +7,14 @@ import { FiSearch } from "react-icons/fi";
 
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
-import DaumPostcode from 'react-daum-postcode';
+import DaumPostcode from "react-daum-postcode";
 
 const Signup = (props) => {
   const [userAddress, setUserAddress] = useState("");
- 
+
   const onComplete = (data) => {
     setUserAddress(data.address);
-  }
+  };
 
   const dispatch = useDispatch();
 
@@ -23,18 +23,40 @@ const Signup = (props) => {
   const [pwdCheck, setPwdCheck] = useState("");
   const [userName, setUserName] = useState("");
 
-  console.log(userId, pwd, userName, userAddress);
+  const isId = (userId) => {
+    const regId = /^[a-z0-9]{6,20}$/;
+    return regId.test(userId);
+  };
+
+  const isPwd = (pwd) => {
+    const regPwd = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{6,20}/;
+    return regPwd.test(pwd);
+  };
+
+  const idCheck = () => {
+    dispatch(userActions.idCheckDB(userId));
+  }
 
   const signup = () => {
     if (userId === "" || pwd === "" || userName === "") {
-      window.alert("빈칸을 모두 입력해주세요!");
+      window.alert("아이디, 패스워드, 이름을 모두 입력해주세요!");
       return;
     }
     if (pwd !== pwdCheck) {
       window.alert("패스워드와 패스워드 확인이 일치하지 않습니다!");
       return;
     }
-    dispatch(userActions.signupDB(userId, pwd, userName, userAddress));
+    if (!isId(userId)) {
+      window.alert("아이디 형식이 올바르지 않습니다!");
+      return;
+    }
+    if (!isPwd(pwd)) {
+      window.alert("비밀번호 형식이 올바르지 않습니다!");
+      return;
+    }
+    dispatch(
+      userActions.signupDB(userId, pwd, pwdCheck, userName, userAddress)
+    );
   };
 
   return (
@@ -71,7 +93,7 @@ const Signup = (props) => {
               setUserId(e.target.value);
             }}
           />
-          <Button width="120px" height="44px" fontSize="14px">
+          <Button width="120px" height="44px" fontSize="14px" _onClick={idCheck}>
             중복확인
           </Button>
         </span>
@@ -87,9 +109,13 @@ const Signup = (props) => {
           비밀번호
         </Text>
         <span style={{ padding: "10px 0 10px 0" }}>
-          <Input value={pwd} placeholder="비밀번호를 입력해주세요" _onChange={(e) => {
+          <Input
+            value={pwd}
+            placeholder="비밀번호를 입력해주세요"
+            _onChange={(e) => {
               setPwd(e.target.value);
-            }}/>
+            }}
+          />
         </span>
       </Grid>
       <Grid>
@@ -103,9 +129,13 @@ const Signup = (props) => {
           비밀번호확인
         </Text>
         <span style={{ padding: "10px 0 10px 0" }}>
-          <Input value={pwdCheck} placeholder="비밀번호를 한번 더 입력해주세요" _onChange={(e) => {
+          <Input
+            value={pwdCheck}
+            placeholder="비밀번호를 한번 더 입력해주세요"
+            _onChange={(e) => {
               setPwdCheck(e.target.value);
-            }}/>
+            }}
+          />
         </span>
       </Grid>
       <Grid>
@@ -119,9 +149,13 @@ const Signup = (props) => {
           이름
         </Text>
         <span style={{ padding: "10px 0 10px 0" }}>
-          <Input value={userName} placeholder="이름을 입력해주세요" _onChange={(e) => {
+          <Input
+            value={userName}
+            placeholder="이름을 입력해주세요"
+            _onChange={(e) => {
               setUserName(e.target.value);
-            }}/>
+            }}
+          />
         </span>
       </Grid>
       <Grid>
@@ -139,7 +173,10 @@ const Signup = (props) => {
             <FiSearch />
             주소 검색
           </Button>
-          <div> <DaumPostcode onComplete={onComplete}/> </div>
+          <div>
+            {" "}
+            <DaumPostcode onComplete={onComplete} />{" "}
+          </div>
         </span>
       </Grid>
       <Button purple width="240px" height="56px" _onClick={signup}>
