@@ -4,17 +4,30 @@ import axios from "axios";
 
 // actions
 const SET_USER = "SET_USER";
-const GET_USER = "GET_USER";
 const LOG_OUT = "LOG_OUT";
 
 // action creators
 const setUser = createAction(SET_USER, (user) => ({ user }));
-const getUser = createAction(GET_USER, (user) => ({ user }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 
 // initialState
 const initialState = {
-  user: null,
+  user: {
+    userId: "",
+    pwd: "",
+    userName: "마켓컬리",
+    userAddress: "",
+    userCart: [
+      {
+        itemId: "상품 아이디",
+        itemName: "상품 이름",
+        itemAmount: "상품 수량",
+        itemPrice: "가격",
+        itemImg: "상품 이미지",
+      },
+    ],
+  },
+  isLogin: false,
 };
 
 // middleware actions
@@ -31,13 +44,13 @@ const idCheckDB = (userId) => {
         window.alert("사용 가능한 아이디입니다!");
       })
       .catch((error) => {
-        console.log(error, "실패했습니다!");
+        window.alert("사용할 수 없는 아이디입니다!");
       });
   };
 };
 
 const signupDB = (userId, pwd, pwdCheck, userName, userAddress) => {
-  return function ({ history }) {
+  return function (dispatch, getState, { history }) {
     axios({
       method: "post",
       url: "http://54.180.90.16/login/signUp",
@@ -54,16 +67,16 @@ const signupDB = (userId, pwd, pwdCheck, userName, userAddress) => {
         history.push("/login");
       })
       .catch((error) => {
-        console.log(error, "회원가입에 실패했습니다!");
+        window.alert("회원가입이 실패했습니다!");
       });
   };
 };
 
 const loginDB = (userId, pwd) => {
-  return function (dispatch, { history }) {
+  return function (dispatch, getState, { history }) {
     axios({
       method: "post",
-      url: "http://54.180.90.16//login/reqLogin",
+      url: "http://54.180.90.16/login/reqLogin",
       data: {
         userId: userId,
         pwd: pwd,
@@ -72,7 +85,7 @@ const loginDB = (userId, pwd) => {
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         dispatch(setUser(userId));
-        history.push("/");
+        history.replace("/");
       })
       .catch((error) => {
         console.log(error, "로그인에 실패했습니다!");
@@ -81,10 +94,30 @@ const loginDB = (userId, pwd) => {
 };
 
 const logoutDB = () => {
-  return function (dispatch, { history }) {
+  return function (dispatch, getState, { history }) {
     localStorage.removeItem("token");
     dispatch(logOut());
     history.replace("/");
+  };
+};
+
+const getUserDB = () => {
+  const token = localStorage.getItem("token");
+  return function (dispatch, getState, { history }) {
+    axios({
+      method: "get",
+      url: "http://54.180.90.16/login/getUser",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        dispatch(setUser(res.data));
+        history.replace("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
@@ -94,26 +127,27 @@ export default handleActions(
     [SET_USER]: (state, action) =>
       produce(state, (draft) => {
         draft.user = action.payload.user;
+        draft.isLogin = true;
       }),
 
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
         draft.user = null;
+        draft.isLogin = false;
       }),
-
-    [GET_USER]: (state, action) => produce(state, (draft) => {}),
   },
   initialState
 );
 
 // action creator export
 const actionCreators = {
+  idCheckDB,
   signupDB,
   loginDB,
   setUser,
   logoutDB,
   logOut,
-  getUser,
+  getUserDB,
 };
 
 export { actionCreators };
