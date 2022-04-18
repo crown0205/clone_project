@@ -10,6 +10,11 @@ import { Image, Button, DetailSpan, Input } from "../elements/Index";
 const Detail = () => {
   const isLogin = useSelector((state) => state.user.isLogin);
   const isToken = localStorage.getItem("token");
+    // React.useEffect(() => {
+    //     dispatch(cartActions.readCart());
+    // }, []);
+
+    // const CartList = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
   const [count, setCount] = React.useState(1);
@@ -284,7 +289,6 @@ const Icon = styled.span`
   border-radius: 10px;
   font-size: 11px;
   font-weight: 700;
-  font-height: 20px;
   color: #ffffff;
   text-align: center;
   vertical-align: 1px;
