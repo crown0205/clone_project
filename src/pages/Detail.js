@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,6 +10,9 @@ import { Image, Button, DetailSpan, Input } from "../elements/Index";
 const Detail = () => {
     const userInfo = useSelector((state) => state.user.user[0]);
     console.log(userInfo);
+
+    const isLogin = useSelector((state) => state.user.isLogin);
+    const isToken = localStorage.getItem("token");
     const dispatch = useDispatch();
     const [count, setCount] = React.useState(1);
 
@@ -170,15 +173,29 @@ const Detail = () => {
                                 </div>
                             </TotalPrice>
                             <Cart>
-                                <Button
-                                    purple
-                                    width="432px"
-                                    height="56px"
-                                    size="16px"
-                                    _onClick={addCart}
-                                >
-                                    장바구니 담기
-                                </Button>
+                                {isLogin && isToken ? (
+                                    <Button
+                                        purple
+                                        width="432px"
+                                        height="56px"
+                                        size="16px"
+                                        _onClick={addCart}
+                                    >
+                                        장바구니 담기
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        purple
+                                        deactivate
+                                        backgroundColor="#eee"
+                                        border="#fff"
+                                        width="432px"
+                                        height="56px"
+                                        size="16px"
+                                    >
+                                        장바구니 담기
+                                    </Button>
+                                )}
                             </Cart>
                         </CartList>
                     </OrderBox>
