@@ -3,11 +3,17 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DetailSlider from "../components/DetailSlider";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cartActions } from "../redux/modules/cart";
 import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
 const Detail = () => {
+    // React.useEffect(() => {
+    //     dispatch(cartActions.readCart());
+    // }, []);
+
+    // const CartList = useSelector((state) => state.cart);
+
     const dispatch = useDispatch();
     const [count, setCount] = React.useState(1);
 

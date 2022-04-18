@@ -14,7 +14,7 @@ export const Apis = {
     addCart: (itemList) => Api.post("/addCart", itemList),
     // editPost: (postId, contents) => Api.put(`api/posts/${postId}`, contents),
     // deletePost: (postId) => Api.delete(`api/posts/${postId}`),
-    // roadPostList: () => Api.get("/api/postList"),
+    readCart: (cartList) => Api.get("/readCart"),
     // roadPost: (postId) => Api.get(`/api/posts/${postId}`),
     // roadMypost: () => Api.get("/api/mypage/"),
 
