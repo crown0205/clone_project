@@ -8,12 +8,8 @@ import { actionCreators as cartActions } from "../redux/modules/cart";
 import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
 const Detail = () => {
-    // React.useEffect(() => {
-    //     dispatch(cartActions.readCart());
-    // }, []);
-
-    // const CartList = useSelector((state) => state.cart);
-
+    const userInfo = useSelector((state) => state.user.user[0]);
+    console.log(userInfo);
     const dispatch = useDispatch();
     const [count, setCount] = React.useState(1);
 
@@ -34,11 +30,15 @@ const Detail = () => {
         //상품정보 받아오기
 
         const item_list = {
-            itemId: "헬로",
-            itemName: "123",
+            itemId: "테스트입니다",
+            itemName: "카트테스트",
             itemAmount: count,
-            itemPrice: "456",
-            itemImg: "789",
+            itemPrice: "1,000",
+            itemImg:
+                "https://res.kurly.com/pc/service/cart/2007/ico_frozen.svg",
+            itemCategory: "카테고리테스트",
+            userAddress: userInfo.userAddress,
+            userId: userInfo.userId,
         };
 
         dispatch(cartActions.addCartDB(item_list));

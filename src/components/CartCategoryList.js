@@ -1,9 +1,17 @@
 import React from "react";
 import CartItems from "./CartItems";
+import { actionCreators as cartActions } from "../redux/modules/cart";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartCategoryList = (props) => {
-    //어떻게 각각 넣어줘야하나?
-    console.log(props);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(cartActions.readCartDB());
+    }, []);
+
+    const CartList = useSelector((state) => state.cart);
+
     return (
         <React.Fragment>
             <CartItems ice />
