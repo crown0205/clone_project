@@ -71,6 +71,24 @@ const setCategoryDB = category => {
   };
 };
 
+const getOneItemDB = itemId => {
+  console.log(typeof itemId)
+  return function (dispatch, getState, {history}) {
+    axios({
+      method: "get",
+      url: `http://54.180.90.16/detail/${itemId}`,
+    })
+    .then(doc => {
+      console.log(doc)
+      dispatch(setItems(doc))
+    })
+    .catch(err => {
+      console.log(err)
+      console.log("getOneItem")
+    })
+  }
+}
+
 // Reducer
 export default handleActions(
   {
@@ -95,6 +113,7 @@ export default handleActions(
 const actionCreators = {
   setItemsDB,
   setCategoryDB,
+  getOneItemDB,
   onModal,
   offModal,
 };

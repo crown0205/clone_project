@@ -1,20 +1,31 @@
 import React, { useEffect } from "react";
+// 패키지
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DetailSlider from "../components/DetailSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cartActions } from "../redux/modules/cart";
+import { actionCreators as itemActions } from "../redux/modules/item";
+
+// 컴포넌트
 import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
-const Detail = () => {
-  const isLogin = useSelector((state) => state.user.isLogin);
+const Detail = props => {
+  const isLogin = useSelector(state => state.user.isLogin);
+  const itemDate = useSelector(state => (state.item.list))
   const isToken = localStorage.getItem("token");
-    // React.useEffect(() => {
-    //     dispatch(cartActions.readCart());
-    // }, []);
+  const itemId = props.match.params.itemId;
 
-    // const CartList = useSelector((state) => state.cart);
+  console.log(itemDate)
+
+
+  React.useEffect(() => {
+    // dispatch(cartActions.readCart());
+    dispatch(itemActions.getOneItemDB(itemId));
+  }, []);
+
+  // const CartList = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
   const [count, setCount] = React.useState(1);
@@ -52,7 +63,7 @@ const Detail = () => {
             <div>
               <Image
                 src={
-                  "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailItemImage.PNG?alt=media&token=c5c771d3-2cf7-4c49-8c59-52024d7d7c68"
+                  itemDate.itemImg
                 }
               />
             </div>
@@ -60,18 +71,18 @@ const Detail = () => {
 
           <OrderBox>
             <TitleBox>
-              <strong>[연세우유 x 마켓컬리] 전용목장우유 900mL</strong>
+              <strong>{itemDate.itemName}</strong>
               <DetailSpan color="#999999">
-                가격, 퀄리티 모두 만족스러운 1A등급 우유
+                {itemDate.itemInfo}
               </DetailSpan>
             </TitleBox>
             <Price>
               <DetailSpan size="28px" height="auto" display="inline" bold="700">
-                1,970
+                {itemDate.itemPrice}
               </DetailSpan>
-              <DetailSpan display="inline" height="auto">
+              {/* <DetailSpan display="inline" height="auto">
                 원
-              </DetailSpan>
+              </DetailSpan> */}
 
               <DetailSpan height="27px" color="#5F0080">
                 로그인 후, 적립혜택이 제공됩니다.
@@ -146,16 +157,16 @@ const Detail = () => {
                     display="inline"
                     bold="700"
                   >
-                    1,970
+                    {itemDate.itemPrice}
                   </DetailSpan>
-                  <DetailSpan
+                  {/* <DetailSpan
                     size="20px"
                     bold="700"
                     display="inline"
                     height="auto"
                   >
                     원
-                  </DetailSpan>
+                  </DetailSpan> */}
                 </div>
               </TotalPrice>
               <Cart>
