@@ -33,7 +33,7 @@ function App() {
         <Route path="/cart" exact component={Cart} />
         <Route path="/postcode" exact component={PostCode} />
         {/* 모달 */}
-        {is_modal === true ? <Modal/> : null}
+        {is_modal? <Modal/> : null}
       </ConnectedRouter>
     </>
   );

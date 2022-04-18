@@ -21,8 +21,6 @@ const Main = () => {
     const item_list = useSelector((state) => state.item?.list);
     const item_length = item_list?.length;
 
-    console.log(item_length);
-
     // 빈 배열을 밖에다가 선언해주면 if문 안에서 작동하면 안으로 넣어준다.
     let random_list = [];
 
@@ -40,8 +38,6 @@ const Main = () => {
             }
         }
     }
-
-    console.log(random_list);
 
     // 사이트 접속시 item 목록 불러오기
     React.useEffect(() => {

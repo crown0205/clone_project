@@ -113,7 +113,7 @@ const getUserDB = () => {
     })
       .then((res) => {
         dispatch(setUser(res.data));
-        history.replace("/");
+        // history.replace("/");
       })
       .catch((err) => {
         console.log(err);
