@@ -15,30 +15,28 @@ import Category from "../pages/Category";
 import Detail from "../pages/Detail";
 import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
-
+import PostCode from "../components/PostCode";
 import "./App.css";
 
 function App() {
-    const is_modal = useSelector((state) => state.item.modal);
-    const modal = is_modal;
-    console.log(modal);
+  const is_modal = useSelector(state => state.item.modal);
 
-    return (
-        <>
-            <ConnectedRouter history={history}>
-                <Header />
-                <Route path="/" exact component={Main} />
-                <Route path="/login" exact component={Login} />
-                <Route path="/signup" exact component={Signup} />
-                <Route path="/category" exact component={Category} />
-                <Route path="/detail" exact component={Detail} />
-                <Route path="/cart" exact component={Cart} />
-
-                {/* 모달 */}
-                {modal === true ? <Modal /> : null}
-            </ConnectedRouter>
-        </>
-    );
+  return (
+    <>
+      <ConnectedRouter history={history}>
+        <Header />
+        <Route path="/" exact component={Main} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/category" exact component={Category} />
+        <Route path="/detail" exact component={Detail} />
+        <Route path="/cart" exact component={Cart} />
+        <Route path="/postcode" exact component={PostCode} />
+        {/* 모달 */}
+        {is_modal === true ? <Modal/> : null}
+      </ConnectedRouter>
+    </>
+  );
 }
 
 export default App;
