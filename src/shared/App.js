@@ -30,7 +30,7 @@ function App() {
         <Route path="/signup" exact component={Signup} />
         <Route path="/bestItem" exact component={Category} />
         <Route path="/category/:category" exact component={Category} />
-        <Route path="/detail/" exact component={Detail} />
+        <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
 
         {/* 모달 */}

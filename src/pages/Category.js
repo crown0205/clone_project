@@ -48,10 +48,6 @@ const Category = (props) => {
                 <BigItem key={`category_${idx}`} {...item} />
               )
             })}
-            {/* <BigItem/>
-            <BigItem/>
-            <BigItem/>
-            <BigItem/> */}
           </div>
         </div>
       </Wrap>
