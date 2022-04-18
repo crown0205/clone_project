@@ -8,15 +8,17 @@ import { useDispatch } from "react-redux";
 // 모듈
 import { actionCreators as itemActions } from "../redux/modules/item";
 
-const BigItem = () => {
+const BigItem = (props) => {
   const dispatch = useDispatch()
+
+  console.log(props)
 
   return (
     <React.Fragment>
       <BigItemWrap>
         <div className="itemImg">
           <img
-            src="https://img-cf.kurly.com/shop/data/goods/1649919701563l0.jpg "
+            src={props.itemImg}
             width="344px"
             height="433px"
             alt="음식사진"
@@ -29,19 +31,21 @@ const BigItem = () => {
           </button>
         </div>
         <div className="itemTitle">
-          <p>[모두의 맛집] 알꼬막 짬뽕</p>
+          <p>{props.itemName}</p>
         </div>
         <div className="itemPw">
-          <span className="present">7%</span>
+          <span className="present">{props.dc}</span>
           <div className="prise">
-            1,125<span>원</span>
+            {/* 1,125<span>원</span> */}
+            {props.itemPrice}
           </div>
         </div>
         <div className="unPrise">
-          1,210<span>원</span>
+          {/* 1,210<span>원</span> */}
+          {props.original}
         </div>
 
-        <div className="itemDesc">아낌없이 올린 오동통한 알꼬막</div>
+        <div className="itemDesc">{props.itemInfo}</div>
         <div className="Pointmark">kurly Only</div>
       </BigItemWrap>
     </React.Fragment>

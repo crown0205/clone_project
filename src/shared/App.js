@@ -19,7 +19,9 @@ import PostCode from "../components/PostCode";
 import "./App.css";
 
 function App() {
-  const is_modal = useSelector(state => state.item.modal);
+  const isModal = useSelector(state => state.item.modal);
+  const modal = isModal;
+  console.log(modal);
 
   return (
     <>
@@ -28,12 +30,13 @@ function App() {
         <Route path="/" exact component={Main} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Signup} />
-        <Route path="/category" exact component={Category} />
-        <Route path="/detail" exact component={Detail} />
+        <Route path="/bestItem" exact component={Category} />
+        <Route path="/category/:category" exact component={Category} />
+        <Route path="/detail/" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
-        <Route path="/postcode" exact component={PostCode} />
+
         {/* 모달 */}
-        {is_modal === true ? <Modal/> : null}
+        {modal === true ? <Modal /> : null}
       </ConnectedRouter>
     </>
   );
