@@ -2,7 +2,19 @@ import React, { Children } from "react";
 import styled from "styled-components";
 
 const DetailSpan = (props) => {
-    const { color, size, display, children, height, width, bold } = props;
+    const {
+        padding,
+        color,
+        size,
+        display,
+        children,
+        height,
+        width,
+        bold,
+        textAlign,
+        lineHeight,
+        letterSpacing,
+    } = props;
 
     const styles = {
         color: color,
@@ -11,6 +23,10 @@ const DetailSpan = (props) => {
         height: height,
         width: width,
         bold: bold,
+        textAlign: textAlign,
+        padding: padding,
+        lineHeight: lineHeight,
+        letterSpacing: letterSpacing,
     };
 
     return (
@@ -27,6 +43,10 @@ DetailSpan.defaultProps = {
     height: "20px",
     width: "auto",
     bold: false,
+    textAlign: "",
+    padding: "",
+    lineHeight: "",
+    letterSpacing: "",
 };
 
 const Span = styled.span`
@@ -36,6 +56,10 @@ const Span = styled.span`
     height: ${(props) => props.height};
     width: ${(props) => props.width};
     ${(props) => (props.bold ? `font-weight: ${props.bold};` : "")}
+    text-align:  ${(props) => props.textAlign};
+    padding: ${(props) => props.padding};
+    line-height: ${(props) => props.lineHeight};
+    letter-spacing: ${(props) => props.letterSpacing};
 `;
 
 export default DetailSpan;

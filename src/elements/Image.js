@@ -12,9 +12,9 @@ const Image = (props) => {
     };
 
     return (
-        <React.Fragment>
-            <AspectInner {...styles}>{children}</AspectInner>
-        </React.Fragment>
+        // <React.Fragment>
+        <AspectInner {...styles}>{children}</AspectInner>
+        // </React.Fragment>
     );
 };
 
