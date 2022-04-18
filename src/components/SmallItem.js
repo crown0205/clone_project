@@ -3,19 +3,21 @@ import React from "react";
 // 패키지
 import styled from "styled-components";
 
-// 아이콘
-import { BsCart2 } from "react-icons/bs";
+// 모듈
+import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 컴포넌트
 import Modal from "./Modal";
 import { useDispatch } from "react-redux";
 
-// 모듈
-import { actionCreators as itemActions } from "../redux/modules/item";
+// 아이콘
+import { BsCart2 } from "react-icons/bs";
 
 
 const SmallItem = props => {
   const dispatch = useDispatch()
+
+  // console.log(props)
 
   return (
     <React.Fragment>
@@ -23,7 +25,7 @@ const SmallItem = props => {
         <div>
           <div className="itemImg">
             <img
-              src="https://img-cf.kurly.com/shop/data/goods/1623311791794l0.jpg"
+              src={props.itemImg}
               width="249px"
               height="320px"
               alt=""
@@ -38,17 +40,19 @@ const SmallItem = props => {
             </button>
           </div>
           <div className="itemTitle">
-            <p>바질</p>
+            <p>{props.itemName}</p>
           </div>
           <div className="itemPw">
-            <span className="present">7%</span>
+            {props.dc && <span className="dc"> {props.dc}</span>}
             <div className="prise">
-              1,125<span>원</span>
+              {props.itemPrice}
             </div>
           </div>
-          <div className="unPrise">
-            1210<span>원</span>
-          </div>
+          {props.original && <div className="original">
+            {props.original}
+            {/* DB에서 데이터 넘어오면 위에 text 수정해야됨! */}
+          </div> }
+          
         </div>
       </SmallItemWrap>
     </React.Fragment>
@@ -56,6 +60,14 @@ const SmallItem = props => {
 };
 
 export default SmallItem;
+
+SmallItem.defaultProps = {
+  itemImg : "https://img-cf.kurly.com/shop/data/goods/1649919701563l0.jpg",
+  itemName: "짬뽕",
+  dc: "7%",
+  itemPrice: "7,900",
+  original: "1,200원 ",
+}
 
 const SmallItemWrap = styled.div`
   .itemImg {
@@ -99,14 +111,14 @@ const SmallItemWrap = styled.div`
     font-weight: 800;
     font-size: 16px;
     margin-bottom: 2px;
-    .present {
+    .dc {
       float: left;
       margin-right: 10px;
       color: #fa622f;
     }
   }
 
-  .unPrise {
+  .original {
     color: #999999;
     font-weight: 400;
     font-size: 14px;

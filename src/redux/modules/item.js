@@ -33,9 +33,9 @@ const setItemsDB = () => {
   return function (dispatch, getState, { history }) {
     axios({
       method: "get",
-      url: "https://6251cd887f7fa1b1dddf398b.mockapi.io/post",
+      // url: "https://6251cd887f7fa1b1dddf398b.mockapi.io/post",
       // url: "https://virtserver.swaggerhub.com/sungji226/cloneCoding/1.1.0/main"
-      // url: "http://54.180.90.16/main",
+      url: "http://54.180.90.16/main",
       // 54.180.90.16
     })
       .then(doc => {
@@ -57,15 +57,12 @@ export default handleActions(
   {
     [SET_ITEMS]: (state, action) =>
       produce(state, draft => {
-        // console.log({ action });
-        // console.log("리듀서쪽");
+        draft.list = action.payload.item_list.data
       }),
     [ON_MODAL]: (state, action) => produce(state, draft => {
       draft.modal = true
     }),
     [OFF_MODAL]: (state, action) => produce(state, draft => {
-      console.log("set_modal~~!!");
-      console.log(action)
       draft.modal = false
     }),
   },
