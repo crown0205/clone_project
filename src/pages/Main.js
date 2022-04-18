@@ -3,6 +3,8 @@ import React from "react";
 // 패키지
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+
+// 모듈
 import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 캐로셀
@@ -12,23 +14,47 @@ import "slick-carousel/slick/slick-theme.css";
 
 // 컴포넌트
 import SmallItem from "../components/SmallItem";
+import { random } from "lodash";
 
 const Main = () => {
     const dispatch = useDispatch();
+    const item_list = useSelector((state) => state.item?.list);
+    const item_length = item_list?.length;
+
+    console.log(item_length);
+
+    // 빈 배열을 밖에다가 선언해주면 if문 안에서 작동하면 안으로 넣어준다.
+    let random_list = [];
+
+    if (item_length) {
+        for (let i = 0; i < 8; i++) {
+            let randomNum = Math.floor(Math.random() * item_list?.length);
+
+            //   // 중복체크
+            if (random_list.indexOf(randomNum) === -1) {
+                //     //  리스트에서 중복되지 않은 리스트만 뽑아서 배열에 담음.
+                random_list.push(item_list[randomNum]);
+            } else {
+                //     // 중복된 값이 나오면 i를 빼주어 다시 한번더 값을 만들어낸다.
+                i--;
+            }
+        }
+    }
+
+    console.log(random_list);
+
+    // 사이트 접속시 item 목록 불러오기
+    React.useEffect(() => {
+        dispatch(itemActions.setItemsDB());
+    }, []);
 
     React.useEffect(() => {
         dispatch(itemActions.setItemsDB());
     }, []);
 
-    // banner Action
-    const banner_settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-    };
+    // Item list Action
+
+    //
 
     // Item list Action
     const card_settings = {
@@ -39,14 +65,28 @@ const Main = () => {
         slidesToScroll: 4,
     };
 
-    // 사이트 접속시 item 목록 불러오기
+    // {/* 상품 목록 */}
+    // <div className="innerWrap">
+    //   <div className="itemListWrap">
+    //     <p className="title">이 상품 어때요?</p>
+    //     <Slider className="itemList" {...card_settings}>
+    //       {random_list.map((item, idx) => {
+    //         return <SmallItem key={`item_${idx}`} {...item}/>;
+    //       })}
+    //       {/* <SmallItem />
+    //       <SmallItem />
+    //       <SmallItem />
+    //       <SmallItem />
+    //       <SmallItem /> */}
+    //     </Slider>
+    //   </div>
 
     return (
         <React.Fragment>
             <Wrap>
                 {/* 메인 배너 */}
                 <div className="bannerWrap">
-                    <Slider {...banner_settings}>
+                    <Slider {...card_settings}>
                         <div>
                             <img
                                 className="card"
@@ -112,11 +152,39 @@ const Wrap = styled.div`
         margin: auto;
         overflow: hidden;
 
-        .card {
+        .title {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 32px;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 27px;
+        }
+
+        .itemList {
             min-width: 1050px;
-            max-width: auto;
-            width: 100%;
-            height: 370px;
+
+            .slick-next {
+                right: -6px;
+                background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_right_60_60.svg ");
+            }
+            .slick-prev {
+                z-index: 9999;
+                left: -28px;
+                background-image: url("https://s3.ap-northeast-2.amazonaws.com/res.kurly.com/kurly/ico/2021/arrow_list_left_60_60.svg ");
+            }
+            .slick-prev,
+            .slick-next {
+                top: 40%;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+            }
+
+            .slick-prev:before,
+            .slick-next:before {
+                color: transparent;
+            }
         }
     }
 
