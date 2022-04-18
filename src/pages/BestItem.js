@@ -1,25 +1,12 @@
 import React from "react";
 
 // 패키지
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 컴포넌트
 import BigItem from "../components/BigItem";
 
-const Category = (props) => {
-  const params = props.match.params
-  const list = useSelector(state => (state.item.list))
-  const dispatch = useDispatch()
-
-  console.log(list)
-
-  React.useEffect(()=>{
-    dispatch(itemActions.setCategoryDB(params))
-  },[params])
-
+const BestItem = () => {
   return (
     <React.Fragment>
       <Wrap>
@@ -43,15 +30,11 @@ const Category = (props) => {
           </div>
 
           <div className="itemWrap">
-            {list.map((item, idx) => {
-              return (
-                <BigItem key={`category_${idx}`} {...item} />
-              )
-            })}
-            {/* <BigItem/>
             <BigItem/>
             <BigItem/>
-            <BigItem/> */}
+            <BigItem/>
+            <BigItem/>
+            <BigItem/>
           </div>
         </div>
       </Wrap>
@@ -59,7 +42,7 @@ const Category = (props) => {
   );
 };
 
-export default Category;
+export default BestItem;
 
 const Wrap = styled.div`
   width: 100%;
@@ -121,7 +104,6 @@ const Wrap = styled.div`
     .itemWrap {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      /* grid-template-rows: repeat(3, 680px); */
       grid-gap: 1rem;
       overflow: hidden;
 
