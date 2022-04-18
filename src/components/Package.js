@@ -14,11 +14,12 @@ const Package = (props) => {
             <Grid width="368.5px" height="30px" padding="3px 0 0 0">
                 <Icons
                     src={
-                        "https://res.kurly.com/pc/service/cart/2007/ico_cold.svg"
+                        props.src
+                        // "https://res.kurly.com/pc/service/cart/2007/ico_cold.svg"
                     }
                 />
                 <DetailSpan size="18px" bold="700">
-                    냉장 상품
+                    {props.category}
                 </DetailSpan>
             </Grid>
 

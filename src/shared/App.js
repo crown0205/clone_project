@@ -19,26 +19,26 @@ import Modal from "../components/Modal";
 import "./App.css";
 
 function App() {
-  const is_modal = useSelector(state => state.item.modal);
-  const modal = is_modal;
-  console.log(modal);
+    const is_modal = useSelector((state) => state.item.modal);
+    const modal = is_modal;
+    console.log(modal);
 
-  return (
-    <>
-      <ConnectedRouter history={history}>
-        <Header />
-        <Route path="/" exact component={Main} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/signup" exact component={Signup} />
-        <Route path="/category" exact component={Category} />
-        <Route path="/detail" exact component={Detail} />
-        <Route path="/cart" exact component={Cart} />
+    return (
+        <>
+            <ConnectedRouter history={history}>
+                <Header />
+                <Route path="/" exact component={Main} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/signup" exact component={Signup} />
+                <Route path="/category" exact component={Category} />
+                <Route path="/detail" exact component={Detail} />
+                <Route path="/cart" exact component={Cart} />
 
-        {/* 모달 */}
-        {modal === true ? <Modal/> : null}
-      </ConnectedRouter>
-    </>
-  );
+                {/* 모달 */}
+                {modal === true ? <Modal /> : null}
+            </ConnectedRouter>
+        </>
+    );
 }
 
 export default App;

@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import CartButton from "../components/CartButton";
-import CartItems from "../components/CartItems";
+import CartCategoryList from "../components/CartCategoryList";
 import CartResult from "../components/CartResult";
 import { Grid } from "../elements/Index";
 const Cart = (props) => {
@@ -15,9 +15,7 @@ const Cart = (props) => {
                 <Grid flexDirection="column">
                     <CartButton />
                     {/* 카테고리 3개 묶은 컴포넌트 만들기 */}
-                    <CartItems />
-                    <CartItems />
-                    <CartItems />
+                    <CartCategoryList />
                     <CartButton />
                 </Grid>
                 <Grid width="284px">

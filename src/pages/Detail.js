@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import Count from "../components/Count";
 import DetailSlider from "../components/DetailSlider";
-import { Image, Button, DetailSpan } from "../elements/Index";
+import { useDispatch } from "react-redux";
+import { actionCreators as cartActions } from "../redux/modules/cart";
+import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
 const Detail = () => {
+    const dispatch = useDispatch();
+    const [count, setCount] = React.useState(1);
+
+    console.log(count);
+
+    const countMinus = () => {
+        if (count > 1) {
+            setCount(count - 1);
+        }
+    };
+
+    const countPlus = () => {
+        setCount(count + 1);
+    };
+
+    const addCart = () => {
+        console.log("addcart시작", count);
+        //상품정보 받아오기
+
+        const item_list = {
+            itemId: "헬로",
+            itemName: "123",
+            itemAmount: count,
+            itemPrice: "456",
+            itemImg: "789",
+        };
+
+        dispatch(cartActions.addCartDB(item_list));
+    };
+
     return (
         <React.Fragment>
             <ContainerBox>
@@ -57,6 +86,7 @@ const Detail = () => {
                                 }
                             />
                         </ItemInfo>
+                        {/* <AddCart /> */}
                         <CartList>
                             <ItemCount>
                                 <DetailSpan
@@ -67,7 +97,35 @@ const Detail = () => {
                                     구매수량
                                 </DetailSpan>
                                 <div>
-                                    <Count />
+                                    <Buttonbox>
+                                        <Button
+                                            small
+                                            size="30px"
+                                            src={
+                                                "https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg"
+                                            }
+                                            _onClick={countMinus}
+                                        >
+                                            -
+                                        </Button>
+                                        <Input
+                                            countInput
+                                            ref={Input.value}
+                                            value={count}
+                                            width="26px"
+                                            height="30px"
+                                        ></Input>
+                                        <Button
+                                            small
+                                            size="30px"
+                                            src={
+                                                "https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg"
+                                            }
+                                            _onClick={countPlus}
+                                        >
+                                            +
+                                        </Button>
+                                    </Buttonbox>
                                 </div>
                             </ItemCount>
 
@@ -111,6 +169,7 @@ const Detail = () => {
                                     width="432px"
                                     height="56px"
                                     size="16px"
+                                    _onClick={addCart}
                                 >
                                     장바구니 담기
                                 </Button>
@@ -124,11 +183,11 @@ const Detail = () => {
                     <DetailSlider />
                 </Banner>
                 <DetailContainer>
-                    <ButtonBox>
+                    <DetailButtonBox>
                         <DetailButton>상품설명</DetailButton>
                         <DetailButton>고객리뷰</DetailButton>
                         <DetailButton>문의내용</DetailButton>
-                    </ButtonBox>
+                    </DetailButtonBox>
                     <div>상품설명</div>
                     <div>고객리뷰</div>
                     <div>문의내용</div>
@@ -262,8 +321,17 @@ const DetailContainer = styled.div`
     padding: 100px 40px 0 0;
 `;
 
-const ButtonBox = styled.div`
+const DetailButtonBox = styled.div`
     display: flex;
+`;
+
+const Buttonbox = styled.div`
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    width: 88px;
+    max-height: 35px;
+    display: flex;
+    background: #fff;
 `;
 
 const DetailButton = styled.a`

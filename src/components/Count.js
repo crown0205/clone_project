@@ -1,13 +1,13 @@
-import React from "react";
+import React, { forwardRef, useRef } from "react";
 import styled from "styled-components";
 
 import { Button, Input } from "../elements/Index";
 
-const Count = () => {
+const Count = (props) => {
     const [count, setCount] = React.useState(1);
 
     const countMinus = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount(count - 1);
         }
     };
@@ -31,6 +31,7 @@ const Count = () => {
                 </Button>
                 <Input
                     countInput
+                    ref={Input.value}
                     value={count}
                     width="26px"
                     height="30px"
