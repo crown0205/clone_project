@@ -24,7 +24,12 @@ const Detail = (props) => {
 
     React.useEffect(() => {
         dispatch(itemActions.getOneItemDB(itemId));
+        dispatch(cartActions.readCartDB());
     }, []);
+
+    const isCart = useSelector((state) => state.cart);
+
+    console.log(isCart);
 
     console.log(count);
 
@@ -37,6 +42,21 @@ const Detail = (props) => {
     const countPlus = () => {
         setCount(count + 1);
     };
+
+    // const editCart = () => {
+    //   console.log('editCart시작', count)
+
+    //   const itemList = {
+    //     itemId: itemDate._id,
+    //     itemName: itemDate.itemName,
+    //     itemAmount: count,
+    //     itemPrice: itemDate.itemPrice,
+    //     itemImg: itemDate.itemImg,
+    //     itemCategory: itemDate.itemCategory,
+    //     userAddress: userInfo.userAddress,
+    //     userId: userInfo.userId,
+    //   }
+    // }
 
     const addCart = () => {
         console.log("addcart시작", count);

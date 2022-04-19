@@ -11,8 +11,8 @@ const Cart = (props) => {
     //카트리스트 받아오기
     const dispatch = useDispatch();
     React.useEffect(() => {
-        dispatch(cartActions.readCartDB);
-    });
+        dispatch(cartActions.readCartDB());
+    }, []);
     const cartList = useSelector((state) => state.cart);
     console.log(cartList); //장바구니목록
 

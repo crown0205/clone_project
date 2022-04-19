@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 const ProductImage = (props) => {
     const { href, src } = props;
+    const hrefs = `detail/{href}`;
 
     const styles = { src: src };
 
     return (
-        <a href={href}>
+        <a href={hrefs}>
             <Img {...styles} />
         </a>
     );

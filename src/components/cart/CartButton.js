@@ -8,17 +8,17 @@ const CartButton = (props) => {
             <CheckLabel>
                 <input type={"checkbox"}></input>
                 <Icons checkIcon />
-                <DetailSpan bold="700">전체선택(0/5)</DetailSpan>
+                <DetailSpan bold="700">전체선택(0/5)&nbsp;&nbsp;</DetailSpan>
             </CheckLabel>
             <DeleteLabel>
                 <input type={"checkbox"}></input>
-                <Icons
+                {/* <Icons
                     width="24px"
                     height="24px"
                     margin="-2px 12px 0 0"
                     src="https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
-                />
-                <DetailSpan bold="700">선택삭제</DetailSpan>
+                /> */}
+                <DetailSpan bold="700">|&nbsp;&nbsp;선택삭제</DetailSpan>
             </DeleteLabel>
         </Grid>
     );

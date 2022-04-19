@@ -20,15 +20,15 @@ const CartCategoryList = (props) => {
 
     const normalCategory = cartList.cartList.filter(
         (list) =>
-            list.itemCategory === "bakery" || list.itemCategory === "mealkit"
+            list.itemCategory === "bekery" || list.itemCategory === "mealkit"
     );
     console.log("상온리스트", normalCategory);
 
     return (
         <React.Fragment>
-            <CartItems iceCategory={iceCategory} />
-            <CartItems coldCategory={coldCategory} />
-            <CartItems normalCategory={normalCategory} />
+            <CartItems iceList={iceCategory} />
+            <CartItems coldList={coldCategory} />
+            <CartItems normalList={normalCategory} />
         </React.Fragment>
     );
 };

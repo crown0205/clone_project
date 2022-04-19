@@ -9,7 +9,19 @@ import {
     Button,
 } from "../../elements/Index";
 
-const OrderItem = () => {
+const CartItem = (props) => {
+    const {
+        itemId,
+        itemName,
+        itemAmount,
+        itemPrice,
+        itemImg,
+        itemCategory,
+        userAddress,
+        userId,
+    } = props;
+
+    console.log(itemId);
     return (
         <Grid flexDirection="column">
             <Grid
@@ -21,14 +33,12 @@ const OrderItem = () => {
                 <Grid alignItems="center" width="463px">
                     <Icons checkIcon />
                     <ProductImage
-                        href="http://localhost:3000/detail"
-                        src="https://img-cf.kurly.com/shop/data/goods/1637154205962y0.jpg"
+                        href={itemId} //props 또 넘겨야 할듯
+                        src={itemImg}
                     />
 
                     <Grid width="327px" margin="0 0 5px 20px">
-                        <A href="http://localhost:3000/detail">
-                            [연세우유 x 마켓컬리] 전용목장우유 900mL
-                        </A>
+                        <A href="http://localhost:3000/detail">{itemName}</A>
                     </Grid>
                 </Grid>
                 <Grid
@@ -45,7 +55,7 @@ const OrderItem = () => {
                         bold="700"
                         textAlign="right"
                     >
-                        3,940원
+                        {itemPrice}
                     </DetailSpan>
                     <Button
                         small
@@ -67,4 +77,4 @@ const A = styled.a`
     letter-spacing: -0.8px;
 `;
 
-export default OrderItem;
+export default CartItem;
