@@ -84,7 +84,8 @@ const loginDB = (userId, pwd) => {
         })
             .then((response) => {
                 localStorage.setItem("token", response.data.token);
-                dispatch(setUser(userId));
+                console.log(response);
+                dispatch(getUserDB());
                 history.replace("/");
             })
             .catch((error) => {
@@ -113,6 +114,7 @@ const getUserDB = () => {
     })
       .then((res) => {
         dispatch(setUser(res.data));
+
       })
       .catch((err) => {
         console.log(err);
