@@ -39,6 +39,7 @@ const SmallItem = props => {
               className="cardBtn"
               onClick={() => {
                 dispatch(itemActions.onModal())
+                dispatch(itemActions.getOneItemDB(itemId));
               }}
             >
               <BsCart2 />
@@ -80,6 +81,7 @@ const SmallItemWrap = styled.div`
     background-color: #eee;
     position: relative;
     margin-bottom: 14px;
+    cursor: pointer;
 
     .cardBtn {
       width: 45px;

@@ -13,20 +13,19 @@ import { Image, Button, DetailSpan, Input } from "../elements/Index";
 const Detail = (props) => {
     const dispatch = useDispatch();
 
-    const userInfo = useSelector((state) => state.user.user[0]);
-    const isLogin = useSelector((state) => state.user.isLogin);
-    const itemDate = useSelector((state) => state.item.oneItem);
-    const isToken = localStorage.getItem("token");
-    const itemId = props.match.params.itemId;
+  const userInfo = useSelector(state => state.user.user[0]);
+  const isLogin = useSelector(state => state.user.isLogin);
+  const itemDate = useSelector(state => state.item.oneItem);
+  const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
+  const detailPrice = itemPrice.replace("원", "").replace(",", "");
+  const isToken = localStorage.getItem("token");
+  const itemId = props.match.params.itemId;
 
-    const [count, setCount] = React.useState(1);
-    console.log(itemDate);
+  React.useEffect(() => {
+    dispatch(itemActions.getOneItemDB(itemId));
+  }, []);
 
-    React.useEffect(() => {
-        dispatch(itemActions.getOneItemDB(itemId));
-    }, []);
-
-    console.log(count);
+  const [count, setCount] = React.useState(1);
 
     const countMinus = () => {
         if (count > 1) {
@@ -88,135 +87,139 @@ const Detail = (props) => {
                 원
               </DetailSpan> */}
 
-                            <DetailSpan height="27px" color="#5F0080">
-                                로그인 후, 적립혜택이 제공됩니다.
-                            </DetailSpan>
-                        </Price>
-                        <ItemInfo>
-                            <Image
-                                width="auto"
-                                src={
-                                    "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailInfo.PNG?alt=media&token=bf55b666-3e14-493e-ac17-9d86d7d15832"
-                                }
-                            />
-                        </ItemInfo>
-                        {/* <AddCart /> */}
-                        <CartList>
-                            <ItemCount>
-                                <DetailSpan
-                                    width="140px"
-                                    display="inline"
-                                    color="#666666"
-                                >
-                                    구매수량
-                                </DetailSpan>
-                                <div>
-                                    <Buttonbox>
-                                        <Button
-                                            small
-                                            size="30px"
-                                            src={
-                                                "https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg"
-                                            }
-                                            _onClick={countMinus}
-                                        >
-                                            -
-                                        </Button>
-                                        <Input
-                                            countInput
-                                            ref={Input.value}
-                                            value={count}
-                                            width="26px"
-                                            height="30px"
-                                        ></Input>
-                                        <Button
-                                            small
-                                            size="30px"
-                                            src={
-                                                "https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg"
-                                            }
-                                            _onClick={countPlus}
-                                        >
-                                            +
-                                        </Button>
-                                    </Buttonbox>
-                                </div>
-                            </ItemCount>
+              <DetailSpan height="27px" color="#5F0080">
+                로그인 후, 적립혜택이 제공됩니다.
+              </DetailSpan>
+            </Price>
+            <ItemInfo>
+              <Image
+                width="auto"
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailInfo.PNG?alt=media&token=bf55b666-3e14-493e-ac17-9d86d7d15832"
+                }
+              />
+            </ItemInfo>
+            {/* <AddCart /> */}
+            <CartList>
+              <ItemCount>
+                <DetailSpan width="140px" display="inline" color="#666666">
+                  구매수량
+                </DetailSpan>
+                <div>
+                  <Buttonbox>
+                    <Button
+                      small
+                      size="30px"
+                      src={
+                        "https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg"
+                      }
+                      _onClick={countMinus}
+                    >
+                      -
+                    </Button>
+                    <Input
+                      countInput
+                      ref={Input.value}
+                      value={count}
+                      width="26px"
+                      height="30px"
+                    ></Input>
+                    <Button
+                      small
+                      size="30px"
+                      src={
+                        "https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg"
+                      }
+                      _onClick={countPlus}
+                    >
+                      +
+                    </Button>
+                  </Buttonbox>
+                </div>
+              </ItemCount>
 
-                            <TotalPrice>
-                                <PriceBox>
-                                    <DetailSpan bold="700" height="27px">
-                                        <Icon>적립</Icon>
-                                        로그인 후, 회원할인가와 적립혜택 제공
-                                    </DetailSpan>
-                                </PriceBox>
-                                <div>
-                                    <DetailSpan
-                                        size="13px"
-                                        display="inline"
-                                        height="auto"
-                                        bold="700"
-                                    >
-                                        총 상품금액:
-                                    </DetailSpan>
-                                    <DetailSpan
-                                        size="32px"
-                                        height="auto"
-                                        display="inline"
-                                        bold="700"
-                                    >
-                                        {itemDate.itemPrice}
-                                    </DetailSpan>
-                                </div>
-                            </TotalPrice>
-                            <Cart>
-                                {isLogin && isToken ? (
-                                    <Button
-                                        purple
-                                        width="432px"
-                                        height="56px"
-                                        size="16px"
-                                        _onClick={addCart}
-                                    >
-                                        장바구니 담기
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        purple
-                                        deactivate
-                                        backgroundColor="#eee"
-                                        border="#fff"
-                                        width="432px"
-                                        height="56px"
-                                        size="16px"
-                                    >
-                                        장바구니 담기
-                                    </Button>
-                                )}
-                            </Cart>
-                        </CartList>
-                    </OrderBox>
-                </Main>
-                <Banner>
-                    <BannerLine></BannerLine>
-                    <h3>RELATED PRODUCT</h3>
-                    <DetailSlider />
-                </Banner>
-                <DetailContainer>
-                    <DetailButtonBox>
-                        <DetailButton>상품설명</DetailButton>
-                        <DetailButton>고객리뷰</DetailButton>
-                        <DetailButton>문의내용</DetailButton>
-                    </DetailButtonBox>
-                    <div>상품설명</div>
-                    <div>고객리뷰</div>
-                    <div>문의내용</div>
-                </DetailContainer>
-                <div>상세설명이미지</div>
-                <div>밑에는 어떻게 처리하지?</div>
-            </ContainerBox>
-        </React.Fragment>
-    );
+              <TotalPrice>
+                <PriceBox>
+                  <DetailSpan bold="700" height="27px">
+                    <Icon>적립</Icon>
+                    로그인 후, 회원할인가와 적립혜택 제공
+                  </DetailSpan>
+                </PriceBox>
+                <div>
+                  <DetailSpan
+                    size="13px"
+                    display="inline"
+                    height="auto"
+                    bold="700"
+                  >
+                    총 상품금액:
+                  </DetailSpan>
+                  <DetailSpan
+                    size="32px"
+                    height="auto"
+                    display="inline"
+                    bold="700"
+                  >
+                    {detailPrice * count}
+                  </DetailSpan>
+                  <DetailSpan
+                    size="20px"
+                    bold="700"
+                    display="inline"
+                    height="auto"
+                  >
+                    원
+                  </DetailSpan>
+                </div>
+              </TotalPrice>
+              <Cart>
+                {isLogin && isToken ? (
+                  <Button
+                    purple
+                    width="432px"
+                    height="56px"
+                    size="16px"
+                    _onClick={addCart}
+                  >
+                    장바구니 담기
+                  </Button>
+                ) : (
+                  <Button
+                    purple
+                    deactivate
+                    backgroundColor="#eee"
+                    border="#fff"
+                    width="432px"
+                    height="56px"
+                    size="16px"
+                  >
+                    장바구니 담기
+                  </Button>
+                )}
+              </Cart>
+            </CartList>
+          </OrderBox>
+        </Main>
+        <Banner>
+          <BannerLine></BannerLine>
+          <h3>RELATED PRODUCT</h3>
+          <DetailSlider />
+        </Banner>
+        <DetailContainer>
+          <DetailButtonBox>
+            <DetailButton>상품설명</DetailButton>
+            <DetailButton>고객리뷰</DetailButton>
+            <DetailButton>문의내용</DetailButton>
+          </DetailButtonBox>
+          <div>상품설명</div>
+          <div>고객리뷰</div>
+          <div>문의내용</div>
+        </DetailContainer>
+        <div>상세설명이미지</div>
+        <div>밑에는 어떻게 처리하지?</div>
+      </ContainerBox>
+    </React.Fragment>
+  );
 };
 
 const ContainerBox = styled.div`
