@@ -39,6 +39,7 @@ const SmallItem = props => {
               className="cardBtn"
               onClick={() => {
                 dispatch(itemActions.onModal())
+                dispatch(itemActions.getOneItemDB(itemId));
               }}
             >
               <BsCart2 />

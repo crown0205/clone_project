@@ -2,24 +2,25 @@ import React from "react";
 
 // 패키지
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // 모듈
-import { actionCreators as itemActions } from "../redux/modules/item";
+import item, { actionCreators as itemActions } from "../redux/modules/item";
 
-const Modal = () => {
+const Modal = (props) => {
   const dispatch = useDispatch();
-
+  const itemData = useSelector(state => state.item.oneItem)
+  console.log(itemData)
   return (
     <Wrap>
       <div className="cartModal">
         <div className="itemWrap">
-          <p className="title">[모두의맛집] 알꼬막 짬뽕</p>
+          <p className="title">{itemData.itemName}</p>
           <div className="itemCount">
-            <span className="price">16,000원</span>
+            <span className="price">{itemData.itemPrice}</span>
             <span className="count">
               <button className="down btn"></button>
-              <input readOnly="readOnly" value="0" />
+              <input readOnly="readOnly" value="1" />
               <button className="up btn"></button>
             </span>
           </div>
@@ -29,7 +30,7 @@ const Modal = () => {
           <div className="totalinner">
             <span className="total">합계</span>
             <span className="totalPrice">
-              16,000<span>원</span>
+              {itemData.itemPrice}
             </span>
           </div>
           <div className="totalText">
