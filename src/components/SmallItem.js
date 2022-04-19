@@ -81,6 +81,7 @@ const SmallItemWrap = styled.div`
     background-color: #eee;
     position: relative;
     margin-bottom: 14px;
+    cursor: pointer;
 
     .cardBtn {
       width: 45px;

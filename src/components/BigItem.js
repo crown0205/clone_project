@@ -63,6 +63,7 @@ const BigItemWrap = styled.div`
 
   .itemImg {
     position: relative;
+    cursor: pointer;
     .cardBtn {
       width: 45px;
       height: 45px;
