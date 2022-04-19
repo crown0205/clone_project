@@ -1,7 +1,7 @@
 import React from "react";
 import CartAddress from "./CartAddress";
 import OrderList from "./OrderList";
-import { Grid, Button, DetailSpan } from "../elements/Index";
+import { Grid, Button, DetailSpan } from "../../elements/Index";
 
 const CartResult = (props) => {
     return (

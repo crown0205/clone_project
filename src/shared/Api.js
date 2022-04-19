@@ -6,12 +6,12 @@ const Api = axios.create({
         "http://54.180.90.16",
 });
 // 헤더에 토큰
-// Api.defaults.headers.common["authorization"] = `Bearer ${localStorage.getItem(
-//     "token"
-// )}`;
+Api.defaults.headers.common["authorization"] = `Bearer ${localStorage.getItem(
+    "token"
+)}`;
 
 export const Apis = {
-    addCart: (itemList) => Api.post("/addCart", itemList),
+    addCart: (cartList) => Api.post("/addCart", cartList),
     // editPost: (postId, contents) => Api.put(`api/posts/${postId}`, contents),
     // deletePost: (postId) => Api.delete(`api/posts/${postId}`),
     readCart: (cartList) => Api.get("/readCart"),

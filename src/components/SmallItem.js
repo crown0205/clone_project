@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 // 모듈
 import { actionCreators as itemActions } from "../redux/modules/item";
+import { history } from "../redux/configureStore";
 
 // 컴포넌트
 import Modal from "./Modal";
@@ -16,8 +17,9 @@ import { BsCart2 } from "react-icons/bs";
 
 const SmallItem = props => {
   const dispatch = useDispatch()
+  const itemId = props._id
 
-  // console.log(props)
+  // console.log(itemId)
 
   return (
     <React.Fragment>
@@ -29,6 +31,9 @@ const SmallItem = props => {
               width="249px"
               height="320px"
               alt=""
+              onClick={()=> {
+                history.push(`/detail/${itemId}`)
+              }}
             ></img>
             <button
               className="cardBtn"
@@ -50,7 +55,6 @@ const SmallItem = props => {
           </div>
           {props.original && <div className="original">
             {props.original}
-            {/* DB에서 데이터 넘어오면 위에 text 수정해야됨! */}
           </div> }
           
         </div>
@@ -66,7 +70,7 @@ SmallItem.defaultProps = {
   itemName: "짬뽕",
   dc: "7%",
   itemPrice: "7,900",
-  original: "1,200원 ",
+  original: "5,200원",
 }
 
 const SmallItemWrap = styled.div`

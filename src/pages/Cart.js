@@ -1,11 +1,21 @@
 //장바구니 컴포넌트
 import React from "react";
 import styled from "styled-components";
-import CartButton from "../components/CartButton";
-import CartCategoryList from "../components/CartCategoryList";
-import CartResult from "../components/CartResult";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as cartActions } from "../redux/modules/cart";
+import CartButton from "../components/cart/CartButton";
+import CartCategoryList from "../components/cart/CartCategoryList";
+import CartResult from "../components/cart/CartResult";
 import { Grid } from "../elements/Index";
 const Cart = (props) => {
+    //카트리스트 받아오기
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        dispatch(cartActions.readCartDB);
+    });
+    const cartList = useSelector((state) => state.cart);
+    console.log(cartList); //장바구니목록
+
     return (
         <Grid display="block" width="1050px" margin="auto">
             <Grid width="1050px" height="136px" padding="50px 0 51px 0">
@@ -15,7 +25,7 @@ const Cart = (props) => {
                 <Grid flexDirection="column">
                     <CartButton />
                     {/* 카테고리 3개 묶은 컴포넌트 만들기 */}
-                    <CartCategoryList />
+                    <CartCategoryList cartList={cartList} />
                     <CartButton />
                 </Grid>
                 <Grid width="284px">

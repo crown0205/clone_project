@@ -111,11 +111,6 @@ const Main = () => {
               {random_list.map((item, idx) => {
                 return <SmallItem key={`item_${idx}`} {...item} />;
               })}
-              {/* <SmallItem />
-              <SmallItem />
-              <SmallItem />
-              <SmallItem />
-              <SmallItem /> */}
             </Slider>
           </div>
 

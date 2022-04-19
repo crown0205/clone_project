@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Package from "../components/Package";
-import Count from "../components/Count";
+import Count from "../../components/Count";
 import {
     Grid,
     Icons,
     DetailSpan,
     ProductImage,
     Button,
-} from "../elements/Index";
+} from "../../elements/Index";
 
 const OrderItem = () => {
     return (

@@ -1,23 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DetailSlider from "../components/DetailSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as cartActions } from "../redux/modules/cart";
+import { actionCreators as itemActions } from "../redux/modules/item";
+
+// 컴포넌트
 import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
-const Detail = () => {
-  const isLogin = useSelector((state) => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
-    // React.useEffect(() => {
-    //     dispatch(cartActions.readCart());
-    // }, []);
-
-    // const CartList = useSelector((state) => state.cart);
-
+const Detail = props => {
   const dispatch = useDispatch();
+
+  const userInfo = useSelector(state => state.user.user[0]);
+  const isLogin = useSelector(state => state.user.isLogin);
+  const itemDate = useSelector(state => state.item.oneItem);
+  const isToken = localStorage.getItem("token");
+  const itemId = props.match.params.itemId;
+
   const [count, setCount] = React.useState(1);
+  console.log(itemDate);
+
+  React.useEffect(() => {
+    dispatch(itemActions.getOneItemDB(itemId));
+  }, []);
+
+  console.log(count);
 
   const countMinus = () => {
     if (count > 1) {
@@ -34,11 +43,14 @@ const Detail = () => {
     //상품정보 받아오기
 
     const item_list = {
-      itemId: "헬로",
-      itemName: "123",
+      itemId: "테스트입니다",
+      itemName: "카트테스트",
       itemAmount: count,
-      itemPrice: "456",
-      itemImg: "789",
+      itemPrice: "1,000",
+      itemImg: "https://res.kurly.com/pc/service/cart/2007/ico_frozen.svg",
+      itemCategory: "카테고리테스트",
+      userAddress: userInfo.userAddress,
+      userId: userInfo.userId,
     };
 
     dispatch(cartActions.addCartDB(item_list));
@@ -50,28 +62,22 @@ const Detail = () => {
         <Main>
           <ImageBox>
             <div>
-              <Image
-                src={
-                  "https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2FdetailItemImage.PNG?alt=media&token=c5c771d3-2cf7-4c49-8c59-52024d7d7c68"
-                }
-              />
+              <Image src={itemDate.itemImg} />
             </div>
           </ImageBox>
 
           <OrderBox>
             <TitleBox>
-              <strong>[연세우유 x 마켓컬리] 전용목장우유 900mL</strong>
-              <DetailSpan color="#999999">
-                가격, 퀄리티 모두 만족스러운 1A등급 우유
-              </DetailSpan>
+              <strong>{itemDate.itemName}</strong>
+              <DetailSpan color="#999999">{itemDate.itemInfo}</DetailSpan>
             </TitleBox>
             <Price>
               <DetailSpan size="28px" height="auto" display="inline" bold="700">
-                1,970
+                {itemDate.itemPrice}
               </DetailSpan>
-              <DetailSpan display="inline" height="auto">
+              {/* <DetailSpan display="inline" height="auto">
                 원
-              </DetailSpan>
+              </DetailSpan> */}
 
               <DetailSpan height="27px" color="#5F0080">
                 로그인 후, 적립혜택이 제공됩니다.
@@ -146,15 +152,7 @@ const Detail = () => {
                     display="inline"
                     bold="700"
                   >
-                    1,970
-                  </DetailSpan>
-                  <DetailSpan
-                    size="20px"
-                    bold="700"
-                    display="inline"
-                    height="auto"
-                  >
-                    원
+                    {itemDate.itemPrice}
                   </DetailSpan>
                 </div>
               </TotalPrice>
@@ -289,6 +287,7 @@ const Icon = styled.span`
   border-radius: 10px;
   font-size: 11px;
   font-weight: 700;
+  font-height: 20px;
   color: #ffffff;
   text-align: center;
   vertical-align: 1px;

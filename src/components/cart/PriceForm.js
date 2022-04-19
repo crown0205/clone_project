@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, DetailSpan } from "../elements/Index";
+import { Grid, DetailSpan } from "../../elements/Index";
 
 const PriceForm = (props) => {
     const { children, bold } = props;
