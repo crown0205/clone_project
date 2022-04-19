@@ -4,14 +4,14 @@ import React from "react";
 import styled from "styled-components";
 import { BsCart2 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+import { history } from "../redux/configureStore";
 
 // 모듈
 import { actionCreators as itemActions } from "../redux/modules/item";
 
-const BigItem = (props) => {
-  const dispatch = useDispatch()
-
-  console.log(props)
+const BigItem = props => {
+  const dispatch = useDispatch();
+  const itemId = props._id;
 
   return (
     <React.Fragment>
@@ -22,11 +22,17 @@ const BigItem = (props) => {
             width="344px"
             height="433px"
             alt="음식사진"
+            onClick={() => {
+              history.push(`/detail/${itemId}`);
+            }}
           ></img>
-          <button className="cardBtn" onClick={() => {
-            // onModal 클릭시 아이템 (이름, 가격) 정보 보내줘야됨.
-                dispatch(itemActions.onModal())
-              }}>
+          <button
+            className="cardBtn"
+            onClick={() => {
+              // onModal 클릭시 아이템 (이름, 가격) 정보 보내줘야됨.
+              dispatch(itemActions.onModal());
+            }}
+          >
             <BsCart2 />
           </button>
         </div>
@@ -36,12 +42,10 @@ const BigItem = (props) => {
         <div className="itemPw">
           <span className="present">{props.dc}</span>
           <div className="prise">
-            {/* 1,125<span>원</span> */}
             {props.itemPrice}
           </div>
         </div>
         <div className="unPrise">
-          {/* 1,210<span>원</span> */}
           {props.original}
         </div>
 
@@ -129,6 +133,5 @@ const BigItemWrap = styled.div`
     vertical-align: middle;
     border-radius: 5px;
     margin: 12px 10px 10px 0;
-
   }
 `;
