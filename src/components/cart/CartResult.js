@@ -29,7 +29,7 @@ const CartResult = (props) => {
                     · [배송준비중] 이전까지 주문 취소 가능합니다.
                 </DetailSpan>
                 <DetailSpan size="12px" color="#666666" letterSpacing="-1px">
-                    · [마이컬리>주문내역 상세페이지] 에서 직접 취소하실 수
+                    · [마이컬리 주문내역 상세페이지] 에서 직접 취소하실 수
                     있습니다.
                 </DetailSpan>
             </Grid>
