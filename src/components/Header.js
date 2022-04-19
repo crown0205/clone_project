@@ -41,8 +41,8 @@ const Header = props => {
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
             <ul className="navBar flex">
-              {(isLogin && isToken)? <div><li>{user[0]?.userName}님 <span></span></li>
-              <div className="user">일반</div></div> : <li onClick={()=> {
+              {(isLogin && isToken)? <div><div className="user">일반</div><li>{user[0]?.userName}님 <span></span></li>
+              </div> : <li onClick={()=> {
                 history.push("/signup");
               }}>회원가입</li>}
               {(isLogin && isToken)? <li onClick={logout}>로그아웃</li> : <li onClick={()=> {

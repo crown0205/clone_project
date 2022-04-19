@@ -13,7 +13,7 @@ const Signup = (props) => {
   const [postcode, setPostcode] = useState(false);
   const onComplete = (data) => {
     setUserAddress(data.address);
-    setPostcode(false);
+    setPostcode(!postcode);
   };
 
   const dispatch = useDispatch();
@@ -39,7 +39,13 @@ const Signup = (props) => {
   };
 
   const signup = () => {
-    if (userId === "" || pwd === "" || pwdCheck === "" || userName === "" || userAddress === "") {
+    if (
+      userId === "" ||
+      pwd === "" ||
+      pwdCheck === "" ||
+      userName === "" ||
+      userAddress === ""
+    ) {
       window.alert("아이디, 패스워드, 이름을 모두 입력해주세요!");
       return;
     }
@@ -178,16 +184,26 @@ const Signup = (props) => {
           주소
         </Text>
         <span style={{ padding: "10px 0 20px 0" }}>
-          <Button
-            width="332px"
-            height="44px"
-            fontSize="14px"
-            flex
-            _onClick={setPostcode}
-          >
-            <FiSearch />
-            주소 검색
-          </Button>
+        {userAddress ? <Input value={userAddress} margin="0 8px 0 0" _onChange={(e) => {
+              setUserAddress(e.target.value);
+            }}/> : null}
+          {userAddress ? (
+            <SearchAgain onClick={setPostcode}>
+              <FiSearch />
+              재검색
+            </SearchAgain>
+          ) : (
+            <Button
+              width="332px"
+              height="44px"
+              fontSize="14px"
+              flex
+              _onClick={setPostcode}
+            >
+              <FiSearch />
+              주소 검색
+            </Button>
+          )}
           {postcode ? <PostCode onComplete={onComplete} /> : null}
         </span>
       </Grid>
@@ -210,4 +226,20 @@ const SignupBox = styled.div`
 const Grid = styled.div`
   display: flex;
   width: 640px;
+`;
+
+const SearchAgain = styled.button`
+  width: 120px;
+  height: 44px;
+  border: 1px solid #5f0080;
+  border-radius: 3px;
+  background-color: #ffffff;
+  max-width: 100%;
+  color: #5f0080;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
 `;

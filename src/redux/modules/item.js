@@ -76,7 +76,6 @@ export default handleActions(
   {
     [SET_ITEMS]: (state, action) =>
       produce(state, draft => {
-        console.log(action)
         draft.list = action.payload.item_list.data;
       }),
     [ON_MODAL]: (state, action) =>
