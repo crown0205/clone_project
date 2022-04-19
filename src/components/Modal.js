@@ -10,7 +10,29 @@ import item, { actionCreators as itemActions } from "../redux/modules/item";
 const Modal = (props) => {
   const dispatch = useDispatch();
   const itemData = useSelector(state => state.item.oneItem)
-  console.log(itemData)
+
+  const itemPrice = useSelector(state => state.item.oneItem.itemPrice)
+
+
+  const test = () => {
+    itemPrice.slice(-1)
+  }
+  console.log(itemPrice)
+
+  console.log(test)
+
+  const [count, setCount] = React.useState(1);
+
+  const countMinus = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const countPlus = () => {
+    setCount(count + 1);
+  };
+
   return (
     <Wrap>
       <div className="cartModal">
@@ -19,9 +41,9 @@ const Modal = (props) => {
           <div className="itemCount">
             <span className="price">{itemData.itemPrice}</span>
             <span className="count">
-              <button className="down btn"></button>
-              <input readOnly="readOnly" value="1" />
-              <button className="up btn"></button>
+              <button className="down btn" onClick={countMinus}></button>
+              <input readOnly="readOnly" value={count} />
+              <button className="up btn" onClick={countPlus}></button>
             </span>
           </div>
         </div>
@@ -221,6 +243,7 @@ const Wrap = styled.div`
         border-radius: 3px;
         font-size: 16px;
         font-weight: 600;
+        cursor: pointer;
       }
 
       .cancel {

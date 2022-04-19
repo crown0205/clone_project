@@ -19,14 +19,12 @@ const Detail = props => {
   const isToken = localStorage.getItem("token");
   const itemId = props.match.params.itemId;
 
-  const [count, setCount] = React.useState(1);
-  console.log(itemDate);
 
   React.useEffect(() => {
     dispatch(itemActions.getOneItemDB(itemId));
   }, []);
 
-  console.log(count);
+  const [count, setCount] = React.useState(1);
 
   const countMinus = () => {
     if (count > 1) {
