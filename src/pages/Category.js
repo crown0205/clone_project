@@ -10,11 +10,9 @@ import { actionCreators as itemActions } from "../redux/modules/item";
 import BigItem from "../components/BigItem";
 
 const Category = (props) => {
-  const params = props.match.params
+  const params = props.match.params.category
   const list = useSelector(state => (state.item.list))
   const dispatch = useDispatch()
-
-  console.log(list)
 
   React.useEffect(()=>{
     dispatch(itemActions.setCategoryDB(params))

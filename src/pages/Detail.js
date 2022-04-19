@@ -13,7 +13,7 @@ import { Image, Button, DetailSpan, Input } from "../elements/Index";
 
 const Detail = props => {
   const isLogin = useSelector(state => state.user.isLogin);
-  const itemDate = useSelector(state => (state.item.list))
+  const itemDate = useSelector(state => (state.item.oneItem))
   const isToken = localStorage.getItem("token");
   const itemId = props.match.params.itemId;
 
