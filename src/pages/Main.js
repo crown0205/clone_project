@@ -38,8 +38,6 @@ const Main = () => {
     }
   }
 
-  console.log(random_list);
-
   // 사이트 접속시 item 목록 불러오기
   React.useEffect(() => {
     dispatch(itemActions.setItemsDB());

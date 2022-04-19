@@ -10,19 +10,11 @@ import item, { actionCreators as itemActions } from "../redux/modules/item";
 const Modal = (props) => {
   const dispatch = useDispatch();
   const itemData = useSelector(state => state.item.oneItem)
-
   const itemPrice = useSelector(state => state.item.oneItem.itemPrice)
-
-
-  const test = () => {
-    itemPrice.slice(-1)
-  }
-  console.log(itemPrice)
-
-  console.log(test)
+  const ModalPrice1 = itemPrice.replace("원", "").replace(",","")
 
   const [count, setCount] = React.useState(1);
-
+  
   const countMinus = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -52,7 +44,7 @@ const Modal = (props) => {
           <div className="totalinner">
             <span className="total">합계</span>
             <span className="totalPrice">
-              {itemData.itemPrice}
+              {ModalPrice1 * count}<span>원</span>
             </span>
           </div>
           <div className="totalText">
