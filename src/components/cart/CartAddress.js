@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, Button, Icons, DetailSpan } from "../elements/Index";
+import { Grid, Button, Icons, DetailSpan } from "../../elements/Index";
 
 const CartAddress = (props) => {
     return (

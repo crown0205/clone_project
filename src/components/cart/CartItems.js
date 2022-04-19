@@ -1,7 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import CartButton from "./CartButton";
-import CartItem from "../components/CartItem";
+import CartItem from "./CartItem";
 import Package from "./Package";
 
 const CartItems = (props) => {

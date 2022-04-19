@@ -1,16 +1,12 @@
 import React from "react";
 import CartItems from "./CartItems";
-import { actionCreators as cartActions } from "../redux/modules/cart";
+import { actionCreators as cartActions } from "../../redux/modules/cart";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartCategoryList = (props) => {
-    const dispatch = useDispatch();
+    const { cartList } = props;
 
-    React.useEffect(() => {
-        dispatch(cartActions.readCartDB());
-    }, []);
-
-    const CartList = useSelector((state) => state.cart);
+    console.log(cartList);
 
     return (
         <React.Fragment>

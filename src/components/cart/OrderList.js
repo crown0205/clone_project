@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PriceForm from "./PriceForm";
-import { Grid, DetailSpan } from "../elements/Index";
+import { Grid, DetailSpan } from "../../elements/Index";
 
 const OrderList = (props) => {
     return (
