@@ -17,6 +17,7 @@ const Cart = (props) => {
     console.log(cartList); //장바구니목록
 
     return (
+    <Wrap>
         <Grid display="block" width="1050px" margin="auto">
             <Grid width="1050px" height="136px" padding="50px 0 51px 0">
                 <H2>장바구니</H2>
@@ -33,6 +34,7 @@ const Cart = (props) => {
                 </Grid>
             </Grid>
         </Grid>
+    </Wrap>
     );
 };
 
@@ -44,4 +46,7 @@ const H2 = styled.h2`
     margin: auto;
 `;
 
+const Wrap = styled.div`
+    height: 870px;
+`
 export default Cart;
