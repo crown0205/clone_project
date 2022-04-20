@@ -17,9 +17,12 @@ const Detail = props => {
   const isLogin = useSelector(state => state.user.isLogin);
   const itemDate = useSelector(state => state.item.oneItem);
   const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
+  const itemList = useSelector(state => state.item.list);
   const detailPrice = itemPrice.replace("원", "").replace(",", "");
   const isToken = localStorage.getItem("token");
   const itemId = props.match.params.itemId;
+
+  console.log(itemList);
 
   React.useEffect(() => {
     dispatch(itemActions.getOneItemDB(itemId));
@@ -51,7 +54,7 @@ const Detail = props => {
       itemId: itemDate._id,
       itemName: itemDate.itemName,
       itemAmount: count,
-      itemPrice: itemDate.itemPrice,
+      itemPrice: totalPrice + "원",
       itemImg: itemDate.itemImg,
       itemCategory: itemDate.itemCategory,
       userAddress: userInfo.userAddress,

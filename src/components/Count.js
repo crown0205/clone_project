@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { Button, Input } from "../elements/Index";
 
-const Count = (props) => {
-    const [count, setCount] = React.useState(1);
+const Count = props => {
+  const [count, setCount] = React.useState(1);
 
     const countMinus = () => {
         if (count > 1) {

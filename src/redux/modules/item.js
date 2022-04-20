@@ -87,7 +87,7 @@ const getOneItemDB = itemId => {
       url: `http://54.180.90.16/detail/${itemId}`,
     })
     .then(doc => {
-      console.log(doc)
+      // console.log(doc)
       dispatch(OneItem(doc))
     })
     .catch(err => {

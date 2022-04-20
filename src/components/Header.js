@@ -225,6 +225,9 @@ const HeaderDiv = styled.div`
   }
 
   .menuBar {
+    background-color: #aaa;
+    position: sticky;
+    top: 130px;
     height: 56px;
     align-items: center;
     font-weight: 600;
