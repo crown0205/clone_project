@@ -9,15 +9,19 @@ import CartResult from "../components/cart/CartResult";
 import { Grid } from "../elements/Index";
 
 const Cart = (props) => {
-    //카트리스트 받아오기
+    //장바구니 수정
+    const edit = (itemId, itemAmount, itemPrice) => {
+        dispatch(cartActions.editCartDB(itemId, itemAmount, itemPrice));
+    };
 
+    //카트리스트 받아오기
     const dispatch = useDispatch();
     React.useEffect(() => {
         dispatch(cartActions.readCartDB());
     }, []);
     const cartList = useSelector((state) => state.cart);
     const user = useSelector((state) => state.user);
-    //장바구니목록
+    console.log(cartList); //장바구니목록
 
     //전체선택, 선택삭제, 주문하기 위한 아이템아이디리스트
     const totalitemId = cartList.cartList.map(
@@ -66,11 +70,11 @@ const Cart = (props) => {
                         {/* 카테고리 3개 묶은 컴포넌트 만들기 */}
                         <CartCategoryList
                             cartList={cartList}
+                            edit={edit}
                             confirmList={confirmList}
                             setConfirmList={setConfirmList}
-                            // onClick={selectOne}
                         />
-                        {/* <CartButton onClick={selectAll} /> */}
+                        {/* <CartButton  /> */}
                     </Grid>
                     <Grid width="284px">
                         <CartResult />

@@ -13,30 +13,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // 컴포넌트
-import SmallItem from "../components/SmallItem";
+import SmallSlider from "../components/SmallSlider";
+
+// 함수
+import { randomList } from "../shared/RandomList";
 
 const Main = () => {
   const dispatch = useDispatch();
   const item_list = useSelector(state => state.item?.list);
-  const item_length = item_list?.length;
-
-    // 빈 배열을 밖에다가 선언해주면 if문 안에서 작동하면 안으로 넣어준다.
-    let random_list = [];
-
-  if (item_length) {
-    for (let i = 0; i < 8; i++) {
-      let randomNum = Math.floor(Math.random() * item_list?.length);
-
-      //   // 중복체크
-      if (random_list.indexOf(randomNum) === -1) {
-        //     //  리스트에서 중복되지 않은 리스트만 뽑아서 배열에 담음.
-        random_list.push(item_list[randomNum]);
-      } else {
-        //     // 중복된 값이 나오면 i를 빼주어 다시 한번더 값을 만들어낸다.
-        i--;
-      }
-    }
-  }
+  const random_list = randomList(item_list);
 
   // 사이트 접속시 item 목록 불러오기
   React.useEffect(() => {
@@ -52,17 +37,6 @@ const Main = () => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
-
-  // Item list Action
-  const card_settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-  };
-
-  //
 
   return (
     <React.Fragment>
@@ -103,14 +77,7 @@ const Main = () => {
 
         {/* 상품 목록 */}
         <div className="innerWrap">
-          <div className="itemListWrap">
-            <p className="title">이 상품 어때요?</p>
-            <Slider className="itemList" {...card_settings}>
-              {random_list.map((item, idx) => {
-                return <SmallItem key={`item_${idx}`} {...item} />;
-              })}
-            </Slider>
-          </div>
+          <SmallSlider random_list={random_list} />
 
           {/* 배너 */}
           <div className="banner" />
@@ -124,7 +91,7 @@ export default Main;
 
 const Wrap = styled.div`
   width: 100%;
-  
+
   /* 캐러셀 */
   .bannerWrap {
     max-width: 1900px;
@@ -147,6 +114,7 @@ const Wrap = styled.div`
       color: #fff;
     }
   }
+  
   /* 상품 목록 */
   .innerWrap {
     width: 100%;

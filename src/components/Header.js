@@ -13,6 +13,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+
 const Header = props => {
   //로그인 여부 확인
   const isLogin = useSelector(state => state.user.isLogin);
@@ -22,7 +23,7 @@ const Header = props => {
   const logout = () => {
     dispatch(userActions.logoutDB());
   };
-  
+
   const user = useSelector(state => state.user.user);
 
   //postcode에서는 헤더 안 나오게 설정
@@ -30,6 +31,7 @@ const Header = props => {
 
   return (
     <React.Fragment>
+
       <HeaderDiv>
         <div className="inner_wrap">
           <div className="topBar flex">
@@ -37,13 +39,33 @@ const Header = props => {
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
             <ul className="navBar flex">
-              {(isLogin && isToken)? <div><div className="user">일반</div><li>{user[0]?.userName}님 <span></span></li>
-              </div> : <li onClick={()=> {
-                history.push("/signup");
-              }}>회원가입</li>}
-              {(isLogin && isToken)? <li onClick={logout}>로그아웃</li> : <li onClick={()=> {
-                history.push("/login");
-              }}>로그인</li>}
+              {isLogin && isToken ? (
+                <div>
+                  <div className="user">일반</div>
+                  <li>
+                    {user[0]?.userName}님 <span></span>
+                  </li>
+                </div>
+              ) : (
+                <li
+                  onClick={() => {
+                    history.push("/signup");
+                  }}
+                >
+                  회원가입
+                </li>
+              )}
+              {isLogin && isToken ? (
+                <li onClick={logout}>로그아웃</li>
+              ) : (
+                <li
+                  onClick={() => {
+                    history.push("/login");
+                  }}
+                >
+                  로그인
+                </li>
+              )}
               <li>
                 고객센터 <span></span>
               </li>
@@ -62,7 +84,11 @@ const Header = props => {
               alt="logo"
             ></img>
           </div>
+        </div>
+      </HeaderDiv>
 
+      <MenuBarWrap className="menuBarWrap">
+        <div className="menuBarInner">
           <div className="menuBar flex">
             <ul className="flex">
               <li
@@ -123,7 +149,8 @@ const Header = props => {
             </div>
           </div>
         </div>
-      </HeaderDiv>
+      </MenuBarWrap>
+
     </React.Fragment>
   );
 };
@@ -132,10 +159,8 @@ export default Header;
 
 const HeaderDiv = styled.div`
   width: 100%;
-  height: 180px;
+  height: auto;
   padding: 10px 16px 0;
-
-  box-shadow: 0 1px 5px #cfcfcf;
 
   .flex {
     display: flex;
@@ -223,13 +248,28 @@ const HeaderDiv = styled.div`
       cursor: pointer;
     }
   }
+`;
+
+const MenuBarWrap = styled.div`
+  width: 100%;
+  height: 55px;
+  margin-top: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #cfcfcf;
+  z-index: 2;
+
 
   .menuBar {
+    width: 100%;
+    max-width: 1050px;
     height: 56px;
     align-items: center;
     font-weight: 600;
     letter-spacing: 0.5px;
-    margin-top: 10px;
+    margin: auto;
+    display: flex;
 
     .hamBtn {
       margin-right: 10px;
@@ -239,6 +279,8 @@ const HeaderDiv = styled.div`
 
     ul {
       width: 58%;
+      display: flex;
+      justify-content: space-around;
       li {
         cursor: pointer;
 
@@ -261,6 +303,7 @@ const HeaderDiv = styled.div`
       background-color: #f7f7f7;
       font-size: 12px;
       line-height: 16px;
+      outline: none;
     }
 
     .serBtn {
@@ -278,6 +321,8 @@ const HeaderDiv = styled.div`
   .iconWrap {
     width: 13%;
     font-size: 26px;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 
     div {
@@ -288,5 +333,3 @@ const HeaderDiv = styled.div`
     }
   }
 `;
-//  Logo img
-// https://res.kurly.com/images/marketkurly/logo/logo_x2.png

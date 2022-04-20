@@ -1,22 +1,10 @@
-import React, { forwardRef, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Button, Input } from "../elements/Index";
 
 const Count = (props) => {
-    const { children } = props;
-
-    // const [count, setCount] = React.useState(1);
-
-    // const countMinus = () => {
-    //     if (count > 1) {
-    //         setCount(count - 1);
-    //     }
-    // };
-
-    // const countPlus = () => {
-    //     setCount(count + 1);
-    // };
+    const { count, countMinus, countPlus } = props;
 
     return (
         <React.Fragment>
@@ -27,26 +15,23 @@ const Count = (props) => {
                     src={
                         "https://res.kurly.com/pc/service/common/2009/ico_minus_on.svg"
                     }
-                    // _onClick={countMinus}
+                    _onClick={countMinus}
                 >
                     -
                 </Button>
                 <Input
                     countInput
-                    ref={Input.value}
-                    value={children}
+                    value={count}
                     width="26px"
                     height="30px"
-                >
-                    {children}
-                </Input>
+                ></Input>
                 <Button
                     small
                     size="30px"
                     src={
                         "https://res.kurly.com/pc/service/common/2009/ico_plus_on.svg"
                     }
-                    // _onClick={countPlus}
+                    _onClick={countPlus}
                 >
                     +
                 </Button>

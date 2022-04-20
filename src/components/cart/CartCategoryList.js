@@ -2,7 +2,7 @@ import React from "react";
 import CartItems from "./CartItems";
 
 const CartCategoryList = (props) => {
-    const { cartList, confirmList, setConfirmList, onClick } = props;
+    const { cartList, confirmList, setConfirmList, onClick, edit } = props;
     //필터? 맵? 으로 각각 카테고리 리스트 고르기
 
     const iceCategory = cartList.cartList.filter(
@@ -17,7 +17,7 @@ const CartCategoryList = (props) => {
 
     const normalCategory = cartList.cartList.filter(
         (list) =>
-            list.itemCategory === "bekery" || list.itemCategory === "mealkit"
+            list.itemCategory === "bakery" || list.itemCategory === "mealkit"
     );
     // console.log("상온리스트", normalCategory);
 
@@ -28,18 +28,21 @@ const CartCategoryList = (props) => {
                 confirmList={confirmList}
                 setConfirmList={setConfirmList}
                 onClick={onClick}
+                edit={edit}
             />
             <CartItems
                 coldList={coldCategory}
                 confirmList={confirmList}
                 setConfirmList={setConfirmList}
                 onClick={onClick}
+                edit={edit}
             />
             <CartItems
                 normalList={normalCategory}
                 confirmList={confirmList}
                 setConfirmList={setConfirmList}
                 onClick={onClick}
+                edit={edit}
             />
         </React.Fragment>
     );

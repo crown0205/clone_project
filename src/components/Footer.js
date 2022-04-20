@@ -37,7 +37,7 @@ const Footer = () => {
             <ul className="footBar">
               <li>컬러소개</li>
               <li>컬러소개영상</li>
-              <li>인채채용</li>
+              <li>인재채용</li>
               <li>이용약관</li>
               <li>개인정보처리방침</li>
               <li>이용안내</li>

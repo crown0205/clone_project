@@ -12,6 +12,7 @@ const CartItems = (props) => {
         confirmList,
         setConfirmList,
         onClick,
+        edit,
     } = props;
     // console.log(iceList);
     // console.log(coldList);
@@ -37,6 +38,7 @@ const CartItems = (props) => {
                             confirmList={confirmList}
                             onClick={onClick}
                             setConfirmList={setConfirmList}
+                            edit={edit}
                         />
                     );
                 })}
@@ -61,6 +63,7 @@ const CartItems = (props) => {
                             {...list}
                             confirmList={confirmList}
                             setConfirmList={setConfirmList}
+                            edit={edit}
                         />
                     );
                 })}
@@ -84,6 +87,7 @@ const CartItems = (props) => {
                         {...list}
                         confirmList={confirmList}
                         setConfirmList={setConfirmList}
+                        edit={edit}
                     />
                 );
             })}

@@ -13,17 +13,20 @@ import { Image, Button, DetailSpan, Input } from "../elements/Index";
 const Detail = (props) => {
     const dispatch = useDispatch();
 
-    const userInfo = useSelector((state) => state.user.user[0]);
-    const isLogin = useSelector((state) => state.user.isLogin);
-    const itemDate = useSelector((state) => state.item.oneItem);
-    const itemPrice = useSelector((state) => state.item.oneItem.itemPrice);
-    const detailPrice = itemPrice.replace("원", "").replace(",", "");
-    const isToken = localStorage.getItem("token");
-    const itemId = props.match.params.itemId;
+  const userInfo = useSelector(state => state.user.user[0]);
+  const isLogin = useSelector(state => state.user.isLogin);
+  const itemDate = useSelector(state => state.item.oneItem);
+  const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
+  const itemList = useSelector(state => state.item.list);
+  const detailPrice = itemPrice.replace("원", "").replace(",", "");
+  const isToken = localStorage.getItem("token");
+  const itemId = props.match.params.itemId;
 
-    React.useEffect(() => {
-        dispatch(itemActions.getOneItemDB(itemId));
-    }, []);
+  console.log(itemList);
+
+  React.useEffect(() => {
+    dispatch(itemActions.getOneItemDB(itemId));
+  }, []);
 
     const [count, setCount] = React.useState(1);
 
@@ -61,6 +64,7 @@ const Detail = (props) => {
         console.log("addCartDB에 보낼 카트리스트", itemList);
 
         dispatch(cartActions.addCartDB(itemList));
+        window.alert("장바구니에 상품이 담겼습니다!");
     };
 
     return (
