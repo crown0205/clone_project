@@ -63,6 +63,7 @@ const Detail = (props) => {
         console.log("addCartDB에 보낼 카트리스트", itemList);
 
         dispatch(cartActions.addCartDB(itemList));
+        window.alert("장바구니에 상품이 담겼습니다!");
     };
 
     return (
