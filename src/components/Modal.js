@@ -7,14 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 // 모듈
 import item, { actionCreators as itemActions } from "../redux/modules/item";
 
-const Modal = (props) => {
+const Modal = props => {
   const dispatch = useDispatch();
-  const itemData = useSelector(state => state.item.oneItem)
-  const itemPrice = useSelector(state => state.item.oneItem.itemPrice)
-  const ModalPrice1 = itemPrice.replace("원", "").replace(",","")
+  const itemData = useSelector(state => state.item.oneItem);
+  const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
+  const ModalPrice1 = itemPrice.replace("원", "").replace(",", "");
 
   const [count, setCount] = React.useState(1);
-  
+
+  // 수량 * 원가
+  let multiplyPrice = ModalPrice1 * count;
+
+  // 천단위 콤마 찍어주는 함수
+  const totalPrice = multiplyPrice.toLocaleString("ko-KR");
+
   const countMinus = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -44,7 +50,8 @@ const Modal = (props) => {
           <div className="totalinner">
             <span className="total">합계</span>
             <span className="totalPrice">
-              {ModalPrice1 * count}<span>원</span>
+              {totalPrice}
+              <span>원</span>
             </span>
           </div>
           <div className="totalText">
@@ -248,5 +255,5 @@ const Wrap = styled.div`
         border: 1px solid #5f0081;
       }
     }
-  } 
+  }
 `;
