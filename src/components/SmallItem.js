@@ -15,9 +15,10 @@ import { useDispatch } from "react-redux";
 import { BsCart2 } from "react-icons/bs";
 
 
-const SmallItem = props => {
+const SmallItem = ({item, setIsModal}) => {
+
   const dispatch = useDispatch()
-  const itemId = props._id
+  const itemId = item._id
 
   // console.log(itemId)
 
@@ -27,7 +28,7 @@ const SmallItem = props => {
         <div>
           <div className="itemImg">
             <img
-              src={props.itemImg}
+              src={item.itemImg}
               width="249px"
               height="320px"
               alt=""
@@ -38,7 +39,8 @@ const SmallItem = props => {
             <button
               className="cardBtn"
               onClick={() => {
-                dispatch(itemActions.onModal())
+                // dispatch(itemActions.onModal())
+                setIsModal(true)
                 dispatch(itemActions.getOneItemDB(itemId));
               }}
             >
@@ -46,16 +48,16 @@ const SmallItem = props => {
             </button>
           </div>
           <div className="itemTitle">
-            <p>{props.itemName}</p>
+            <p>{item.itemName}</p>
           </div>
           <div className="itemPw">
-            {props.dc && <span className="dc"> {props.dc}</span>}
+            {item.dc && <span className="dc"> {item.dc}</span>}
             <div className="prise">
-              {props.itemPrice}
+              {item.itemPrice}
             </div>
           </div>
-          {props.original && <div className="original">
-            {props.original}
+          {item.original && <div className="original">
+            {item.original}
           </div> }
           
         </div>

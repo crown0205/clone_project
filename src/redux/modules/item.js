@@ -86,16 +86,16 @@ const getOneItemDB = (itemId) => {
       method: "get",
       url: `http://54.180.90.16/detail/${itemId}`,
     })
-      .then((doc) => {
-        console.log(doc);
-        dispatch(OneItem(doc));
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log("getOneItem");
-      });
-  };
-};
+    .then(doc => {
+      // console.log(doc)
+      dispatch(OneItem(doc))
+    })
+    .catch(err => {
+      console.log(err)
+      console.log("getOneItem")
+    })
+  }
+}
 
 // Reducer
 export default handleActions(
