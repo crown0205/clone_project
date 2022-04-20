@@ -10,11 +10,6 @@ import { actionCreators as userActions } from "../redux/modules/user";
 import PostCode from "../components/PostCode";
 
 const Signup = (props) => {
-  const [postcode, setPostcode] = useState(false);
-  const onComplete = (data) => {
-    setUserAddress(data.address);
-    setPostcode(!postcode);
-  };
 
   const dispatch = useDispatch();
 
@@ -23,6 +18,11 @@ const Signup = (props) => {
   const [pwdCheck, setPwdCheck] = useState("");
   const [userName, setUserName] = useState("");
   const [userAddress, setUserAddress] = useState("");
+  const [postcode, setPostcode] = useState(false);
+  const onComplete = (data) => {
+    setUserAddress(data.address);
+    setPostcode(!postcode);
+  };
 
   const isId = (userId) => {
     const regId = /^[a-z0-9]{6,20}$/;

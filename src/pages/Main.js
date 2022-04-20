@@ -38,8 +38,6 @@ const Main = () => {
     }
   }
 
-  console.log(random_list);
-
   // 사이트 접속시 item 목록 불러오기
   React.useEffect(() => {
     dispatch(itemActions.setItemsDB());
@@ -125,9 +123,9 @@ const Main = () => {
 export default Main;
 
 const Wrap = styled.div`
-  /* 캐러셀 */
   width: 100%;
-  height: 370px;
+  
+  /* 캐러셀 */
   .bannerWrap {
     max-width: 1900px;
     height: 370px;

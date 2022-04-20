@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const DetailSpan = (props) => {
     const {
+        margin,
         padding,
         color,
         size,
@@ -24,6 +25,7 @@ const DetailSpan = (props) => {
         width: width,
         bold: bold,
         textAlign: textAlign,
+        margin: margin,
         padding: padding,
         lineHeight: lineHeight,
         letterSpacing: letterSpacing,
@@ -44,6 +46,7 @@ DetailSpan.defaultProps = {
     width: "auto",
     bold: false,
     textAlign: "",
+    margin: "",
     padding: "",
     lineHeight: "",
     letterSpacing: "",
@@ -57,6 +60,7 @@ const Span = styled.span`
     width: ${(props) => props.width};
     ${(props) => (props.bold ? `font-weight: ${props.bold};` : "")}
     text-align:  ${(props) => props.textAlign};
+    margin: ${(props) => props.margin};
     padding: ${(props) => props.padding};
     line-height: ${(props) => props.lineHeight};
     letter-spacing: ${(props) => props.letterSpacing};

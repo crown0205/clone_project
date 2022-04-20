@@ -16,22 +16,24 @@ const Detail = (props) => {
     const userInfo = useSelector((state) => state.user.user[0]);
     const isLogin = useSelector((state) => state.user.isLogin);
     const itemDate = useSelector((state) => state.item.oneItem);
+    const itemPrice = useSelector((state) => state.item.oneItem.itemPrice);
+    const detailPrice = itemPrice.replace("원", "").replace(",", "");
     const isToken = localStorage.getItem("token");
     const itemId = props.match.params.itemId;
 
-    const [count, setCount] = React.useState(1);
-    // console.log(itemDate);
-    console.log(userInfo);
     React.useEffect(() => {
         dispatch(itemActions.getOneItemDB(itemId));
-        dispatch(cartActions.readCartDB());
     }, []);
 
-    const isCart = useSelector((state) => state.cart);
+    const [count, setCount] = React.useState(1);
 
-    // console.log(isCart);
+    // 수량 * 원가
+    let multiplyPrice = detailPrice * count;
 
-    // console.log(count);
+    // 천단위 콤마 찍어주는 함수
+    const totalPrice = multiplyPrice.toLocaleString("ko-KR");
+
+    console.log(multiplyPrice, totalPrice);
 
     const countMinus = () => {
         if (count > 1) {
@@ -41,21 +43,6 @@ const Detail = (props) => {
 
     const countPlus = () => {
         setCount(count + 1);
-    };
-
-    const editCart = () => {
-        console.log("editCart시작", count);
-
-        const itemList = {
-            itemId: itemDate._id,
-            itemName: itemDate.itemName,
-            itemAmount: count,
-            itemPrice: itemDate.itemPrice,
-            itemImg: itemDate.itemImg,
-            itemCategory: itemDate.itemCategory,
-            userAddress: userInfo.userAddress,
-            userId: userInfo.userId,
-        };
     };
 
     const addCart = () => {
@@ -185,7 +172,15 @@ const Detail = (props) => {
                                         display="inline"
                                         bold="700"
                                     >
-                                        {itemDate.itemPrice}
+                                        {totalPrice}
+                                    </DetailSpan>
+                                    <DetailSpan
+                                        size="20px"
+                                        bold="700"
+                                        display="inline"
+                                        height="auto"
+                                    >
+                                        원
                                     </DetailSpan>
                                 </div>
                             </TotalPrice>

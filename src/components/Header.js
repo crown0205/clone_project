@@ -22,11 +22,7 @@ const Header = props => {
   const logout = () => {
     dispatch(userActions.logoutDB());
   };
-
-  React.useEffect(() => {
-      dispatch(userActions.getUserDB());
-  },[]);
-
+  
   const user = useSelector(state => state.user.user);
 
   //postcode에서는 헤더 안 나오게 설정
