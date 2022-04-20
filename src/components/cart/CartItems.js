@@ -13,12 +13,6 @@ const CartItems = (props) => {
 
     //props로 iceList(냉동), coldList(냉장)값을 넘겨 받아서 if으로 return 제한하기
 
-<<<<<<< HEAD
-  return (
-    <>
-    </>
-  );
-=======
     if (iceList) {
         return (
             <Div>
@@ -67,7 +61,6 @@ const CartItems = (props) => {
             })}
         </Div>
     );
->>>>>>> b559333fbd1e4564f8cd335b521010b9135961b4
 };
 
 const Div = styled.div``;
