@@ -9,12 +9,12 @@ const OFF_MODAL = "OFF_MODAL";
 const ONE_ITEM = "ONE_ITEM";
 
 // actions creators
-const setItems = createAction(SET_ITEMS, item_list => ({
+const setItems = createAction(SET_ITEMS, (item_list) => ({
   item_list,
 }));
-const OneItem = createAction(ONE_ITEM, item => ({ item }));
-const onModal = createAction(ON_MODAL, action => ({ action }));
-const offModal = createAction(OFF_MODAL, action => ({ action }));
+const OneItem = createAction(ONE_ITEM, (item) => ({ item }));
+const onModal = createAction(ON_MODAL, (action) => ({ action }));
+const offModal = createAction(OFF_MODAL, (action) => ({ action }));
 
 const initialState = {
   list: [
@@ -49,18 +49,18 @@ const setItemsDB = () => {
       url: "http://54.180.90.16/main",
       // 54.180.90.16
     })
-      .then(doc => {
+      .then((doc) => {
         // console.log(doc)
         dispatch(setItems(doc));
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("에러가 난다~~");
         console.log(err);
       });
   };
 };
 
-const setCategoryDB = category => {
+const setCategoryDB = (category) => {
   console.log(category);
 
   return function (dispatch, getState, { history }) {
@@ -68,56 +68,57 @@ const setCategoryDB = category => {
       method: "get",
       url: `http://54.180.90.16/category/${category}`,
     })
-      .then(doc => {
+      .then((doc) => {
         console.log(doc);
-        dispatch(setItems(doc))
+        dispatch(setItems(doc));
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         console.log("아~~ 오나여~~~ 또 에러가 오나요~~~ 🤯;");
       });
   };
 };
 
-const getOneItemDB = itemId => {
-  console.log(itemId)
-  return function (dispatch, getState, {history}) {
+const getOneItemDB = (itemId) => {
+  console.log(itemId);
+  return function (dispatch, getState, { history }) {
     axios({
       method: "get",
       url: `http://54.180.90.16/detail/${itemId}`,
     })
-    .then(doc => {
-      console.log(doc)
-      dispatch(OneItem(doc))
-    })
-    .catch(err => {
-      console.log(err)
-      console.log("getOneItem")
-    })
-  }
-}
+      .then((doc) => {
+        console.log(doc);
+        dispatch(OneItem(doc));
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("getOneItem");
+      });
+  };
+};
 
 // Reducer
 export default handleActions(
   {
     // main, category
     [SET_ITEMS]: (state, action) =>
-      produce(state, draft => {
+      produce(state, (draft) => {
         draft.list = action.payload.item_list.data;
       }),
     [ON_MODAL]: (state, action) =>
-      produce(state, draft => {
+      produce(state, (draft) => {
         draft.modal = true;
       }),
     [OFF_MODAL]: (state, action) =>
-      produce(state, draft => {
+      produce(state, (draft) => {
         draft.modal = false;
       }),
-      // detail
-      [ONE_ITEM]: (state, action) => produce(state, draft => {
-        console.log(action)
-        draft.oneItem = action.payload.item.data
-      })
+    // detail
+    [ONE_ITEM]: (state, action) =>
+      produce(state, (draft) => {
+        console.log(action);
+        draft.oneItem = action.payload.item.data;
+      }),
   },
   initialState
 );

@@ -53,7 +53,7 @@ const Detail = (props) => {
             itemId: itemDate._id,
             itemName: itemDate.itemName,
             itemAmount: count,
-            itemPrice: itemDate.itemPrice,
+            itemPrice: totalPrice + "원",
             itemImg: itemDate.itemImg,
             itemCategory: itemDate.itemCategory,
             userAddress: userInfo.userAddress,

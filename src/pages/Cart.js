@@ -9,7 +9,12 @@ import CartResult from "../components/cart/CartResult";
 import { Grid } from "../elements/Index";
 
 const Cart = (props) => {
+
     //장바구니 수정
+    const edit = (itemId, itemAmount, itemPrice) => {
+
+        dispatch(cartActions.editCartDB(itemId, itemAmount, itemPrice));
+    }
 
     //카트리스트 받아오기
     const dispatch = useDispatch();
@@ -29,7 +34,7 @@ const Cart = (props) => {
                 <Grid flexDirection="column">
                     <CartButton />
                     {/* 카테고리 3개 묶은 컴포넌트 만들기 */}
-                    <CartCategoryList cartList={cartList} />
+                    <CartCategoryList cartList={cartList} edit={edit}/>
                     <CartButton />
                 </Grid>
                 <Grid width="284px">

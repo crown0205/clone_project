@@ -1,21 +1,11 @@
-import React, { forwardRef, useRef } from "react";
-import _ from "lodash";
+import React from "react";
 import styled from "styled-components";
 
 import { Button, Input } from "../elements/Index";
 
 const Count = (props) => {
-  const [count, setCount] = React.useState(1);
 
-  const countMinus = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
-
-  const countPlus = () => {
-    setCount(count + 1);
-  };
+const {count, countMinus, countPlus} = props;
 
   return (
     <React.Fragment>
@@ -30,7 +20,6 @@ const Count = (props) => {
         </Button>
         <Input
           countInput
-          ref={Input.value}
           value={count}
           width="26px"
           height="30px"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { actionCreators as userActions } from "../redux/modules/user";
+import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 패키지
 import { Route } from "react-router-dom";

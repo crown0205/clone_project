@@ -12,9 +12,9 @@ Api.defaults.headers.common["authorization"] = `Bearer ${localStorage.getItem(
 
 export const Apis = {
     addCart: (cartList) => Api.post("/addCart", cartList),
-    // editPost: (postId, contents) => Api.put(`api/posts/${postId}`, contents),
+    editCart: (itemId, itemAmount, itemPrice) => Api.put("/editCart", {itemId: itemId, itemAmount: itemAmount, itemPrice: itemPrice}),
     // deletePost: (postId) => Api.delete(`api/posts/${postId}`),
-    readCart: (cartList) => Api.get("/readCart"),
+    readCart: (cartList) => Api.get("/readCart", cartList),
     // roadPost: (postId) => Api.get(`/api/posts/${postId}`),
     // roadMypost: () => Api.get("/api/mypage/"),
 
