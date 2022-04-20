@@ -29,8 +29,8 @@ const BigItem = props => {
           <button
             className="cardBtn"
             onClick={() => {
-              // onModal 클릭시 아이템 (이름, 가격) 정보 보내줘야됨.
-              dispatch(itemActions.onModal());
+              dispatch(itemActions.onModal())
+              dispatch(itemActions.getOneItemDB(itemId));
             }}
           >
             <BsCart2 />
@@ -63,6 +63,7 @@ const BigItemWrap = styled.div`
 
   .itemImg {
     position: relative;
+    cursor: pointer;
     .cardBtn {
       width: 45px;
       height: 45px;

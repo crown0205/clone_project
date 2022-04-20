@@ -2,25 +2,46 @@ import React from "react";
 
 // 패키지
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // 모듈
-import { actionCreators as itemActions } from "../redux/modules/item";
+import item, { actionCreators as itemActions } from "../redux/modules/item";
 
-const Modal = () => {
+const Modal = props => {
   const dispatch = useDispatch();
+  const itemData = useSelector(state => state.item.oneItem);
+  const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
+  const ModalPrice1 = itemPrice.replace("원", "").replace(",", "");
+
+  const [count, setCount] = React.useState(1);
+
+  // 수량 * 원가
+  let multiplyPrice = ModalPrice1 * count;
+
+  // 천단위 콤마 찍어주는 함수
+  const totalPrice = multiplyPrice.toLocaleString("ko-KR");
+
+  const countMinus = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const countPlus = () => {
+    setCount(count + 1);
+  };
 
   return (
     <Wrap>
       <div className="cartModal">
         <div className="itemWrap">
-          <p className="title">[모두의맛집] 알꼬막 짬뽕</p>
+          <p className="title">{itemData.itemName}</p>
           <div className="itemCount">
-            <span className="price">16,000원</span>
+            <span className="price">{itemData.itemPrice}</span>
             <span className="count">
-              <button className="down btn"></button>
-              <input readOnly="readOnly" value="0" />
-              <button className="up btn"></button>
+              <button className="down btn" onClick={countMinus}></button>
+              <input readOnly="readOnly" value={count} />
+              <button className="up btn" onClick={countPlus}></button>
             </span>
           </div>
         </div>
@@ -29,7 +50,8 @@ const Modal = () => {
           <div className="totalinner">
             <span className="total">합계</span>
             <span className="totalPrice">
-              16,000<span>원</span>
+              {totalPrice}
+              <span>원</span>
             </span>
           </div>
           <div className="totalText">
@@ -220,6 +242,7 @@ const Wrap = styled.div`
         border-radius: 3px;
         font-size: 16px;
         font-weight: 600;
+        cursor: pointer;
       }
 
       .cancel {
@@ -232,5 +255,5 @@ const Wrap = styled.div`
         border: 1px solid #5f0081;
       }
     }
-  } 
+  }
 `;

@@ -17,10 +17,14 @@ import Detail from "../pages/Detail";
 import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
 import "./App.css";
+import Footer from "../components/Footer";
 
 function App() {
+<<<<<<< HEAD
   const dispatch = useDispatch();
 
+=======
+>>>>>>> b559333fbd1e4564f8cd335b521010b9135961b4
   //로그인 여부 확인
   const isLogin = useSelector((state) => state.user.isLogin);
   const isToken = localStorage.getItem("token");
@@ -45,9 +49,12 @@ function App() {
         <Route path="/category/:category" exact component={Category} />
         <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
-
         {/* 모달 */}
         {isModal ? <Modal /> : null}
+<<<<<<< HEAD
+=======
+        <Footer />
+>>>>>>> b559333fbd1e4564f8cd335b521010b9135961b4
       </ConnectedRouter>
     </>
   );
