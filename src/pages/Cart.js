@@ -7,7 +7,10 @@ import CartButton from "../components/cart/CartButton";
 import CartCategoryList from "../components/cart/CartCategoryList";
 import CartResult from "../components/cart/CartResult";
 import { Grid } from "../elements/Index";
+
 const Cart = (props) => {
+    //장바구니 수정
+
     //카트리스트 받아오기
     const dispatch = useDispatch();
     React.useEffect(() => {

@@ -7,17 +7,6 @@ import { Button, Input } from "../elements/Index";
 const Count = (props) => {
   const [count, setCount] = React.useState(1);
 
-
-console.log("여기야여기");
-  const throttle = _.throttle((k) => console.log("쓰로틀! :::", k), 1000);
-  const keyPress = React.useCallback(throttle, []);
-
-  const onChange = (e) => {
-    keyPress(e.target.value);
-  };
-
-
-
   const countMinus = () => {
     if (count > 1) {
       setCount(count - 1);
@@ -45,7 +34,6 @@ console.log("여기야여기");
           value={count}
           width="26px"
           height="30px"
-          _onChange={onChange}
         ></Input>
         <Button
           small
