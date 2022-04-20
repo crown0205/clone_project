@@ -1,72 +1,73 @@
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useSelector } from "react-redux";
 
 const DetailSlider = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
-    return (
-        <Wrap>
-            <Slider {...settings}>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F1.PNG?alt=media&token=1412770d-fbc3-4f24-a064-800fed675cfb"
-                        alt="#"
-                    />
-                </div>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F2.PNG?alt=media&token=ac86f73d-2b63-473f-be4a-29557c64f405"
-                        alt="#"
-                    />
-                </div>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F3.PNG?alt=media&token=7949f470-d86d-4755-bdbb-6c3af053b095"
-                        alt="#"
-                    />
-                </div>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F4.PNG?alt=media&token=0415c70a-5410-4593-8422-5cc1a1a667c7"
-                        alt="#"
-                    />
-                </div>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F5.PNG?alt=media&token=2ce766e1-85fe-4768-bc1a-4c350b8597a6"
-                        alt="#"
-                    />
-                </div>
-                <div>
-                    <img
-                        className="card"
-                        src="https://firebasestorage.googleapis.com/v0/b/react-homework1.appspot.com/o/images%2F6.PNG?alt=media&token=b74a9b4f-8dd4-432b-bc63-47e53efd27c6"
-                        alt="#"
-                    />
-                </div>
-            </Slider>
-        </Wrap>
-    );
+  const list = useSelector(state => state.item.list);
+
+  let items = [];
+
+  for (let i = 0; i < 9; i++) {
+    items.push(list[i]);
+  }
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+  };
+
+  return (
+    <Slider {...settings}>
+      {items.map((item, idx) => {
+        return (
+          <Wrap key={`detailItem_${idx}`} >
+            <img
+              className="itemImg"
+              src={item.itemImg}
+              alt="#"
+            />
+            <div className="itemWrap">
+              <p className="itemTitle">{item.itemName}</p>
+              <p className="itemPrice">{item.itemPrice}</p>
+            </div>
+          </Wrap>
+        );
+      })}
+    </Slider>
+  );
 };
 
 const Wrap = styled.div`
-    width: 100%;
-    height: 320px;
+  width: 178px !important;
+  height: 320px;
+  border: 1px solid #ddd;
+  /* background-color: #aaa; */
 
-    .card {
-        width: 100%;
+  .itemImg {
+    width: 178px;
+    height: 229px;
+  }
+  .itemWrap {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    .itemTitle {
+      height: 35px;
     }
+  }
+
+  .slick-slide,
+  .slick-active .slick-current {
+    width: 178px !important;
+  }
 `;
 
 export default DetailSlider;
