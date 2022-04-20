@@ -304,6 +304,7 @@ const MenuBarWrap = styled.div`
       background-color: #f7f7f7;
       font-size: 12px;
       line-height: 16px;
+      outline: none;
     }
 
     .serBtn {
