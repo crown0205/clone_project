@@ -5,11 +5,17 @@ import CartItem from "./CartItem";
 import Package from "./Package";
 
 const CartItems = (props) => {
-    const { iceList, coldList, normalList } = props;
-
-    console.log(iceList);
-    console.log(coldList);
-    console.log(normalList);
+    const {
+        iceList,
+        coldList,
+        normalList,
+        confirmList,
+        setConfirmList,
+        onClick,
+    } = props;
+    // console.log(iceList);
+    // console.log(coldList);
+    // console.log(normalList);
 
     //props로 iceList(냉동), coldList(냉장)값을 넘겨 받아서 if으로 return 제한하기
 
@@ -24,7 +30,15 @@ const CartItems = (props) => {
                 />
                 {/* 아이템 맵 돌리기 */}
                 {iceList.map((list, index) => {
-                    return <CartItem key={list.itemId} {...list} />;
+                    return (
+                        <CartItem
+                            key={list.itemId}
+                            {...list}
+                            confirmList={confirmList}
+                            onClick={onClick}
+                            setConfirmList={setConfirmList}
+                        />
+                    );
                 })}
             </Div>
         );
@@ -41,7 +55,14 @@ const CartItems = (props) => {
                 />
                 {/* 아이템 맵 돌리기 */}
                 {coldList.map((list, index) => {
-                    return <CartItem key={list.itemId} {...list} />;
+                    return (
+                        <CartItem
+                            key={list.itemId}
+                            {...list}
+                            confirmList={confirmList}
+                            setConfirmList={setConfirmList}
+                        />
+                    );
                 })}
             </Div>
         );
@@ -57,7 +78,14 @@ const CartItems = (props) => {
             />
             {/* 아이템 맵 돌리기 */}
             {normalList.map((list, index) => {
-                return <CartItem key={list.itemId} {...list} />;
+                return (
+                    <CartItem
+                        key={list.itemId}
+                        {...list}
+                        confirmList={confirmList}
+                        setConfirmList={setConfirmList}
+                    />
+                );
             })}
         </Div>
     );

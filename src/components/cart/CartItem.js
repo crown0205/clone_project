@@ -19,9 +19,25 @@ const CartItem = (props) => {
         itemCategory,
         userAddress,
         userId,
+        confirmList,
+        setConfirmList,
+        onClick,
     } = props;
+    const href = "http://localhost:3000/detail/" + itemId;
 
-    console.log(itemId);
+    // const selectOne = () => {
+    //     confirmList.includes(itemId)
+    //         ? setConfirmList(confirmList.filter((id) => id !== itemId))
+    //         : setConfirmList(confirmList.push(itemId));
+    // };
+    console.log(confirmList);
+
+    const selectOne = () => {
+        confirmList.includes(itemId)
+            ? setConfirmList(confirmList.filter((id) => id !== itemId))
+            : setConfirmList(confirmList.push(itemId));
+    };
+
     return (
         <Grid flexDirection="column">
             <Grid
@@ -31,14 +47,23 @@ const CartItem = (props) => {
                 borderBottom="1px solid #f4f4f4"
             >
                 <Grid alignItems="center" width="463px">
-                    <Icons checkIcon />
+                    <Icons
+                        itemId={itemId}
+                        checkIcon
+                        checkUrl={
+                            confirmList?.includes(itemId)
+                                ? "https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg"
+                                : "https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
+                        }
+                        onClick={selectOne}
+                    />
                     <ProductImage
-                        href={itemId} //props 또 넘겨야 할듯
+                        href={href} //props 또 넘겨야 할듯
                         src={itemImg}
                     />
 
                     <Grid width="327px" margin="0 0 5px 20px">
-                        <A href="http://localhost:3000/detail">{itemName}</A>
+                        <A href={href}>{itemName}</A>
                     </Grid>
                 </Grid>
                 <Grid
@@ -48,7 +73,7 @@ const CartItem = (props) => {
                     justifyContent="space-between"
                     margin="0 0 5px 0"
                 >
-                    <Count />
+                    <Count>{itemAmount}</Count>
                     <DetailSpan
                         width="116px"
                         size="16px"
@@ -57,6 +82,7 @@ const CartItem = (props) => {
                     >
                         {itemPrice}
                     </DetailSpan>
+
                     <Button
                         small
                         size="30px"

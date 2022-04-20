@@ -2,7 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const Icons = (props) => {
-    const { width, height, margin, fontSize, display, src, checkIcon } = props;
+    const {
+        width,
+        height,
+        margin,
+        fontSize,
+        display,
+        src,
+        checkIcon,
+        checkUrl,
+        onClick,
+    } = props;
 
     const styles = {
         width: width,
@@ -11,13 +21,14 @@ const Icons = (props) => {
         fontSize: fontSize,
         display: display,
         src: src,
+        checkUrl: checkUrl,
     };
 
     if (checkIcon) {
-        return <CheckIcon {...styles} />;
+        return <CheckIcon {...styles} onClick={onClick} />;
     }
 
-    return <Icon {...styles} />;
+    return <Icon {...styles} onClick={onClick} />;
 };
 
 Icons.defaultProps = {
@@ -35,7 +46,7 @@ const CheckIcon = styled.span`
     margin: -2px 12px 0 0;
     display: ${(props) => props.display};
 
-    background-image: url("https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg");
+    background-image: url("${(props) => props.checkUrl}");
     background-position: 0% 50%;
     background-repeat: no-repeat;
 `;

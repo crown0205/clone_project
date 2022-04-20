@@ -8,6 +8,7 @@ const Grid = (props) => {
         height,
         margin,
         padding,
+        paddingTop,
         display,
         justifyContent,
         bg,
@@ -24,6 +25,7 @@ const Grid = (props) => {
         height: height,
         margin: margin,
         padding: padding,
+        paddingTop: paddingTop,
         display: display,
         justifyContent: justifyContent,
         bg: bg,
@@ -43,6 +45,7 @@ Grid.defaultProps = {
     height: "",
     margin: "",
     padding: "",
+    paddingTop: "",
     display: "flex",
     justifyContent: "",
     bg: "",
@@ -59,6 +62,7 @@ const GridBox = styled.div`
     height: ${(props) => props.height};
     margin: ${(props) => props.margin};
     padding: ${(props) => props.padding};
+    ${(props) => (props.paddingTop ? `padding-top: ${props.paddingTop};` : "")}
     display: ${(props) => props.display};
     background: ${(props) => props.bg};
     justify-content: ${(props) => props.justifyContent};

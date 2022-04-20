@@ -30,10 +30,10 @@ const initialState = {
 //미들웨어
 const readCartDB = () => {
     return function (dispatch, getState, { history }) {
-        console.log("readCart미들웨어");
+        // console.log("readCart미들웨어");
         Apis.readCart()
             .then((response) => {
-                console.log("readCart서버에서응답", response.data);
+                // console.log("readCart서버에서응답", response.data);
                 dispatch(readCart(response.data));
             })
 
@@ -77,7 +77,7 @@ export default handleActions(
     {
         [ADD_CART]: (state, action) =>
             produce(state, (draft) => {
-                console.log("addcart리듀서", action.payload.cartList);
+                // console.log("addcart리듀서", action.payload.cartList);
                 draft.cartList.push(action.payload.cartList);
             }),
         [READ_CART]: (state, action) =>

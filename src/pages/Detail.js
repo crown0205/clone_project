@@ -33,8 +33,6 @@ const Detail = (props) => {
     // 천단위 콤마 찍어주는 함수
     const totalPrice = multiplyPrice.toLocaleString("ko-KR");
 
-    console.log(multiplyPrice, totalPrice);
-
     const countMinus = () => {
         if (count > 1) {
             setCount(count - 1);
@@ -53,7 +51,7 @@ const Detail = (props) => {
             itemId: itemDate._id,
             itemName: itemDate.itemName,
             itemAmount: count,
-            itemPrice: itemDate.itemPrice,
+            itemPrice: totalPrice + "원",
             itemImg: itemDate.itemImg,
             itemCategory: itemDate.itemCategory,
             userAddress: userInfo.userAddress,

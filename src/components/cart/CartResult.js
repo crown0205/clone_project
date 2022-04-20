@@ -5,7 +5,13 @@ import { Grid, Button, DetailSpan } from "../../elements/Index";
 
 const CartResult = (props) => {
     return (
-        <Grid display="block" position="fixed" bg="#fff">
+        <Grid
+            display="block"
+            position="fixed"
+            bg="#fff"
+            paddingTop="40px"
+            margin="20px 0 20px 0"
+        >
             <Grid display="block" border="1px solid #fafafa">
                 <CartAddress />
                 <OrderList />
@@ -21,7 +27,7 @@ const CartResult = (props) => {
                     주문하기
                 </Button>
             </Grid>
-            <Grid width="284px" flexDirection="column" padding="34px 0 0 0">
+            <Grid width="284px" flexDirection="column" padding="34px 0 100px 0">
                 <DetailSpan size="12px" color="#666666" letterSpacing="-1px">
                     · 쿠폰/적립금은 주문서에서 사용 가능합니다
                 </DetailSpan>

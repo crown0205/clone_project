@@ -3,32 +3,38 @@ import styled from "styled-components";
 import { Grid, Icons, DetailSpan } from "../../elements/Index";
 
 const CartButton = (props) => {
+    const { onClick, confirmList } = props;
+
     return (
         <Grid width="742px" padding="0 10px 0 2px">
-            <CheckLabel>
+            <CheckLabel onClick={onClick}>
                 <input type={"checkbox"}></input>
-                <Icons checkIcon />
+                <Icons
+                    checkIcon
+                    checkUrl={
+                        confirmList
+                            ? "https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg"
+                            : "https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
+                    }
+                />
                 <DetailSpan bold="700">전체선택(0/5)&nbsp;&nbsp;</DetailSpan>
             </CheckLabel>
             <DeleteLabel>
                 <input type={"checkbox"}></input>
-                {/* <Icons
-                    width="24px"
-                    height="24px"
-                    margin="-2px 12px 0 0"
-                    src="https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
-                /> */}
+
                 <DetailSpan bold="700">|&nbsp;&nbsp;선택삭제</DetailSpan>
             </DeleteLabel>
         </Grid>
     );
 };
 
-const CheckLabel = styled.label`
+const CheckLabel = styled.button`
     width: auto;
     height: 60px;
     padding: 18px 0 17px 0;
     display: flex;
+    background: transparent;
+    border: none;
 
     input {
         position: absolute;
@@ -37,11 +43,13 @@ const CheckLabel = styled.label`
     }
 `;
 
-const DeleteLabel = styled.label`
+const DeleteLabel = styled.button`
     width: auto;
     height: 60px;
     padding: 18px 0 17px 0;
     display: flex;
+    background: transparent;
+    border: none;
 
     input {
         position: absolute;
