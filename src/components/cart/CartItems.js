@@ -15,49 +15,10 @@ const CartItems = (props) => {
 
   return (
     <>
-      {userCart?.map((i, idx) => {
-        if (ice) {
-          return (
-            <Div>
-              <Package
-                src={
-                  "https://res.kurly.com/pc/service/cart/2007/ico_frozen.svg"
-                }
-                category="냉동 상품"
-              />
-              <CartItem key={user[0]._id} {...i} />
-            </Div>
-          );
-        } else if (cold) {
-          return (
-            <Div>
-              <Package
-                src={"https://res.kurly.com/pc/service/cart/2007/ico_cold.svg"}
-                category="냉장 상품"
-              />
-              <CartItem key={user[0]._id} {...i} />
-            </Div>
-          );
-        } else {
-          return (
-            <Div>
-              <Package
-                src={
-                  "https://res.kurly.com/pc/service/cart/2009/ico_room_v2.svg?v=1"
-                }
-                category="상온 상품"
-              />
-              <CartItem key={user[0]._id} {...i} />
-            </Div>
-          );
-        }
-      })}
-      ; )
     </>
   );
 };
 
-const Div = styled.div`
-`;
+const Div = styled.div``;
 
 export default CartItems;

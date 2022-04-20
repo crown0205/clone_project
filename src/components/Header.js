@@ -13,10 +13,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-const Header = props => {
-  //로그인 여부 확인
+const Header = (props) => {
+
   const isLogin = useSelector(state => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
 
   const dispatch = useDispatch();
   const logout = () => {
@@ -37,11 +36,11 @@ const Header = props => {
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
             <ul className="navBar flex">
-              {(isLogin && isToken)? <div><div className="user">일반</div><li>{user[0]?.userName}님 <span></span></li>
+              {isLogin? <div><div className="user">일반</div><li>{user[0]?.userName}님 <span></span></li>
               </div> : <li onClick={()=> {
                 history.push("/signup");
               }}>회원가입</li>}
-              {(isLogin && isToken)? <li onClick={logout}>로그아웃</li> : <li onClick={()=> {
+              {isLogin? <li onClick={logout}>로그아웃</li> : <li onClick={()=> {
                 history.push("/login");
               }}>로그인</li>}
               <li>

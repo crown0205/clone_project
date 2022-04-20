@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 // 패키지
 import { Route } from "react-router-dom";
 import { history } from "../redux/configureStore";
 import { ConnectedRouter } from "connected-react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //  컴포넌트
 import Header from "../components/Header";
@@ -18,13 +19,20 @@ import Modal from "../components/Modal";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
 
   //로그인 여부 확인
-  // const isLogin = useSelector(state => state.user.isLogin);
-  // const isToken = localStorage.getItem("token");
+  const isLogin = useSelector((state) => state.user.isLogin);
+  const isToken = localStorage.getItem("token");
+
+  React.useEffect(() => {
+    if (isToken) {
+      dispatch(userActions.getUserDB());
+    }
+  }, []);
 
   //모달 상태 확인
-  const isModal = useSelector(state => state.item.modal);
+  const isModal = useSelector((state) => state.item.modal);
 
   return (
     <>
@@ -39,7 +47,7 @@ function App() {
         <Route path="/cart" exact component={Cart} />
 
         {/* 모달 */}
-        {isModal? <Modal/> : null}
+        {isModal ? <Modal /> : null}
       </ConnectedRouter>
     </>
   );

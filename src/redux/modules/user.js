@@ -89,7 +89,7 @@ const loginDB = (userId, pwd) => {
                 history.replace("/");
             })
             .catch((error) => {
-                console.log(error, "로그인에 실패했습니다!");
+                window.alert(error, "로그인에 실패했습니다!");
             });
     };
 };
