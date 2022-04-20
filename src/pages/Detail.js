@@ -20,8 +20,8 @@ const Detail = (props) => {
     const itemId = props.match.params.itemId;
 
     const [count, setCount] = React.useState(1);
-    console.log(itemDate);
-
+    // console.log(itemDate);
+    console.log(userInfo);
     React.useEffect(() => {
         dispatch(itemActions.getOneItemDB(itemId));
         dispatch(cartActions.readCartDB());
@@ -29,9 +29,9 @@ const Detail = (props) => {
 
     const isCart = useSelector((state) => state.cart);
 
-    console.log(isCart);
+    // console.log(isCart);
 
-    console.log(count);
+    // console.log(count);
 
     const countMinus = () => {
         if (count > 1) {
@@ -43,20 +43,20 @@ const Detail = (props) => {
         setCount(count + 1);
     };
 
-    // const editCart = () => {
-    //   console.log('editCart시작', count)
+    const editCart = () => {
+        console.log("editCart시작", count);
 
-    //   const itemList = {
-    //     itemId: itemDate._id,
-    //     itemName: itemDate.itemName,
-    //     itemAmount: count,
-    //     itemPrice: itemDate.itemPrice,
-    //     itemImg: itemDate.itemImg,
-    //     itemCategory: itemDate.itemCategory,
-    //     userAddress: userInfo.userAddress,
-    //     userId: userInfo.userId,
-    //   }
-    // }
+        const itemList = {
+            itemId: itemDate._id,
+            itemName: itemDate.itemName,
+            itemAmount: count,
+            itemPrice: itemDate.itemPrice,
+            itemImg: itemDate.itemImg,
+            itemCategory: itemDate.itemCategory,
+            userAddress: userInfo.userAddress,
+            userId: userInfo.userId,
+        };
+    };
 
     const addCart = () => {
         console.log("addcart시작", count);
