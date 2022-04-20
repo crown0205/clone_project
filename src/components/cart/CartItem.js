@@ -30,7 +30,6 @@ const CartItem = (props) => {
     //         ? setConfirmList(confirmList.filter((id) => id !== itemId))
     //         : setConfirmList(confirmList.push(itemId));
     // };
-    console.log(confirmList);
 
     const selectOne = () => {
         confirmList.includes(itemId)

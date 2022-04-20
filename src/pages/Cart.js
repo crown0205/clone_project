@@ -17,25 +17,37 @@ const Cart = (props) => {
     }, []);
     const cartList = useSelector((state) => state.cart);
     const user = useSelector((state) => state.user);
-    // console.log(cartList); //장바구니목록
+    //장바구니목록
 
-    //전체선택, 선택삭제, 주문하기 위한 아이템리스트
+    //전체선택, 선택삭제, 주문하기 위한 아이템아이디리스트
     const totalitemId = cartList.cartList.map(
         (itemId, index) => cartList.cartList[index].itemId
     );
     //처음 스테이트는 전체선택
     const [confirmList, setConfirmList] = React.useState(totalitemId);
-    // 전체선택을 위한 함수
+    // 전체선택을 위한 함수 onClick
     const selectAll = () => {
         confirmList?.length === totalitemId.length
-            ? setConfirmList()
+            ? setConfirmList("")
             : setConfirmList(totalitemId);
     };
 
-    //선택삭제
-    const deleteConfirmList = () => {
+    //선택삭제 _onClick
+    const deleteCartList = () => {
+        if (confirmList.length === 0) {
+            window.alert("삭제할 상품을 선택해주세요!");
+            return;
+        }
+
         console.log(confirmList);
-        dispatch(cartActions.deleteCartDB(confirmList));
+        const userId = user.user[0].userId;
+        const deleteCartList = {
+            userId: userId,
+            itemId: confirmList,
+        };
+        console.log(deleteCartList);
+
+        dispatch(cartActions.deleteCartDB(deleteCartList));
     };
 
     return (
@@ -48,6 +60,7 @@ const Cart = (props) => {
                     <Grid flexDirection="column">
                         <CartButton
                             onClick={selectAll}
+                            _onClick={deleteCartList}
                             confirmList={confirmList}
                         />
                         {/* 카테고리 3개 묶은 컴포넌트 만들기 */}

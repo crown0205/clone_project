@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Grid, Icons, DetailSpan } from "../../elements/Index";
 
 const CartButton = (props) => {
-    const { onClick, confirmList } = props;
+    const { onClick, _onClick, confirmList } = props;
 
     return (
         <Grid width="742px" padding="0 10px 0 2px">
@@ -19,7 +19,7 @@ const CartButton = (props) => {
                 />
                 <DetailSpan bold="700">전체선택(0/5)&nbsp;&nbsp;</DetailSpan>
             </CheckLabel>
-            <DeleteLabel>
+            <DeleteLabel onClick={_onClick}>
                 <input type={"checkbox"}></input>
 
                 <DetailSpan bold="700">|&nbsp;&nbsp;선택삭제</DetailSpan>
