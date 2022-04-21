@@ -1,3 +1,5 @@
+//header
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -12,6 +14,7 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Nav from "./nav/Nav";
 
 const Header = props => {
   //로그인 여부 확인
@@ -64,7 +67,7 @@ const Header = props => {
                   로그인
                 </li>
                 <li>
-                  고객센터 <span></span>
+                  고객센터<span></span>
                 </li>
               </ul>
             )}
@@ -95,6 +98,7 @@ const Header = props => {
                 }}
               >
                 <span className="hamBtn">
+                  <Nav />
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
@@ -200,7 +204,7 @@ const HeaderDiv = styled.div`
     text-align: center;
 
     li {
-      width: 100px;
+      /* width: 100px; */
       &:hover {
         cursor: pointer;
       }
@@ -213,13 +217,12 @@ const HeaderDiv = styled.div`
 
       .user {
         border: 1px solid #5f0080;
-        padding: 1px 9px 0px;
+        padding: 0px 9px 0px;
         border-radius: 10px;
-        /* width: 38px; */
         width: 45px;
         height: 17px;
         position: relative;
-        top: -2px;
+        top: 0px;
         margin-right: 5px;
       }
     }
@@ -247,10 +250,9 @@ const HeaderDiv = styled.div`
 
   .navBar {
     /* width: 205px; */
-    /* width: 26%; */
+    width: 26%;
     position: relative;
     li {
-      padding: 0 10px;
       &:hover {
         cursor: pointer;
       }
