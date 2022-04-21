@@ -84,7 +84,6 @@ const loginDB = (userId, pwd) => {
         })
             .then((response) => {
                 localStorage.setItem("token", response.data.token);
-                console.log(response);
                 dispatch(getUserDB());
                 history.replace("/");
             })
@@ -116,7 +115,24 @@ const getUserDB = () => {
                 dispatch(setUser(res.data));
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err, "유저 정보 불러오기 에러");
+            });
+    };
+};
+
+const kakaoLogin = (code) => {
+    return function (dispatch, getState, { history }) {
+        axios({
+            method: "GET",
+            url: `http://54.180.90.16?code=${code}`,
+        })
+            .then((res) => {
+                localStorage.setItem("token", res.data.token);
+                history.replace("/");
+            })
+            .catch((err) => {
+                window.alert("로그인에 실패했습니다!");
+                history.replace("/login");
             });
     };
 };
@@ -148,6 +164,7 @@ const actionCreators = {
     logoutDB,
     logOut,
     getUserDB,
+    kakaoLogin,
 };
 
 export { actionCreators };
