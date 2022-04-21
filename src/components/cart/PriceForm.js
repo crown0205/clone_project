@@ -18,8 +18,8 @@ const PriceForm = (props) => {
     const totalPrice = PriceList.reduce((a, b) => a + b);
     // console.log('총 결제금액', totalPrice);
     const disCountPrice = -totalPrice * 0.2; //할인금액20%
-    const yourPrice = totalPrice + disCountPrice; //최종금액
     const shippingFee = totalPrice >= 40000 ? 0 : 5000; //배송비
+    const yourPrice = totalPrice + disCountPrice + shippingFee; //최종금액
 
     if (total) {
         return (
@@ -33,7 +33,7 @@ const PriceForm = (props) => {
                             lineHeight="19px"
                             bold={bold}
                         >
-                            {totalPrice}
+                            {Number.isNaN(totalPrice) ? 0 : totalPrice}
                         </DetailSpan>
                         <DetailSpan size="16px" color="#4c4c4c">
                             원
@@ -55,7 +55,7 @@ const PriceForm = (props) => {
                             lineHeight="19px"
                             bold={bold}
                         >
-                            {disCountPrice}
+                            {Number.isNaN(disCountPrice) ? 0 : disCountPrice}
                         </DetailSpan>
                         <DetailSpan size="16px" color="#4c4c4c">
                             원
@@ -77,7 +77,7 @@ const PriceForm = (props) => {
                             lineHeight="19px"
                             bold={bold}
                         >
-                            {yourPrice}
+                            {Number.isNaN(yourPrice) ? 0 : yourPrice}
                         </DetailSpan>
                         <DetailSpan size="16px" color="#4c4c4c">
                             원

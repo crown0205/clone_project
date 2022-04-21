@@ -34,9 +34,11 @@ const OrderList = (props) => {
                     color="#5f0080"
                     padding="0 0 0 70px"
                 >
-                    {40000 - totalPrice > 0
-                        ? 40000 - totalPrice + "원 추가주문 시,"
-                        : ""}
+                    {40000 - totalPrice < 0
+                        ? ""
+                        : 40000 -
+                          (Number.isNaN(totalPrice) ? 0 : totalPrice) +
+                          "원 추가주문 시,"}
                 </DetailSpan>
                 <DetailSpan
                     size="12px"
@@ -67,7 +69,11 @@ const OrderList = (props) => {
                     textAlign="right"
                 >
                     <Icon>적립</Icon>
-                    구매 시 {totalPrice * 0.03}원 적립
+                    구매 시{" "}
+                    {Number.isNaN(totalPrice)
+                        ? 0
+                        : Math.floor(totalPrice * 0.03)}
+                    원 적립
                 </DetailSpan>
             </Grid>
         </Grid>
