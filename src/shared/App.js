@@ -38,7 +38,6 @@ function App() {
     //모달 상태 확인
     const isModal = useSelector((state) => state.item.modal);
 
-<<<<<<< HEAD
   return (
     <>
       <ConnectedRouter history={history}>
@@ -58,29 +57,6 @@ function App() {
       </ConnectedRouter>
     </>
   );
-=======
-    return (
-        <>
-            <ConnectedRouter history={history}>
-                <Header />
-                <Route path="/" exact component={Main} />
-                <Route path="/login" exact component={Login} />
-                <Route path="/signup" exact component={Signup} />
-                <Route path="/bestItem" exact component={Category} />
-                <Route path="/category/:category" exact component={Category} />
-                <Route path="/detail/:itemId" exact component={Detail} />
-                <Route path="/cart" exact component={Cart} />
-                <Route
-                    path="54.180.90.16/oauth/kakao"
-                    component={OAuth2RedirectHandeler}
-                />
-                {/* 모달 */}
-                {isModal ? <Modal /> : null}
-                <Footer />
-            </ConnectedRouter>
-        </>
-    );
->>>>>>> 806192aa7ac5102eb1dd227729c3817c4dd0e19b
 }
 
 export default App;
