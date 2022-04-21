@@ -43,16 +43,16 @@ const Footer = () => {
               <li>이용안내</li>
             </ul>
             <div className="Introduce one">
-              {/* FE:
-              <span className="name">정현수</span>
+              FE:
               <span className="name">강성지</span>
-              <span className="name">공지애</span> */}
+              <span className="name">정현수</span>
+              <span className="name">공지애</span>
             </div>
             <div className="Introduce two">
-              {/* BE:
+              BE:
               <span className="name">홍준기</span>
               <span className="name">김윤하</span>
-              <span className="name">김태균</span> */}
+              <span className="name">김태균</span>
             </div>
             <ul className="iconWrap">
               <li>
@@ -191,12 +191,18 @@ const FooterWrap = styled.div`
         }
       }
       .Introduce {
-        /* background-color: #aaa; */
+        display: inline-block;
+        width: 400px;
+        background-color: #dfdfdf;
         font-size: 30px;
         font-weight: 700;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding-left: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        box-shadow: 2px 3px 5px 0px grey;
+        color: #1b1b1b;
 
         .name {
           display: inline-block;

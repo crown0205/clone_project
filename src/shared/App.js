@@ -9,6 +9,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 //  컴포넌트
+import "./App.css";
 import Header from "../components/Header";
 import Main from "../pages/Main";
 import Login from "../pages/Login";
@@ -17,7 +18,6 @@ import Category from "../pages/Category";
 import Detail from "../pages/Detail";
 import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
-import "./App.css";
 import Footer from "../components/Footer";
 import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
 import Chat from "../pages/Chat";

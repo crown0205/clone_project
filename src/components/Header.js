@@ -1,3 +1,5 @@
+//header
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -10,6 +12,7 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Nav from "./nav/Nav";
 
 const Header = props => {
   //로그인 여부 확인
@@ -62,7 +65,7 @@ const Header = props => {
                   로그인
                 </li>
                 <li>
-                  고객센터 <span></span>
+                  고객센터<span></span>
                 </li>
               </ul>
             )}
@@ -93,6 +96,7 @@ const Header = props => {
                 }}
               >
                 <span className="hamBtn">
+                  <Nav />
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
@@ -151,6 +155,149 @@ const Header = props => {
 };
 export default Header;
 const HeaderDiv = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 10px 16px 0;
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .point {
+    cursor: pointer;
+  }
+
+  .inner_wrap {
+    max-width: 1050px;
+    width: 98%;
+    height: 100%;
+    margin: auto;
+  }
+
+  .topBar {
+    font-size: 12px;
+    vertical-align: middle;
+    cursor: pointer;
+
+    .delivery {
+      border: 1px solid #dedfe1;
+      border-radius: 10px;
+      padding: 2px 6px;
+      width: 121px;
+      height: 22px;
+
+      span {
+        color: #5f0080;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .login.navBar {
+    width: 28%;
+    position: relative;
+    text-align: center;
+
+    li {
+      /* width: 100px; */
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .userWrap {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      /* background-color: red; */
+
+      .user {
+        border: 1px solid #5f0080;
+        padding: 0px 9px 0px;
+        border-radius: 10px;
+        width: 45px;
+        height: 17px;
+        position: relative;
+        top: 0px;
+        margin-right: 5px;
+      }
+    }
+
+    li:nth-child(1),
+    li:nth-child(2) {
+      color: #5f0080;
+      font-weight: 600;
+      /* padding-left: 10px; */
+
+      &::after {
+        content: "";
+        border-right: 1px solid #aaa;
+        width: 1px;
+        height: 1px;
+        padding-left: 13px;
+
+        /* padding-left: 19px; */
+
+        /* background-color: #aaa; */
+        /* margin-right: 10px; */
+      }
+    }
+  }
+
+  .navBar {
+    /* width: 205px; */
+    width: 26%;
+    position: relative;
+    li {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    li:nth-child(1),
+    li:nth-child(2) {
+      color: #5f0080;
+      font-weight: 600;
+      &::after {
+        content: "";
+        border-right: 1px solid #aaa;
+        width: 1px;
+        height: 1px;
+        padding-left: 19px;
+      }
+    }
+
+    span {
+      display: inline-block;
+      background: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png)
+        no-repeat 0 0;
+      background-size: 8px 5px;
+      width: 8px;
+      height: 5px;
+    }
+  }
+
+  .LogoWrap {
+    .mainLogo {
+      margin: auto;
+      height: 79px;
+      width: 103px;
+      cursor: pointer;
+    }
+  }
+`;
+
+const MenuBarWrap = styled.div`
+  width: 100%;
+  height: 55px;
+  margin-top: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #cfcfcf;
+  z-index: 2;
+
+  .menuBar {
     width: 100%;
     height: auto;
     padding: 10px 16px 0;
