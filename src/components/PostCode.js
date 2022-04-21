@@ -20,7 +20,6 @@ const Wrap = styled.div`
   height: 500px;
   padding: 30px;
   border-radius: 10px;
-  z-index: 9999;
 `;
 
 export default PostCode;

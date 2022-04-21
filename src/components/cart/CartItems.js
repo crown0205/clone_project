@@ -62,6 +62,7 @@ const CartItems = (props) => {
                             {...list}
                             confirmList={confirmList}
                             setConfirmList={setConfirmList}
+                            edit={edit}
                         />
                     );
                 })}
@@ -85,6 +86,7 @@ const CartItems = (props) => {
                         {...list}
                         confirmList={confirmList}
                         setConfirmList={setConfirmList}
+                        edit={edit}
                     />
                 );
             })}

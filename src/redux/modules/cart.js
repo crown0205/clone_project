@@ -27,14 +27,14 @@ const deleteCart = createAction(DELETE_CART, (itemId, cartList) => ({
 const initialState = {
     cartList: [
         {
-            // itemId: "상품 아이디",
-            // itemName: "상품 이름",
-            // itemAmount: "상품 수량",
-            // itemPrice: "상품 가격",
-            // itemImg: "상품 이미지",
-            // itemCategory: "",
-            // userAddress: "주소",
-            // userId: "아이디",
+            itemId: "상품 아이디",
+            itemName: "상품 이름",
+            itemAmount: "상품 수량",
+            itemPrice: "상품 가격",
+            itemImg: "상품 이미지",
+            itemCategory: "",
+            userAddress: "주소",
+            userId: "아이디",
         },
     ],
 };
@@ -66,7 +66,6 @@ const addCartDB = (cartList = "") => {
                 dispatch(addCart(cartList));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
@@ -91,7 +90,6 @@ const editCartDB = (itemId, itemAmount, itemPrice) => {
                 dispatch(editCart(response.data));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
@@ -121,7 +119,6 @@ const deleteCartDB = (deleteList) => {
                 // dispatch(deleteCart(deleteCartList));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
@@ -158,6 +155,7 @@ export default handleActions(
                     (c) => c.itemId === action.payload.cartList.itemId
                 );
                 console.log(idx);
+                console.log(action.payload.cartList);
                 draft.cartList[idx] = action.payload.cartList;
             }),
         [COUNT_CART]: (state, action) =>
