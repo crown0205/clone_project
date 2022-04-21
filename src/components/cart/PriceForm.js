@@ -1,38 +1,9 @@
 import React from "react";
-<<<<<<< HEAD
-=======
 import { useSelector } from "react-redux";
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 import styled from "styled-components";
 import { Grid, DetailSpan } from "../../elements/Index";
 
 const PriceForm = (props) => {
-<<<<<<< HEAD
-    const { children, bold } = props;
-
-    return (
-        <Grid height="36px" width="284px" alignItems="center">
-            <Dl>
-                <Dt>{children}</Dt>
-                <Grid>
-                    <DetailSpan
-                        size="18px"
-                        color="#4c4c4c"
-                        lineHeight="19px"
-                        bold={bold}
-                    >
-                        108,350
-                    </DetailSpan>
-                    <DetailSpan size="16px" color="#4c4c4c">
-                        원
-                    </DetailSpan>
-                </Grid>
-            </Dl>
-        </Grid>
-    );
-};
-
-=======
     const { children, bold, total, discount, your, ship } = props;
     const userCart = useSelector((state) => state.cart.cartList);
     // console.log(userCart, "유저장바구니");
@@ -139,7 +110,6 @@ const PriceForm = (props) => {
         );
     }
 };
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 const Dl = styled.dl`
     width: 244px;
     display: flex;

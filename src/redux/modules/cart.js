@@ -8,10 +8,7 @@ const READ_CART = "READ_CART";
 const ADD_CART = "ADD_CART";
 const EDIT_CART = "EDIT_CART";
 const COUNT_CART = "COUNT_CART";
-<<<<<<< HEAD
-=======
 const DELETE_CART = "DELETE_CART";
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 
 //액션 크리에이터
 const readCart = createAction(READ_CART, (cartList) => ({ cartList }));
@@ -21,13 +18,10 @@ const countCart = createAction(COUNT_CART, (itemId, count) => ({
     itemId,
     count,
 }));
-<<<<<<< HEAD
-=======
 const deleteCart = createAction(DELETE_CART, (itemId, cartList) => ({
     itemId,
     cartList,
 }));
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 
 //이니셜 스테이트
 const initialState = {
@@ -115,15 +109,6 @@ const editCartDB = (itemId, itemAmount, itemPrice) => {
     };
 };
 
-<<<<<<< HEAD
-const deleteCartDB = (cartList) => {
-    return function (dispatch, getState, { history }) {
-        console.log("deletecart미들웨어", cartList);
-
-        Apis.deleteCart(cartList.userId, cartList.itemId)
-            .then((response) => {
-                console.log("deletecart서버에서응답", response);
-=======
 const deleteCartDB = (deleteList) => {
     return function (dispatch, getState, { history }) {
         console.log(deleteList);
@@ -132,7 +117,6 @@ const deleteCartDB = (deleteList) => {
             .then((response) => {
                 console.log("deletecart서버에서응답", response);
                 window.location.reload();
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 
                 // dispatch(deleteCart(deleteCartList));
             })
@@ -186,13 +170,10 @@ export default handleActions(
                     itemAmount: action.payload.count,
                 };
             }),
-<<<<<<< HEAD
-=======
         [DELETE_CART]: (state, action) =>
             produce(state, (draft) => {
                 console.log("리듀서", action.payload);
             }),
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
     },
     initialState
 );
@@ -206,11 +187,8 @@ const actionCreators = {
     editCart,
     editCartDB,
     countCart,
-<<<<<<< HEAD
-=======
     deleteCart,
     deleteCartDB,
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 };
 
 export { actionCreators };

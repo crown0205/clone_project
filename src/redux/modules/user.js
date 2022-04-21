@@ -84,10 +84,6 @@ const loginDB = (userId, pwd) => {
         })
             .then((response) => {
                 localStorage.setItem("token", response.data.token);
-<<<<<<< HEAD
-                console.log(response);
-=======
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
                 dispatch(getUserDB());
                 history.replace("/");
             })
@@ -106,25 +102,6 @@ const logoutDB = () => {
 };
 
 const getUserDB = () => {
-<<<<<<< HEAD
-  const token = localStorage.getItem("token");
-  return function (dispatch, getState, { history }) {
-    axios({
-      method: "get",
-      url: "http://54.180.90.16/login/getUser",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => {
-        dispatch(setUser(res.data));
-
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-=======
     const token = localStorage.getItem("token");
     return function (dispatch, getState, { history }) {
         axios({
@@ -158,7 +135,6 @@ const kakaoLogin = (code) => {
                 history.replace("/login");
             });
     };
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 };
 
 // reducer
@@ -188,10 +164,7 @@ const actionCreators = {
     logoutDB,
     logOut,
     getUserDB,
-<<<<<<< HEAD
-=======
     kakaoLogin,
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 };
 
 export { actionCreators };

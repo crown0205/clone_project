@@ -19,10 +19,7 @@ import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
 import "./App.css";
 import Footer from "../components/Footer";
-<<<<<<< HEAD
-=======
-import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandeler";
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
+import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,10 +48,7 @@ function App() {
         <Route path="/category/:category" exact component={Category} />
         <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
-<<<<<<< HEAD
-=======
         <Route path="54.180.90.16/oauth/kakao" component={OAuth2RedirectHandler} />
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
         {/* 모달 */}
         {isModal ? <Modal /> : null}
         <Footer />
