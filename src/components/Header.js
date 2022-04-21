@@ -12,7 +12,7 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import Nav from "./nav/Nav";
 
 const Header = props => {
   //로그인 여부 확인
@@ -31,45 +31,44 @@ const Header = props => {
 
   return (
     <React.Fragment>
-
       <HeaderDiv>
         <div className="inner_wrap">
           <div className="topBar flex">
-            <div>
+            <div className="delivery">
               <span>샛별 택배</span> 배송안내 ﹥
             </div>
-            <ul className="navBar flex">
-              {isLogin && isToken ? (
-                <div>
+            {isLogin && isToken ? (
+              <ul className="navBar flex login">
+                <div className="userWrap">
                   <div className="user">일반</div>
                   <li>
                     {user[0]?.userName}님 <span></span>
                   </li>
                 </div>
-              ) : (
+                <li onClick={logout}>로그아웃</li>
+                <li>
+                  고객센터 <span></span>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navBar flex">
                 <li
                   onClick={() => {
                     history.push("/signup");
-                  }}
-                >
+                  }}>
                   회원가입
                 </li>
-              )}
-              {isLogin && isToken ? (
-                <li onClick={logout}>로그아웃</li>
-              ) : (
                 <li
                   onClick={() => {
                     history.push("/login");
-                  }}
-                >
+                  }}>
                   로그인
                 </li>
-              )}
-              <li>
-                고객센터 <span></span>
-              </li>
-            </ul>
+                <li>
+                  고객센터 <span></span>
+                </li>
+              </ul>
+            )}
           </div>
 
           <div
@@ -97,6 +96,7 @@ const Header = props => {
                 }}
               >
                 <span className="hamBtn">
+                  <Nav />
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
@@ -150,7 +150,6 @@ const Header = props => {
           </div>
         </div>
       </MenuBarWrap>
-
     </React.Fragment>
   );
 };
@@ -183,7 +182,7 @@ const HeaderDiv = styled.div`
     vertical-align: middle;
     cursor: pointer;
 
-    div {
+    .delivery {
       border: 1px solid #dedfe1;
       border-radius: 10px;
       padding: 2px 6px;
@@ -197,23 +196,66 @@ const HeaderDiv = styled.div`
     }
   }
 
-  .navBar {
-    width: 205px;
+  .login.navBar {
+    width: 28%;
     position: relative;
+    text-align: center;
+
     li {
+      width: 100px;
       &:hover {
         cursor: pointer;
       }
     }
+    .userWrap {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      /* background-color: red; */
 
-    .user {
-      border: 1px solid #5f0080;
-      padding: 1px 9px 0px;
-      border-radius: 10px;
-      height: 17px;
-      position: relative;
-      left: 7px;
-      top: -2px;
+      .user {
+        border: 1px solid #5f0080;
+        padding: 1px 9px 0px;
+        border-radius: 10px;
+        /* width: 38px; */
+        width: 45px;
+        height: 17px;
+        position: relative;
+        top: -2px;
+        margin-right: 5px;
+      }
+    }
+
+    li:nth-child(1),
+    li:nth-child(2) {
+      color: #5f0080;
+      font-weight: 600;
+      /* padding-left: 10px; */
+
+      &::after {
+        content: "";
+        border-right: 1px solid #aaa;
+        width: 1px;
+        height: 1px;
+        padding-left: 13px;
+
+        /* padding-left: 19px; */
+
+        /* background-color: #aaa; */
+        /* margin-right: 10px; */
+      }
+    }
+  }
+
+  .navBar {
+    /* width: 205px; */
+    /* width: 26%; */
+    position: relative;
+    li {
+      padding: 0 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     li:nth-child(1),
@@ -226,7 +268,11 @@ const HeaderDiv = styled.div`
         width: 1px;
         height: 1px;
 
+        /* padding-left: 9px; */
         padding-left: 19px;
+
+        /* background-color: #aaa; */
+        /* margin-right: 10px; */
       }
     }
 
@@ -259,7 +305,6 @@ const MenuBarWrap = styled.div`
   background-color: #fff;
   border-bottom: 1px solid #cfcfcf;
   z-index: 2;
-
 
   .menuBar {
     width: 100%;
