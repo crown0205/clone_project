@@ -8,6 +8,11 @@ import { actionCreators as userActions } from "../redux/modules/user";
 import { history } from "../redux/configureStore";
 
 const Login = (props) => {
+  //카카오 로그인
+  const CLIENT_ID = "037c49fc2597d1697ff929e1a1e19493";
+  const REDIRECT_URI =  "http://54.180.90.16/auth/kakao/callback";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   const dispatch = useDispatch();
 
   const [userId, setUserId] = useState("");
@@ -45,12 +50,18 @@ const Login = (props) => {
               setPwd(e.target.value);
             }}
           />
-          <SecureBox>
-            <input type="checkbox" id="secureCheck" />
-            <label htmlFor="secureCheck">보안접속</label>
-            <li>아이디 찾기</li>
-            <li>비밀번호 찾기</li>
-          </SecureBox>
+          <KakaoBtn>
+            <div style={{ display: "inline-block" }}>
+              <input type="checkbox" id="secureCheck" checked="checked" />
+              <label htmlFor="secureCheck">보안접속</label>
+            </div>
+            <a href={KAKAO_AUTH_URL}>
+              <img
+                src="kakao_login_medium_narrow.png"
+                alt="카카오 로그인 버튼"
+              />
+            </a>
+          </KakaoBtn>
           <Button
             purple
             width="340px"
@@ -92,11 +103,12 @@ const LoginBox = styled.div`
   padding: 36px 0 0 0;
 `;
 
-const SecureBox = styled.div`
+const KakaoBtn = styled.div`
+  width: 340px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  width: 340px;
-  height: 60px;
-  padding: 0 0 28px 0;
+  padding: 0 0 10px 0;
 `;
+
 export default Login;
