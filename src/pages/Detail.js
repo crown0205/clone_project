@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,7 @@ import { actionCreators as itemActions } from "../redux/modules/item";
 
 // 컴포넌트
 import { Image, Button, DetailSpan, Input } from "../elements/Index";
+import { set } from "lodash";
 
 const Detail = (props) => {
     const dispatch = useDispatch();
@@ -23,6 +24,21 @@ const Detail = (props) => {
     const itemId = props.match.params.itemId;
 
     console.log(itemList);
+    // console.log(userInfo.userCart[0].itemId);
+    // console.log(itemId);
+
+    const itemIdList = userInfo.userCart.map(
+        (itemId, index) => userInfo.userCart[index].itemId
+    );
+    console.log(itemIdList);
+    const isEdit = itemIdList.indexOf(itemId); //-1일 때만 addCart
+    console.log(isEdit);
+
+    // const [page, setPage] = React.useState();
+
+    // useEffect(() => {
+    //     setPage(itemIdList);
+    // }, [page, itemIdList]);
 
     React.useEffect(() => {
         dispatch(itemActions.getOneItemDB(itemId));
@@ -54,7 +70,7 @@ const Detail = (props) => {
             itemId: itemDate._id,
             itemName: itemDate.itemName,
             itemAmount: count,
-            itemPrice: totalPrice + "원",
+            itemPrice: itemPrice,
             itemImg: itemDate.itemImg,
             itemCategory: itemDate.itemCategory,
             userAddress: userInfo.userAddress,
@@ -63,9 +79,16 @@ const Detail = (props) => {
 
         console.log("addCartDB에 보낼 카트리스트", itemList);
 
-        dispatch(cartActions.addCartDB(itemList));
+        isEdit === -1
+            ? dispatch(cartActions.addCartDB(itemList))
+            : dispatch(cartActions.editCartDB(itemDate._id, count, itemPrice));
         window.alert("장바구니에 상품이 담겼습니다!");
     };
+
+    // 수정하기 함수
+    // const editCart = () => {
+    //     dispatch(cartActions.editCartDB(itemDate._id, count, itemPrice));
+    // };
 
     return (
         <React.Fragment>
