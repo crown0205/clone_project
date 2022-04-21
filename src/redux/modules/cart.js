@@ -27,14 +27,14 @@ const deleteCart = createAction(DELETE_CART, (itemId, cartList) => ({
 const initialState = {
     cartList: [
         {
-            // itemId: "상품 아이디",
-            // itemName: "상품 이름",
-            // itemAmount: "상품 수량",
-            // itemPrice: "상품 가격",
-            // itemImg: "상품 이미지",
-            // itemCategory: "",
-            // userAddress: "주소",
-            // userId: "아이디",
+            itemId: "상품 아이디",
+            itemName: "상품 이름",
+            itemAmount: "상품 수량",
+            itemPrice: "상품 가격",
+            itemImg: "상품 이미지",
+            itemCategory: "",
+            userAddress: "주소",
+            userId: "아이디",
         },
     ],
 };
@@ -154,6 +154,7 @@ export default handleActions(
                     (c) => c.itemId === action.payload.cartList.itemId
                 );
                 console.log(idx);
+                console.log(action.payload.cartList);
                 draft.cartList[idx] = action.payload.cartList;
             }),
         [COUNT_CART]: (state, action) =>

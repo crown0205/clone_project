@@ -13,14 +13,14 @@ const Login = (props) => {
   const REDIRECT_URI = "http://54.180.90.16/auth/kakao/callback";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  const [userId, setUserId] = useState("");
-  const [pwd, setPwd] = useState("");
+    const [userId, setUserId] = useState("");
+    const [pwd, setPwd] = useState("");
 
-  const login = () => {
-    dispatch(userActions.loginDB(userId, pwd));
-  };
+    const login = () => {
+        dispatch(userActions.loginDB(userId, pwd));
+    };
 
   return (
     <React.Fragment>
@@ -87,28 +87,28 @@ const Login = (props) => {
 };
 
 const Wrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 340px;
-  height: 442px;
-  margin: 0 590px 0 590px;
-  padding: 90px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 340px;
+    height: 442px;
+    margin: 0 auto 300px;
+    padding: 90px 0 0 0;
 `;
 
 const LoginBox = styled.div`
-  width: 340px;
-  height: 332px;
-  padding: 36px 0 0 0;
+    width: 340px;
+    height: 332px;
+    padding: 36px 0 0 0;
 `;
 
 const KakaoBtn = styled.div`
-  width: 340px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0 10px 0;
+    width: 340px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 10px 0;
 `;
 
 export default Login;

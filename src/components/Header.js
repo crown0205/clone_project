@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
-
 // 패키지
 import styled from "styled-components";
 import { history } from "../redux/configureStore";
-
 // 아이콘
 import { BiSearch } from "react-icons/bi";
 import { FiMapPin } from "react-icons/fi";
@@ -151,228 +149,195 @@ const Header = props => {
     </React.Fragment>
   );
 };
-
 export default Header;
-
 const HeaderDiv = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 10px 16px 0;
-
-  .flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .point {
-    cursor: pointer;
-  }
-
-  .inner_wrap {
-    max-width: 1050px;
-    width: 98%;
-    height: 100%;
-    margin: auto;
-  }
-
-  .topBar {
-    font-size: 12px;
-    vertical-align: middle;
-    cursor: pointer;
-
-    .delivery {
-      border: 1px solid #dedfe1;
-      border-radius: 10px;
-      padding: 2px 6px;
-      width: 121px;
-      height: 22px;
-
-      span {
-        color: #5f0080;
-        font-weight: 600;
-      }
-    }
-  }
-
-  .login.navBar {
-    width: 28%;
-    position: relative;
-    text-align: center;
-
-    li {
-      width: 100px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .userWrap {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
-      /* background-color: red; */
-
-      .user {
-        border: 1px solid #5f0080;
-        padding: 1px 9px 0px;
-        border-radius: 10px;
-        /* width: 38px; */
-        width: 45px;
-        height: 17px;
-        position: relative;
-        top: -2px;
-        margin-right: 5px;
-      }
-    }
-
-    li:nth-child(1),
-    li:nth-child(2) {
-      color: #5f0080;
-      font-weight: 600;
-      /* padding-left: 10px; */
-
-      &::after {
-        content: "";
-        border-right: 1px solid #aaa;
-        width: 1px;
-        height: 1px;
-        padding-left: 13px;
-
-        /* padding-left: 19px; */
-
-        /* background-color: #aaa; */
-        /* margin-right: 10px; */
-      }
-    }
-  }
-
-  .navBar {
-    /* width: 205px; */
-    /* width: 26%; */
-    position: relative;
-    li {
-      padding: 0 10px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    li:nth-child(1),
-    li:nth-child(2) {
-      color: #5f0080;
-      font-weight: 600;
-      &::after {
-        content: "";
-        border-right: 1px solid #aaa;
-        width: 1px;
-        height: 1px;
-
-        /* padding-left: 9px; */
-        padding-left: 19px;
-
-        /* background-color: #aaa; */
-        /* margin-right: 10px; */
-      }
-    }
-
-    span {
-      display: inline-block;
-      background: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png)
-        no-repeat 0 0;
-      background-size: 8px 5px;
-      width: 8px;
-      height: 5px;
-    }
-  }
-
-  .LogoWrap {
-    .mainLogo {
-      margin: auto;
-      height: 79px;
-      width: 103px;
-      cursor: pointer;
-    }
-  }
-`;
-
-const MenuBarWrap = styled.div`
-  width: 100%;
-  height: 55px;
-  margin-top: 10px;
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  border-bottom: 1px solid #cfcfcf;
-  z-index: 2;
-
-  .menuBar {
     width: 100%;
-    max-width: 1050px;
-    height: 56px;
-    align-items: center;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin: auto;
-    display: flex;
-
-    .hamBtn {
-      margin-right: 10px;
-      font-size: 16px;
-      vertical-align: middle;
+    height: auto;
+    padding: 10px 16px 0;
+    .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
-    ul {
-      width: 58%;
-      display: flex;
-      justify-content: space-around;
-      li {
+    .point {
         cursor: pointer;
-
-        &:hover {
-          color: #5f0080;
+    }
+    .inner_wrap {
+        max-width: 1050px;
+        width: 98%;
+        height: 100%;
+        margin: auto;
+    }
+    .topBar {
+        font-size: 12px;
+        vertical-align: middle;
+        cursor: pointer;
+        .delivery {
+            border: 1px solid #dedfe1;
+            border-radius: 10px;
+            padding: 2px 6px;
+            width: 121px;
+            height: 22px;
+            span {
+                color: #5f0080;
+                font-weight: 600;
+            }
         }
-      }
     }
-  }
-
-  form {
-    position: relative;
-
-    input {
-      width: 245px;
-      height: 36px;
-      padding: 0 10px;
-      border-radius: 20px;
-      border: none;
-      background-color: #f7f7f7;
-      font-size: 12px;
-      line-height: 16px;
-      outline: none;
+    .login.navBar {
+        width: 28%;
+        position: relative;
+        text-align: center;
+        li {
+            width: 100px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .userWrap {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            /* background-color: red; */
+            .user {
+                border: 1px solid #5f0080;
+                padding: 1px 9px 0px;
+                border-radius: 10px;
+                /* width: 38px; */
+                width: 45px;
+                height: 17px;
+                position: relative;
+                top: -2px;
+                margin-right: 5px;
+            }
+        }
+        li:nth-child(1),
+        li:nth-child(2) {
+            color: #5f0080;
+            font-weight: 600;
+            /* padding-left: 10px; */
+            &::after {
+                content: "";
+                border-right: 1px solid #aaa;
+                width: 1px;
+                height: 1px;
+                padding-left: 13px;
+                /* padding-left: 19px; */
+                /* background-color: #aaa; */
+                /* margin-right: 10px; */
+            }
+        }
     }
-
-    .serBtn {
-      border: none;
-      border-radius: 50%;
-      font-size: 22px;
-      position: absolute;
-      right: 10px;
-      top: 5px;
-      cursor: pointer;
-      background-color: #f7f7f7;
+    .navBar {
+        /* width: 205px; */
+        /* width: 26%; */
+        position: relative;
+        li {
+            padding: 0 10px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        li:nth-child(1),
+        li:nth-child(2) {
+            color: #5f0080;
+            font-weight: 600;
+            &::after {
+                content: "";
+                border-right: 1px solid #aaa;
+                width: 1px;
+                height: 1px;
+                padding-left: 19px;
+            }
+        }
+        span {
+            display: inline-block;
+            background: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png)
+                no-repeat 0 0;
+            background-size: 8px 5px;
+            width: 8px;
+            height: 5px;
+        }
     }
-  }
-
-  .iconWrap {
-    width: 13%;
-    font-size: 26px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    div {
-      cursor: pointer;
-      &:hover {
-        color: #5f0080;
-      }
+    .LogoWrap {
+        .mainLogo {
+            margin: auto;
+            height: 79px;
+            width: 103px;
+            cursor: pointer;
+        }
     }
-  }
+`;
+const MenuBarWrap = styled.div`
+    width: 100%;
+    height: 55px;
+    margin-top: 10px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #cfcfcf;
+    z-index: 2;
+    .menuBar {
+        width: 100%;
+        max-width: 1050px;
+        height: 56px;
+        align-items: center;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: auto;
+        display: flex;
+        .hamBtn {
+            margin-right: 10px;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+        ul {
+            width: 58%;
+            display: flex;
+            justify-content: space-around;
+            li {
+                cursor: pointer;
+                &:hover {
+                    color: #5f0080;
+                }
+            }
+        }
+    }
+    form {
+        position: relative;
+        input {
+            width: 245px;
+            height: 36px;
+            padding: 0 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f7f7f7;
+            font-size: 12px;
+            line-height: 16px;
+            outline: none;
+        }
+        .serBtn {
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            cursor: pointer;
+            background-color: #f7f7f7;
+        }
+    }
+    .iconWrap {
+        width: 13%;
+        font-size: 26px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        div {
+            cursor: pointer;
+            &:hover {
+                color: #5f0080;
+            }
+        }
+    }
 `;

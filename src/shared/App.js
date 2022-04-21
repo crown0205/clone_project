@@ -23,21 +23,22 @@ import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
 import Chat from "../pages/Chat";
 
 function App() {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  //로그인 여부 확인
-  const isLogin = useSelector((state) => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
+    //로그인 여부 확인
+    const isLogin = useSelector((state) => state.user.isLogin);
+    const isToken = localStorage.getItem("token");
 
-  React.useEffect(() => {
-    if (isToken) {
-      dispatch(userActions.getUserDB());
-    }
-  }, []);
+    React.useEffect(() => {
+        if (isToken) {
+            dispatch(userActions.getUserDB());
+        }
+    }, []);
 
-  //모달 상태 확인
-  const isModal = useSelector((state) => state.item.modal);
+    //모달 상태 확인
+    const isModal = useSelector((state) => state.item.modal);
 
+<<<<<<< HEAD
   return (
     <>
       <ConnectedRouter history={history}>
@@ -57,6 +58,29 @@ function App() {
       </ConnectedRouter>
     </>
   );
+=======
+    return (
+        <>
+            <ConnectedRouter history={history}>
+                <Header />
+                <Route path="/" exact component={Main} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/signup" exact component={Signup} />
+                <Route path="/bestItem" exact component={Category} />
+                <Route path="/category/:category" exact component={Category} />
+                <Route path="/detail/:itemId" exact component={Detail} />
+                <Route path="/cart" exact component={Cart} />
+                <Route
+                    path="54.180.90.16/oauth/kakao"
+                    component={OAuth2RedirectHandeler}
+                />
+                {/* 모달 */}
+                {isModal ? <Modal /> : null}
+                <Footer />
+            </ConnectedRouter>
+        </>
+    );
+>>>>>>> 806192aa7ac5102eb1dd227729c3817c4dd0e19b
 }
 
 export default App;
