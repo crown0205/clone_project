@@ -1,5 +1,3 @@
-//header
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -12,146 +10,138 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Nav from "./nav/Nav";
-
-const Header = props => {
-  //로그인 여부 확인
-  const isLogin = useSelector(state => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
-
-  const dispatch = useDispatch();
-  const logout = () => {
-    dispatch(userActions.logoutDB());
-  };
-
-  const user = useSelector(state => state.user.user);
-
-  //postcode에서는 헤더 안 나오게 설정
-  if (window.location.pathname === "/postcode") return null;
-
-  return (
-    <React.Fragment>
-      <HeaderDiv>
-        <div className="inner_wrap">
-          <div className="topBar flex">
-            <div className="delivery">
-              <span>샛별 택배</span> 배송안내﹥
-            </div>
-            {isLogin && isToken ? (
-              <ul className="navBar flex login">
-                <div className="userWrap">
-                  <div className="user">일반</div>
-                  <li>
-                    {user[0]?.userName}님 <span></span>
-                  </li>
+const Header = (props) => {
+    //로그인 여부 확인
+    const isLogin = useSelector((state) => state.user.isLogin);
+    const isToken = localStorage.getItem("token");
+    const dispatch = useDispatch();
+    const logout = () => {
+        dispatch(userActions.logoutDB());
+    };
+    const user = useSelector((state) => state.user.user);
+    //postcode에서는 헤더 안 나오게 설정
+    if (window.location.pathname === "/postcode") return null;
+    return (
+        <React.Fragment>
+            <HeaderDiv>
+                <div className="inner_wrap">
+                    <div className="topBar flex">
+                        <div className="delivery">
+                            <span>샛별 택배</span> 배송안내
+                        </div>
+                        {isLogin && isToken ? (
+                            <ul className="navBar flex login">
+                                <div className="userWrap">
+                                    <div className="user">일반</div>
+                                    <li>
+                                        {user[0]?.userName}님 <span></span>
+                                    </li>
+                                </div>
+                                <li onClick={logout}>로그아웃</li>
+                                <li>
+                                    고객센터 <span></span>
+                                </li>
+                            </ul>
+                        ) : (
+                            <ul className="navBar flex">
+                                <li
+                                    onClick={() => {
+                                        history.push("/signup");
+                                    }}
+                                >
+                                    회원가입
+                                </li>
+                                <li
+                                    onClick={() => {
+                                        history.push("/login");
+                                    }}
+                                >
+                                    로그인
+                                </li>
+                                <li>
+                                    고객센터 <span></span>
+                                </li>
+                            </ul>
+                        )}
+                    </div>
+                    <div
+                        className="LogoWrap flex"
+                        onClick={() => {
+                            history.push("/");
+                        }}
+                    >
+                        <img
+                            className="mainLogo"
+                            src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
+                            alt="logo"
+                        ></img>
+                    </div>
                 </div>
-                <li onClick={logout}>로그아웃</li>
-                <li>
-                  고객센터 <span></span>
-                </li>
-              </ul>
-            ) : (
-              <ul className="navBar flex">
-                <li
-                  onClick={() => {
-                    history.push("/signup");
-                  }}>
-                  회원가입
-                </li>
-                <li
-                  onClick={() => {
-                    history.push("/login");
-                  }}>
-                  로그인
-                </li>
-                <li>
-                  고객센터<span></span>
-                </li>
-              </ul>
-            )}
-          </div>
-
-          <div
-            className="LogoWrap flex"
-            onClick={() => {
-              history.push("/");
-            }}
-          >
-            <img
-              className="mainLogo"
-              src="https://res.kurly.com/images/marketkurly/logo/logo_x2.png"
-              alt="logo"
-            ></img>
-          </div>
-        </div>
-      </HeaderDiv>
-
-      <MenuBarWrap className="menuBarWrap">
-        <div className="menuBarInner">
-          <div className="menuBar flex">
-            <ul className="flex">
-              <li
-                onClick={() => {
-                  history.push("/category/mealkit");
-                }}
-              >
-                <span className="hamBtn">
-                  <Nav />
-                  <GiHamburgerMenu />
-                </span>
-                전체 카테고리
-              </li>
-              <li
-                onClick={() => {
-                  history.push("/category/vegetable");
-                }}
-              >
-                신상품
-              </li>
-              <li
-                onClick={() => {
-                  history.push("/category/maindish");
-                }}
-              >
-                베스트
-              </li>
-              <li
-                onClick={() => {
-                  history.push("/category/bakery");
-                }}
-              >
-                알뜰쇼핑
-              </li>
-              <li>특가/혜택</li>
-            </ul>
-            <form>
-              <input placeholder="검색어를 입력해주세요." />
-              <button className="serBtn">
-                <BiSearch />
-              </button>
-            </form>
-
-            <div className="iconWrap flex">
-              <div id="mapBtn">
-                <FiMapPin />
-              </div>
-              <div id="heartBtn">
-                <AiOutlineHeart />
-              </div>
-              <div
-                id="cartBtn"
-                onClick={() => {
-                  history.push("/cart");
-                }}
-              >
-                <BsCart2 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </MenuBarWrap>
-    </React.Fragment>
-  );
+            </HeaderDiv>
+            <MenuBarWrap className="menuBarWrap">
+                <div className="menuBarInner">
+                    <div className="menuBar flex">
+                        <ul className="flex">
+                            <li
+                                onClick={() => {
+                                    history.push("/category/mealkit");
+                                }}
+                            >
+                                <span className="hamBtn">
+                                    <GiHamburgerMenu />
+                                </span>
+                                전체 카테고리
+                            </li>
+                            <li
+                                onClick={() => {
+                                    history.push("/category/vegetable");
+                                }}
+                            >
+                                신상품
+                            </li>
+                            <li
+                                onClick={() => {
+                                    history.push("/category/maindish");
+                                }}
+                            >
+                                베스트
+                            </li>
+                            <li
+                                onClick={() => {
+                                    history.push("/category/bakery");
+                                }}
+                            >
+                                알뜰쇼핑
+                            </li>
+                            <li>특가/혜택</li>
+                        </ul>
+                        <form>
+                            <input placeholder="검색어를 입력해주세요." />
+                            <button className="serBtn">
+                                <BiSearch />
+                            </button>
+                        </form>
+                        <div className="iconWrap flex">
+                            <div id="mapBtn">
+                                <FiMapPin />
+                            </div>
+                            <div id="heartBtn">
+                                <AiOutlineHeart />
+                            </div>
+                            <div
+                                id="cartBtn"
+                                onClick={() => {
+                                    history.push("/cart");
+                                }}
+                            >
+                                <BsCart2 />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </MenuBarWrap>
+        </React.Fragment>
+    );
 };
 export default Header;
 const HeaderDiv = styled.div`

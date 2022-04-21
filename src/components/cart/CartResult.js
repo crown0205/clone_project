@@ -23,7 +23,6 @@ const CartResult = (props) => {
                     height="56px"
                     padding="0 0 2px 0"
                     bold
-                    _onClick={()=>window.alert("주문이 완료되었습니다!")}
                 >
                     주문하기
                 </Button>
