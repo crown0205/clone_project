@@ -17,7 +17,7 @@ const PriceForm = (props) => {
     // console.log("상품별합계금액", PriceList);
     const totalPrice = PriceList.reduce((a, b) => a + b);
     // console.log('총 결제금액', totalPrice);
-    const disCountPrice = -totalPrice * 0.2; //할인금액20%
+    const disCountPrice = -Math.floor(totalPrice * 0.001) * 100; //할인금액10%, 10원 이하 버림
     const shippingFee = totalPrice >= 40000 ? 0 : 5000; //배송비
     const yourPrice = totalPrice + disCountPrice + shippingFee; //최종금액
 

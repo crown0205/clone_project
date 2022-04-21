@@ -25,7 +25,7 @@ const OrderList = (props) => {
             bg="#f2f2f2"
         >
             <PriceForm total>상품금액</PriceForm>
-            <PriceForm discount>상품할인금액 (20%) </PriceForm>
+            <PriceForm discount>상품할인금액 (10%) </PriceForm>
             <PriceForm ship>배송비</PriceForm>
             <Grid width="244px">
                 <DetailSpan
@@ -74,6 +74,7 @@ const OrderList = (props) => {
                         ? 0
                         : Math.floor(totalPrice * 0.03)}
                     원 적립
+                    {/* 적립금 소수점 이하 버림 */}
                 </DetailSpan>
             </Grid>
         </Grid>
