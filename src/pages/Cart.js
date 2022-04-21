@@ -93,6 +93,6 @@ const H2 = styled.h2`
 `;
 
 const Wrap = styled.div`
-    height: 870px;
+    height: 100%;
 `;
 export default Cart;
