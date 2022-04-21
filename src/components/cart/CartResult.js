@@ -7,11 +7,7 @@ const CartResult = (props) => {
     return (
         <Grid
             display="block"
-<<<<<<< HEAD
-            position="fixed"
-=======
             // position="fixed"
->>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
             bg="#fff"
             paddingTop="40px"
             margin="20px 0 20px 0"
