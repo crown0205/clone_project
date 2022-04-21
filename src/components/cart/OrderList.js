@@ -7,15 +7,16 @@ import { Grid, DetailSpan } from "../../elements/Index";
 const OrderList = (props) => {
     const userCart = useSelector((state) => state.cart.cartList);
     // console.log(userCart, "유저장바구니");
-    const PriceList =
+    const priceList =
         //유저카트가 비었을 경우 만들어주기
         userCart.map(
             (itemPrice) =>
                 itemPrice.itemAmount *
                 Number(itemPrice.itemPrice?.replace("원", "").replace(",", ""))
         );
-    // console.log("상품별합계금액", PriceList);
-    const totalPrice = PriceList.reduce((a, b) => a + b);
+
+    console.log("상품별합계금액", priceList);
+    const totalPrice = priceList.reduce((a, b) => a + b, 0);
 
     return (
         <Grid
@@ -91,7 +92,6 @@ const Icon = styled.span`
     border-radius: 10px;
     font-size: 11px;
     font-weight: 700;
-    font-height: 20px;
     color: #ffffff;
     text-align: center;
     vertical-align: 1px;

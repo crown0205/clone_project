@@ -7,7 +7,7 @@ const PriceForm = (props) => {
     const { children, bold, total, discount, your, ship } = props;
     const userCart = useSelector((state) => state.cart.cartList);
     // console.log(userCart, "유저장바구니");
-    const PriceList =
+    const priceList =
         //유저카트가 비었을 경우 만들어주기
         userCart.map(
             (itemPrice) =>
@@ -15,7 +15,7 @@ const PriceForm = (props) => {
                 Number(itemPrice.itemPrice?.replace("원", "").replace(",", ""))
         );
     // console.log("상품별합계금액", PriceList);
-    const totalPrice = PriceList.reduce((a, b) => a + b);
+    const totalPrice = priceList.reduce((a, b) => a + b, 0);
     // console.log('총 결제금액', totalPrice);
     const disCountPrice = -Math.floor(totalPrice * 0.001) * 100; //할인금액10%, 10원 이하 버림
     const shippingFee = totalPrice >= 40000 ? 0 : 5000; //배송비

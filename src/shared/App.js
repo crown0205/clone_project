@@ -20,22 +20,23 @@ import Modal from "../components/Modal";
 import "./App.css";
 import Footer from "../components/Footer";
 import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
+import Chat from "../pages/Chat";
 
 function App() {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  //로그인 여부 확인
-  const isLogin = useSelector((state) => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
+    //로그인 여부 확인
+    const isLogin = useSelector((state) => state.user.isLogin);
+    const isToken = localStorage.getItem("token");
 
-  React.useEffect(() => {
-    if (isToken) {
-      dispatch(userActions.getUserDB());
-    }
-  }, []);
+    React.useEffect(() => {
+        if (isToken) {
+            dispatch(userActions.getUserDB());
+        }
+    }, []);
 
-  //모달 상태 확인
-  const isModal = useSelector((state) => state.item.modal);
+    //모달 상태 확인
+    const isModal = useSelector((state) => state.item.modal);
 
   return (
     <>
@@ -49,6 +50,7 @@ function App() {
         <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
         <Route path="54.180.90.16/oauth/kakao" component={OAuth2RedirectHandler} />
+        <Route path="/chat" exact component={Chat} />
         {/* 모달 */}
         {isModal ? <Modal /> : null}
         <Footer />
