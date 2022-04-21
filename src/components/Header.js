@@ -34,7 +34,7 @@ const Header = props => {
         <div className="inner_wrap">
           <div className="topBar flex">
             <div className="delivery">
-              <span>샛별 택배</span> 배송안내 ﹥
+              <span>샛별 택배</span> 배송안내﹥
             </div>
             {isLogin && isToken ? (
               <ul className="navBar flex login">

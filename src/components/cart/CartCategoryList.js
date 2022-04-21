@@ -35,14 +35,12 @@ const CartCategoryList = (props) => {
                 confirmList={confirmList}
                 setConfirmList={setConfirmList}
                 onClick={onClick}
-                edit={edit}
             />
             <CartItems
                 normalList={normalCategory}
                 confirmList={confirmList}
                 setConfirmList={setConfirmList}
                 onClick={onClick}
-                edit={edit}
             />
         </React.Fragment>
     );

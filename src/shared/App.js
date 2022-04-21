@@ -19,7 +19,11 @@ import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
 import "./App.css";
 import Footer from "../components/Footer";
+<<<<<<< HEAD
 import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandeler";
+=======
+import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
+>>>>>>> jiae
 
 function App() {
   const dispatch = useDispatch();

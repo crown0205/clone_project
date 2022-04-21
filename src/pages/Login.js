@@ -10,7 +10,7 @@ import { history } from "../redux/configureStore";
 const Login = (props) => {
   //카카오 로그인
   const CLIENT_ID = "037c49fc2597d1697ff929e1a1e19493";
-  const REDIRECT_URI =  "http://54.180.90.16/auth/kakao/callback";
+  const REDIRECT_URI = "http://54.180.90.16/auth/kakao/callback";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const Login = (props) => {
             </div>
             <a href={KAKAO_AUTH_URL}>
               <img
-                src="kakao_login_medium_narrow.png"
+                src={process.env.PUBLIC_URL + "kakao_login_medium_narrow.png"}
                 alt="카카오 로그인 버튼"
               />
             </a>
