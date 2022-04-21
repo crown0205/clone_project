@@ -9,6 +9,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 //  컴포넌트
+import "./App.css";
 import Header from "../components/Header";
 import Main from "../pages/Main";
 import Login from "../pages/Login";
@@ -17,8 +18,8 @@ import Category from "../pages/Category";
 import Detail from "../pages/Detail";
 import Cart from "../pages/Cart";
 import Modal from "../components/Modal";
-import "./App.css";
 import Footer from "../components/Footer";
+import OAuth2RedirectHandeler from "../pages/OAuth2RedirectHandeler";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
         <Route path="/category/:category" exact component={Category} />
         <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
+        <Route path="54.180.90.16/oauth/kakao" component={OAuth2RedirectHandeler} />
         {/* 모달 */}
         {isModal ? <Modal /> : null}
         <Footer />

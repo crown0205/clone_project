@@ -267,12 +267,7 @@ const HeaderDiv = styled.div`
         border-right: 1px solid #aaa;
         width: 1px;
         height: 1px;
-
-        /* padding-left: 9px; */
         padding-left: 19px;
-
-        /* background-color: #aaa; */
-        /* margin-right: 10px; */
       }
     }
 
