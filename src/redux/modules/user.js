@@ -103,23 +103,22 @@ const logoutDB = () => {
 };
 
 const getUserDB = () => {
-  const token = localStorage.getItem("token");
-  return function (dispatch, getState, { history }) {
-    axios({
-      method: "get",
-      url: "http://54.180.90.16/login/getUser",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => {
-        dispatch(setUser(res.data));
-
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    const token = localStorage.getItem("token");
+    return function (dispatch, getState, { history }) {
+        axios({
+            method: "get",
+            url: "http://54.180.90.16/login/getUser",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((res) => {
+                dispatch(setUser(res.data));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 };
 
 // reducer

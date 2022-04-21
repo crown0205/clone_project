@@ -7,7 +7,7 @@ const CartResult = (props) => {
     return (
         <Grid
             display="block"
-            position="fixed"
+            // position="fixed"
             bg="#fff"
             paddingTop="40px"
             margin="20px 0 20px 0"

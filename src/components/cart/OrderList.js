@@ -1,9 +1,22 @@
+import { useSelector } from "react-redux";
 import React from "react";
 import styled from "styled-components";
 import PriceForm from "./PriceForm";
 import { Grid, DetailSpan } from "../../elements/Index";
 
 const OrderList = (props) => {
+    const userCart = useSelector((state) => state.cart.cartList);
+    // console.log(userCart, "유저장바구니");
+    const PriceList =
+        //유저카트가 비었을 경우 만들어주기
+        userCart.map(
+            (itemPrice) =>
+                itemPrice.itemAmount *
+                Number(itemPrice.itemPrice?.replace("원", "").replace(",", ""))
+        );
+    // console.log("상품별합계금액", PriceList);
+    const totalPrice = PriceList.reduce((a, b) => a + b);
+
     return (
         <Grid
             width="284px"
@@ -11,12 +24,19 @@ const OrderList = (props) => {
             flexDirection="column"
             bg="#f2f2f2"
         >
-            <PriceForm>상품금액</PriceForm>
-            <PriceForm>상품할인금액</PriceForm>
-            <PriceForm>배송비</PriceForm>
+            <PriceForm total>상품금액</PriceForm>
+            <PriceForm discount>상품할인금액 (20%) </PriceForm>
+            <PriceForm ship>배송비</PriceForm>
             <Grid width="244px">
-                <DetailSpan size="12px" color="#5f0080" padding="0 0 0 70px">
-                    38,030원 추가주문 시,
+                <DetailSpan
+                    width="190px"
+                    size="12px"
+                    color="#5f0080"
+                    padding="0 0 0 70px"
+                >
+                    {40000 - totalPrice > 0
+                        ? 40000 - totalPrice + "원 추가주문 시,"
+                        : ""}
                 </DetailSpan>
                 <DetailSpan
                     size="12px"
@@ -33,7 +53,9 @@ const OrderList = (props) => {
                 padding="17px 0 0 0"
                 borderTop="1px solid #eeeeee"
             >
-                <PriceForm bold="700">결제예정금액</PriceForm>
+                <PriceForm bold="700" your>
+                    결제예정금액
+                </PriceForm>
             </Grid>
             <Grid padding="13px 0 0 0">
                 <DetailSpan
@@ -45,7 +67,7 @@ const OrderList = (props) => {
                     textAlign="right"
                 >
                     <Icon>적립</Icon>
-                    로그인 후 회원등급에 따라 적립
+                    구매 시 {totalPrice * 0.03}원 적립
                 </DetailSpan>
             </Grid>
         </Grid>

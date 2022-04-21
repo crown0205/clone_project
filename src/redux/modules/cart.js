@@ -8,6 +8,7 @@ const READ_CART = "READ_CART";
 const ADD_CART = "ADD_CART";
 const EDIT_CART = "EDIT_CART";
 const COUNT_CART = "COUNT_CART";
+const DELETE_CART = "DELETE_CART";
 
 //액션 크리에이터
 const readCart = createAction(READ_CART, (cartList) => ({ cartList }));
@@ -16,6 +17,10 @@ const editCart = createAction(EDIT_CART, (cartList) => ({ cartList }));
 const countCart = createAction(COUNT_CART, (itemId, count) => ({
     itemId,
     count,
+}));
+const deleteCart = createAction(DELETE_CART, (itemId, cartList) => ({
+    itemId,
+    cartList,
 }));
 
 //이니셜 스테이트
@@ -104,13 +109,14 @@ const editCartDB = (itemId, itemAmount, itemPrice) => {
     };
 };
 
-const deleteCartDB = (cartList) => {
+const deleteCartDB = (deleteList) => {
     return function (dispatch, getState, { history }) {
-        console.log("deletecart미들웨어", cartList);
+        console.log(deleteList);
 
-        Apis.deleteCart(cartList.userId, cartList.itemId)
+        Apis.deleteCart(deleteList)
             .then((response) => {
                 console.log("deletecart서버에서응답", response);
+                window.location.reload();
 
                 // dispatch(deleteCart(deleteCartList));
             })
@@ -164,6 +170,10 @@ export default handleActions(
                     itemAmount: action.payload.count,
                 };
             }),
+        [DELETE_CART]: (state, action) =>
+            produce(state, (draft) => {
+                console.log("리듀서", action.payload);
+            }),
     },
     initialState
 );
@@ -177,6 +187,8 @@ const actionCreators = {
     editCart,
     editCartDB,
     countCart,
+    deleteCart,
+    deleteCartDB,
 };
 
 export { actionCreators };

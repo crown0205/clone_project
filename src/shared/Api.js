@@ -18,7 +18,7 @@ export const Apis = {
             itemAmount: itemAmount,
             itemPrice: itemPrice,
         }),
-    deleteCart: (userId, itemId) => Api.delete("/deleteCart", userId, itemId),
+    deleteCart: (deleteList) => Api.patch("/deleteCart", deleteList),
     readCart: (cartList) => Api.get("/readCart", cartList),
     // roadPost: (postId) => Api.get(`/api/posts/${postId}`),
     // roadMypost: () => Api.get("/api/mypage/"),

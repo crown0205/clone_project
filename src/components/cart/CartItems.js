@@ -14,7 +14,6 @@ const CartItems = (props) => {
         onClick,
         edit,
     } = props;
-    // console.log(iceList);
     // console.log(coldList);
     // console.log(normalList);
 
