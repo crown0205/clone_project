@@ -9,7 +9,7 @@ import {
     ProductImage,
     Button,
 } from "../../elements/Index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartItem = (props) => {
     const {
@@ -20,15 +20,14 @@ const CartItem = (props) => {
         itemImg,
         itemCategory,
         userAddress,
-        userId,
         confirmList,
         setConfirmList,
         onClick,
         edit,
     } = props;
+
     const href = "http://localhost:3000/detail/" + itemId;
     const dispatch = useDispatch();
-
     //상품 수량 변동 부분
     const [count, setCount] = React.useState(itemAmount);
 
@@ -53,11 +52,23 @@ const CartItem = (props) => {
         edit(itemId, count + 1, detailPrice + "원");
         setCount(count + 1);
     };
-
+    //개별선택 함수
     const selectOne = () => {
-        confirmList.includes(itemId)
-            ? setConfirmList(confirmList.filter((id) => id !== itemId))
-            : setConfirmList(confirmList.push(itemId));
+        console.log(confirmList);
+        confirmList?.includes(itemId)
+            ? setConfirmList(confirmList?.filter((id) => id !== itemId))
+            : setConfirmList(confirmList?.push(itemId));
+    };
+    //개별삭제 함수
+    const userId = useSelector((state) => state.user.user[0].userId);
+
+    const deleteOne = () => {
+        console.log("개별삭제시작", userId, itemId);
+
+        const deleteList = { userId, itemId: [itemId] };
+        console.log(deleteList);
+
+        dispatch(cartActions.deleteCartDB(userId, itemId));
     };
 
     return (
@@ -114,6 +125,7 @@ const CartItem = (props) => {
                         size="30px"
                         margin="0 10px 0 0"
                         src="https://res.kurly.com/pc/service/cart/2007/ico_delete.svg"
+                        _onClick={deleteOne}
                     ></Button>
                 </Grid>
             </Grid>
