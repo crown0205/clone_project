@@ -20,6 +20,7 @@ import Modal from "../components/Modal";
 import "./App.css";
 import Footer from "../components/Footer";
 import OAuth2RedirectHandler from "../pages/OAuth2RedirectHandler";
+import Chat from "../pages/Chat";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
         <Route path="/detail/:itemId" exact component={Detail} />
         <Route path="/cart" exact component={Cart} />
         <Route path="54.180.90.16/oauth/kakao" component={OAuth2RedirectHandler} />
+        <Route path="/chat" exact component={Chat} />
         {/* 모달 */}
         {isModal ? <Modal /> : null}
         <Footer />

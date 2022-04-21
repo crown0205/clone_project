@@ -62,11 +62,9 @@ const addCartDB = (cartList = "") => {
         Apis.addCart(cartList)
             .then((response) => {
                 console.log("addcart서버에서응답", response);
-
                 dispatch(addCart(cartList));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
@@ -91,7 +89,6 @@ const editCartDB = (itemId, itemAmount, itemPrice) => {
                 dispatch(editCart(response.data));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
@@ -121,7 +118,6 @@ const deleteCartDB = (deleteList) => {
                 // dispatch(deleteCart(deleteCartList));
             })
             .catch((error) => {
-                window.alert("댓글 전송에 실패하셨습니다.");
                 // 요청이 정상적으로 끝나지 않았을 때(오류 났을 때) 수행할 작업!
                 if (error.response) {
                     // 요청이 전송되었고, 서버는 2xx 외의 상태 코드로 응답했습니다.
