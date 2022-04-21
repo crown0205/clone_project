@@ -32,7 +32,11 @@ const Cart = (props) => {
     // 전체선택을 위한 함수 onClick
     const selectAll = () => {
         confirmList?.length === totalitemId.length
+<<<<<<< HEAD
             ? setConfirmList("")
+=======
+            ? setConfirmList([])
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
             : setConfirmList(totalitemId);
     };
 
@@ -45,6 +49,7 @@ const Cart = (props) => {
 
         console.log(confirmList);
         const userId = user.user[0].userId;
+<<<<<<< HEAD
         const deleteCartList = {
             userId: userId,
             itemId: confirmList,
@@ -52,6 +57,13 @@ const Cart = (props) => {
         console.log(deleteCartList);
 
         dispatch(cartActions.deleteCartDB(deleteCartList));
+=======
+        const itemId = confirmList;
+        const deleteList = { userId, itemId };
+        console.log(deleteList);
+
+        dispatch(cartActions.deleteCartDB(deleteList));
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
     };
 
     return (
@@ -73,6 +85,10 @@ const Cart = (props) => {
                             edit={edit}
                             confirmList={confirmList}
                             setConfirmList={setConfirmList}
+<<<<<<< HEAD
+=======
+                            deleteCartList={deleteCartList}
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
                         />
                         {/* <CartButton  /> */}
                     </Grid>

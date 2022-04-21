@@ -14,7 +14,10 @@ const CartItems = (props) => {
         onClick,
         edit,
     } = props;
+<<<<<<< HEAD
     // console.log(iceList);
+=======
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
     // console.log(coldList);
     // console.log(normalList);
 

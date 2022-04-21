@@ -12,7 +12,11 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+<<<<<<< HEAD
 
+=======
+import Nav from "./nav/Nav";
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 
 const Header = props => {
   //로그인 여부 확인
@@ -31,6 +35,7 @@ const Header = props => {
 
   return (
     <React.Fragment>
+<<<<<<< HEAD
 
       <HeaderDiv>
         <div className="inner_wrap">
@@ -41,11 +46,23 @@ const Header = props => {
             <ul className="navBar flex">
               {isLogin && isToken ? (
                 <div>
+=======
+      <HeaderDiv>
+        <div className="inner_wrap">
+          <div className="topBar flex">
+            <div className="delivery">
+              <span>샛별 택배</span> 배송안내 ﹥
+            </div>
+            {isLogin && isToken ? (
+              <ul className="navBar flex login">
+                <div className="userWrap">
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
                   <div className="user">일반</div>
                   <li>
                     {user[0]?.userName}님 <span></span>
                   </li>
                 </div>
+<<<<<<< HEAD
               ) : (
                 <li
                   onClick={() => {
@@ -70,6 +87,32 @@ const Header = props => {
                 고객센터 <span></span>
               </li>
             </ul>
+=======
+                <li onClick={logout}>로그아웃</li>
+                <li>
+                  고객센터 <span></span>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navBar flex">
+                <li
+                  onClick={() => {
+                    history.push("/signup");
+                  }}>
+                  회원가입
+                </li>
+                <li
+                  onClick={() => {
+                    history.push("/login");
+                  }}>
+                  로그인
+                </li>
+                <li>
+                  고객센터 <span></span>
+                </li>
+              </ul>
+            )}
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
           </div>
 
           <div
@@ -97,6 +140,10 @@ const Header = props => {
                 }}
               >
                 <span className="hamBtn">
+<<<<<<< HEAD
+=======
+                  <Nav />
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
@@ -150,7 +197,10 @@ const Header = props => {
           </div>
         </div>
       </MenuBarWrap>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
     </React.Fragment>
   );
 };
@@ -183,7 +233,11 @@ const HeaderDiv = styled.div`
     vertical-align: middle;
     cursor: pointer;
 
+<<<<<<< HEAD
     div {
+=======
+    .delivery {
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
       border: 1px solid #dedfe1;
       border-radius: 10px;
       padding: 2px 6px;
@@ -197,14 +251,25 @@ const HeaderDiv = styled.div`
     }
   }
 
+<<<<<<< HEAD
   .navBar {
     width: 205px;
     position: relative;
     li {
+=======
+  .login.navBar {
+    width: 28%;
+    position: relative;
+    text-align: center;
+
+    li {
+      width: 100px;
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
       &:hover {
         cursor: pointer;
       }
     }
+<<<<<<< HEAD
 
     .user {
       border: 1px solid #5f0080;
@@ -214,6 +279,57 @@ const HeaderDiv = styled.div`
       position: relative;
       left: 7px;
       top: -2px;
+=======
+    .userWrap {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      /* background-color: red; */
+
+      .user {
+        border: 1px solid #5f0080;
+        padding: 1px 9px 0px;
+        border-radius: 10px;
+        /* width: 38px; */
+        width: 45px;
+        height: 17px;
+        position: relative;
+        top: -2px;
+        margin-right: 5px;
+      }
+    }
+
+    li:nth-child(1),
+    li:nth-child(2) {
+      color: #5f0080;
+      font-weight: 600;
+      /* padding-left: 10px; */
+
+      &::after {
+        content: "";
+        border-right: 1px solid #aaa;
+        width: 1px;
+        height: 1px;
+        padding-left: 13px;
+
+        /* padding-left: 19px; */
+
+        /* background-color: #aaa; */
+        /* margin-right: 10px; */
+      }
+    }
+  }
+
+  .navBar {
+    /* width: 205px; */
+    /* width: 26%; */
+    position: relative;
+    li {
+      padding: 0 10px;
+      &:hover {
+        cursor: pointer;
+      }
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
     }
 
     li:nth-child(1),
@@ -226,7 +342,15 @@ const HeaderDiv = styled.div`
         width: 1px;
         height: 1px;
 
+<<<<<<< HEAD
         padding-left: 19px;
+=======
+        /* padding-left: 9px; */
+        padding-left: 19px;
+
+        /* background-color: #aaa; */
+        /* margin-right: 10px; */
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
       }
     }
 
@@ -260,7 +384,10 @@ const MenuBarWrap = styled.div`
   border-bottom: 1px solid #cfcfcf;
   z-index: 2;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
   .menuBar {
     width: 100%;
     max-width: 1050px;

@@ -84,7 +84,10 @@ const loginDB = (userId, pwd) => {
         })
             .then((response) => {
                 localStorage.setItem("token", response.data.token);
+<<<<<<< HEAD
                 console.log(response);
+=======
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
                 dispatch(getUserDB());
                 history.replace("/");
             })
@@ -103,6 +106,7 @@ const logoutDB = () => {
 };
 
 const getUserDB = () => {
+<<<<<<< HEAD
   const token = localStorage.getItem("token");
   return function (dispatch, getState, { history }) {
     axios({
@@ -120,6 +124,41 @@ const getUserDB = () => {
         console.log(err);
       });
   };
+=======
+    const token = localStorage.getItem("token");
+    return function (dispatch, getState, { history }) {
+        axios({
+            method: "get",
+            url: "http://54.180.90.16/login/getUser",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((res) => {
+                dispatch(setUser(res.data));
+            })
+            .catch((err) => {
+                console.log(err, "유저 정보 불러오기 에러");
+            });
+    };
+};
+
+const kakaoLogin = (code) => {
+    return function (dispatch, getState, { history }) {
+        axios({
+            method: "GET",
+            url: `http://54.180.90.16?code=${code}`,
+        })
+            .then((res) => {
+                localStorage.setItem("token", res.data.token);
+                history.replace("/");
+            })
+            .catch((err) => {
+                window.alert("로그인에 실패했습니다!");
+                history.replace("/login");
+            });
+    };
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 };
 
 // reducer
@@ -149,6 +188,10 @@ const actionCreators = {
     logoutDB,
     logOut,
     getUserDB,
+<<<<<<< HEAD
+=======
+    kakaoLogin,
+>>>>>>> 4c0450db90f9929cc880e9c71199981f1dd803ea
 };
 
 export { actionCreators };
