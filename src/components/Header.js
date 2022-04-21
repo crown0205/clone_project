@@ -12,7 +12,6 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Nav from "./nav/Nav";
 
 const Header = props => {
   //로그인 여부 확인
@@ -96,7 +95,6 @@ const Header = props => {
                 }}
               >
                 <span className="hamBtn">
-                  <Nav />
                   <GiHamburgerMenu />
                 </span>
                 전체 카테고리
