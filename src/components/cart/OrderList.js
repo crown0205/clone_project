@@ -92,7 +92,6 @@ const Icon = styled.span`
     border-radius: 10px;
     font-size: 11px;
     font-weight: 700;
-    font-height: 20px;
     color: #ffffff;
     text-align: center;
     vertical-align: 1px;
