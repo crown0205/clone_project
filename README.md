@@ -12,7 +12,8 @@
 
 - 회원가입 : 회원가입 유효성 검사
 - 로그인 : 로그인 유효성 검사
-- 메인 페이지 : 랜덤으로 리스트 보여주기
+- 소셜 로그인 : 카카오 로그인 연동
+- 메인 페이지 : 랜덤 리스트 구현
 - 상세 페이지 : 토글 생성
 - 장바구니 기능 : 유저별로 CRUD 구현
 
@@ -25,15 +26,15 @@
 
 #### `Frontend`
 
-<a href="https://github.com/crown0205" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=정현수 &color=61dafb&style=for-the-badge&>"/></a>
-<a href="https://github.com/Co-Ji" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=강성지 &color=61dafb&style=for-the-badge&>"/></a>
-<a href="https://github.com/jiaegong" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=성지애 &color=61dafb&style=for-the-badge&>"/></a>
+<a href="https://github.com/crown0205" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=정현수 &color=1c7ed6&style=for-the-badge&>"/></a>
+<a href="https://github.com/Co-Ji" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=강성지 &color=1c7ed6&style=for-the-badge&>"/></a>
+<a href="https://github.com/jiaegong" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=React&message=공지애 &color=1c7ed6&style=for-the-badge&>"/></a>
 
 #### `Backend`
 
-<a href="https://github.com/Kodddii" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=홍준기 &color=08CE5D&style=for-the-badge&>"/></a>
-<a href="https://github.com/ivryxx" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=김윤하 &color=08CE5D&style=for-the-badge&>"/></a>
-<a href="https://github.com/taekyunJason" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=김태균 &color=08CE5D&style=for-the-badge&>"/></a>
+<a href="https://github.com/Kodddii" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=홍준기 &color=ffd43b&style=for-the-badge&>"/></a>
+<a href="https://github.com/ivryxx" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=김윤하 &color=ffd43b&style=for-the-badge&>"/></a>
+<a href="https://github.com/taekyunJason" target="_blank"><img height="40"  src="https://img.shields.io/static/v1?label=Node.js&message=김태균 &color=ffd43b&style=for-the-badge&>"/></a>
 
 **[(Back-end github)](https://github.com/Kodddii/cloneproject.git)**
 
