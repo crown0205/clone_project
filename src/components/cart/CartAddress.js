@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import styled from "styled-components";
-import { Grid, Button, Icons, DetailSpan } from "../../elements/Index";
-import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as userActions } from "../../redux/modules/user";
-import PostCode from "../PostCode";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Grid, Button, Icons, DetailSpan } from '../../elements/Index';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators as userActions } from '../../redux/modules/user';
+import PostCode from '../PostCode';
 
 const CartAddress = (props) => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const CartAddress = (props) => {
   const user = useSelector((state) => state.user.user);
 
   const [postcode, setPostcode] = useState(false);
-  const [Address, setAddress] = useState("");
+  const [Address, setAddress] = useState('');
 
   const onComplete = (data) => {
     setAddress(data.address);
@@ -41,12 +41,18 @@ const CartAddress = (props) => {
         flexDirection="column"
       >
         <DetailSpan height="24px" bold="700" size="16px" margin="0 0 20px 0">
-          {Address? Address : user[0]?.userAddress}
+          {Address ? Address : user[0]?.userAddress}
         </DetailSpan>
         <DetailSpan height="22px" padding="8px 0 0 0" color="#5f0080">
           샛별배송
         </DetailSpan>
-        <Button width="244px" height="36px" fontSize="12px" margin="17px 0 0 0" _onClick={setPostcode}>
+        <Button
+          width="244px"
+          height="36px"
+          fontSize="12px"
+          margin="17px 0 0 0"
+          _onClick={setPostcode}
+        >
           배송지 변경
         </Button>
         {postcode ? <PostCode onComplete={onComplete} /> : null}

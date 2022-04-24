@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as userActions } from "../redux/modules/user";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreators as userActions } from '../redux/modules/user';
 // 패키지
-import styled from "styled-components";
-import { history } from "../redux/configureStore";
+import styled from 'styled-components';
+import { history } from '../redux/configureStore';
 // 아이콘
-import { BiSearch } from "react-icons/bi";
-import { FiMapPin } from "react-icons/fi";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsCart2 } from "react-icons/bs";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { BiSearch } from 'react-icons/bi';
+import { FiMapPin } from 'react-icons/fi';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BsCart2 } from 'react-icons/bs';
+import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = (props) => {
   //로그인 여부 확인
   const isLogin = useSelector((state) => state.user.isLogin);
-  const isToken = localStorage.getItem("token");
+  const isToken = localStorage.getItem('token');
   const dispatch = useDispatch();
   const logout = () => {
     dispatch(userActions.logoutDB());
   };
   const user = useSelector((state) => state.user.user);
   //postcode에서는 헤더 안 나오게 설정
-  if (window.location.pathname === "/postcode") return null;
+  if (window.location.pathname === '/postcode') return null;
   return (
     <React.Fragment>
       <HeaderDiv>
         <div className="inner_wrap">
           <div className="topBar flex">
             <div className="delivery">
-              <span>샛별 택배</span> 배송안내﹥
+              <span>샛별 택배</span> 배송안내
             </div>
             {isLogin && isToken ? (
               <ul className="navBar flex login">
@@ -46,14 +46,14 @@ const Header = (props) => {
               <ul className="navBar flex">
                 <li
                   onClick={() => {
-                    history.push("/signup");
+                    history.push('/signup');
                   }}
                 >
                   회원가입
                 </li>
                 <li
                   onClick={() => {
-                    history.push("/login");
+                    history.push('/login');
                   }}
                 >
                   로그인
@@ -67,7 +67,7 @@ const Header = (props) => {
           <div
             className="LogoWrap flex"
             onClick={() => {
-              history.push("/");
+              history.push('/');
             }}
           >
             <img
@@ -84,7 +84,7 @@ const Header = (props) => {
             <ul className="flex">
               <li
                 onClick={() => {
-                  history.push("/category/mealkit");
+                  history.push('/category/mealkit');
                 }}
               >
                 <span className="hamBtn">
@@ -94,21 +94,21 @@ const Header = (props) => {
               </li>
               <li
                 onClick={() => {
-                  history.push("/category/vegetable");
+                  history.push('/category/vegetable');
                 }}
               >
                 신상품
               </li>
               <li
                 onClick={() => {
-                  history.push("/category/maindish");
+                  history.push('/category/maindish');
                 }}
               >
                 베스트
               </li>
               <li
                 onClick={() => {
-                  history.push("/category/bakery");
+                  history.push('/category/bakery');
                 }}
               >
                 알뜰쇼핑
@@ -131,7 +131,7 @@ const Header = (props) => {
               <div
                 id="cartBtn"
                 onClick={() => {
-                  history.push("/cart");
+                  history.push('/cart');
                 }}
               >
                 <BsCart2 />
@@ -192,12 +192,10 @@ const HeaderDiv = styled.div`
       width: 50%;
       display: flex;
       justify-content: space-between;
-      /* background-color: red; */
       .user {
         border: 1px solid #5f0080;
         padding: 1px 9px 0px;
         border-radius: 10px;
-        /* width: 38px; */
         width: 45px;
         height: 17px;
         position: relative;
@@ -209,22 +207,18 @@ const HeaderDiv = styled.div`
     li:nth-child(2) {
       color: #5f0080;
       font-weight: 600;
-      /* padding-left: 10px; */
       &::after {
-        content: "";
+        content: '';
         border-right: 1px solid #aaa;
         width: 1px;
         height: 1px;
         padding-left: 13px;
-        /* padding-left: 19px; */
-        /* background-color: #aaa; */
-        /* margin-right: 10px; */
       }
     }
   }
   .navBar {
-    /* width: 205px; */
-    /* width: 26%; */
+    width: 205px;
+    width: 26%;
     position: relative;
     li {
       padding: 0 10px;
@@ -237,7 +231,7 @@ const HeaderDiv = styled.div`
       color: #5f0080;
       font-weight: 600;
       &::after {
-        content: "";
+        content: '';
         border-right: 1px solid #aaa;
         width: 1px;
         height: 1px;

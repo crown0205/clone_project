@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 // 패키지
-import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
 // 모듈
-import item, { actionCreators as itemActions } from "../redux/modules/item";
+import item, { actionCreators as itemActions } from '../redux/modules/item';
 
-const Modal = props => {
+const Modal = (props) => {
   const dispatch = useDispatch();
-  const itemData = useSelector(state => state.item.oneItem);
-  const itemPrice = useSelector(state => state.item.oneItem.itemPrice);
-  const ModalPrice1 = itemPrice.replace("원", "").replace(",", "");
+  const itemData = useSelector((state) => state.item.oneItem);
+  const itemPrice = useSelector((state) => state.item.oneItem.itemPrice);
+  const ModalPrice1 = itemPrice.replace('원', '').replace(',', '');
 
   const [count, setCount] = React.useState(1);
 
@@ -19,7 +19,7 @@ const Modal = props => {
   let multiplyPrice = ModalPrice1 * count;
 
   // 천단위 콤마 찍어주는 함수
-  const totalPrice = multiplyPrice.toLocaleString("ko-KR");
+  const totalPrice = multiplyPrice.toLocaleString('ko-KR');
 
   const countMinus = () => {
     if (count > 1) {
@@ -73,7 +73,7 @@ const Modal = props => {
           <button
             className="addCart btn"
             onClick={() => {
-              alert("준비중");
+              alert('준비중');
               // 장바구니 담기 클릭시 아이템 (이름, 수량, 가격) 정보 넘겨줘야됨.
             }}
           >
@@ -163,12 +163,12 @@ const Wrap = styled.div`
           }
 
           .down {
-            background: url("https://res.kurly.com/pc/ico/2010/ico_minus_on.svg")
+            background: url('https://res.kurly.com/pc/ico/2010/ico_minus_on.svg')
               no-repeat 50% 50%;
           }
 
           .up {
-            background: url("https://res.kurly.com/pc/ico/2010/ico_plus_on.svg")
+            background: url('https://res.kurly.com/pc/ico/2010/ico_plus_on.svg')
               no-repeat 50% 50%;
           }
         }

@@ -1,12 +1,12 @@
-import React from "react";
-import Slider from "react-slick";
-import styled from "styled-components";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from "react-redux";
+import React from 'react';
+import Slider from 'react-slick';
+import styled from 'styled-components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { useSelector } from 'react-redux';
 
 const DetailSlider = () => {
-  const list = useSelector(state => state.item.list);
+  const list = useSelector((state) => state.item.list);
 
   let items = [];
 
@@ -26,12 +26,8 @@ const DetailSlider = () => {
     <Slider {...settings}>
       {items.map((item, idx) => {
         return (
-          <Wrap key={`detailItem_${idx}`} >
-            <img
-              className="itemImg"
-              src={item.itemImg}
-              alt="#"
-            />
+          <Wrap key={`detailItem_${idx}`}>
+            <img className="itemImg" src={item.itemImg} alt="#" />
             <div className="itemWrap">
               <p className="itemTitle">{item.itemName}</p>
               <p className="itemPrice">{item.itemPrice}</p>

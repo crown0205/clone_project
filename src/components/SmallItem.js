@@ -1,24 +1,22 @@
-import React from "react";
+import React from 'react';
 
 // 패키지
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // 모듈
-import { actionCreators as itemActions } from "../redux/modules/item";
-import { history } from "../redux/configureStore";
+import { actionCreators as itemActions } from '../redux/modules/item';
+import { history } from '../redux/configureStore';
 
 // 컴포넌트
-import Modal from "./Modal";
-import { useDispatch } from "react-redux";
+import Modal from './Modal';
+import { useDispatch } from 'react-redux';
 
 // 아이콘
-import { BsCart2 } from "react-icons/bs";
+import { BsCart2 } from 'react-icons/bs';
 
-
-const SmallItem = ({item, setIsModal}) => {
-
-  const dispatch = useDispatch()
-  const itemId = item._id
+const SmallItem = ({ item, setIsModal }) => {
+  const dispatch = useDispatch();
+  const itemId = item._id;
 
   // console.log(itemId)
 
@@ -32,15 +30,15 @@ const SmallItem = ({item, setIsModal}) => {
               width="249px"
               height="320px"
               alt=""
-              onClick={()=> {
-                history.push(`/detail/${itemId}`)
+              onClick={() => {
+                history.push(`/detail/${itemId}`);
               }}
             ></img>
             <button
               className="cardBtn"
               onClick={() => {
                 // dispatch(itemActions.onModal())
-                setIsModal(true)
+                setIsModal(true);
                 dispatch(itemActions.getOneItemDB(itemId));
               }}
             >
@@ -52,14 +50,9 @@ const SmallItem = ({item, setIsModal}) => {
           </div>
           <div className="itemPw">
             {item.dc && <span className="dc"> {item.dc}</span>}
-            <div className="prise">
-              {item.itemPrice}
-            </div>
+            <div className="prise">{item.itemPrice}</div>
           </div>
-          {item.original && <div className="original">
-            {item.original}
-          </div> }
-          
+          {item.original && <div className="original">{item.original}</div>}
         </div>
       </SmallItemWrap>
     </React.Fragment>
@@ -69,12 +62,12 @@ const SmallItem = ({item, setIsModal}) => {
 export default SmallItem;
 
 SmallItem.defaultProps = {
-  itemImg : "https://img-cf.kurly.com/shop/data/goods/1649919701563l0.jpg",
-  itemName: "짬뽕",
-  dc: "7%",
-  itemPrice: "7,900",
-  original: "5,200원",
-}
+  itemImg: 'https://img-cf.kurly.com/shop/data/goods/1649919701563l0.jpg',
+  itemName: '짬뽕',
+  dc: '7%',
+  itemPrice: '7,900',
+  original: '5,200원',
+};
 
 const SmallItemWrap = styled.div`
   .itemImg {

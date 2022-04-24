@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Footer = () => {
   return (
@@ -102,8 +102,9 @@ const Footer = () => {
       <Etc className="etc">
         <div className="etcInner">
           <p>
-            지금 이 마켓컬리 사이트에서 판매되는 상품들은 마켓컬리에 있는 실제 상품이나 이것은 클론 사이트입니다..
-            그래서 상품을 보여 드릴수는 있지만, 판매는 하지 않는 마켓플레이스(오픈마켓) 있습니다.
+            지금 이 마켓컬리 사이트에서 판매되는 상품들은 마켓컬리에 있는 실제
+            상품이나 이것은 클론 사이트입니다.. 그래서 상품을 보여 드릴수는
+            있지만, 판매는 하지 않는 마켓플레이스(오픈마켓) 있습니다.
           </p>
           <p>
             마켓플레이스(오픈마켓) 상품의 경우 컬리는 통신판매중개자로서
@@ -227,7 +228,7 @@ const FooterWrap = styled.div`
 const Etc = styled.div`
   width: 100%;
   background-color: #282828;
-  .etcInner{
+  .etcInner {
     width: 1100px;
     margin: auto;
     text-align: center;
