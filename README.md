@@ -14,7 +14,7 @@
 - 로그인 : 로그인 유효성 검사
 - 메인 페이지 : 랜덤으로 리스트 보여주기
 - 상세 페이지 : 토글 생성
-- 장바구니 기능
+- 장바구니 기능 : 유저별로 CRUD 구현
 
 ## 🗓 프로젝트 기간
 
@@ -44,7 +44,6 @@
 <img src="https://img.shields.io/badge/Create React App-09D3AC?style=flat-square&logo=Create React App&logoColor=white"/>
 <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React Router&logoColor=white"/>
 <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat-square&logo=Amazon S3&logoColor=white"/>
 <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
 </div>
