@@ -57,7 +57,7 @@ const CartItem = (props) => {
         console.log(confirmList);
         confirmList?.includes(itemId)
             ? setConfirmList(confirmList?.filter((id) => id !== itemId))
-            : setConfirmList(confirmList?.push(itemId));
+            : setConfirmList(confirmList?.push(itemId)); //리턴할 것 만들기
     };
     //개별삭제 함수
     const userId = useSelector((state) => state.user.user[0].userId);
@@ -84,7 +84,7 @@ const CartItem = (props) => {
                         itemId={itemId}
                         checkIcon
                         checkUrl={
-                            confirmList?.includes(itemId)
+                            confirmList.includes(itemId)
                                 ? "https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg"
                                 : "https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg"
                         }

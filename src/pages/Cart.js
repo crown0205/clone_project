@@ -52,6 +52,10 @@ const Cart = (props) => {
         dispatch(cartActions.deleteCartDB(deleteList));
     };
 
+    if (!cartList) {
+        return <></>;
+    }
+
     return (
         <Wrap>
             <Grid display="block" width="1050px" margin="auto">

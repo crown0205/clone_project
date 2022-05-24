@@ -90,6 +90,10 @@ const Detail = (props) => {
     //     dispatch(cartActions.editCartDB(itemDate._id, count, itemPrice));
     // };
 
+    if (!userInfo) {
+        return <></>;
+    }
+
     return (
         <React.Fragment>
             <ContainerBox>
