@@ -54,11 +54,24 @@ const BigItem = (props) => {
 
 export default BigItem;
 
+BigItem.defaultProps = {
+  itemImg: '',
+  itemName: 'itemName',
+  dc: 'dc ',
+  itemPrice: 'itemPrice',
+  original: 'original',
+  itemInfo: 'itemInfo',
+};
+
 const BigItemWrap = styled.div`
   margin-top: 20px;
 
   .itemImg {
     position: relative;
+    width: 344px;
+    height: 433px;
+
+    background-color: #eee;
     cursor: pointer;
     .cardBtn {
       width: 45px;
