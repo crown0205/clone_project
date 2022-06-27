@@ -49,9 +49,9 @@
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
 </div>
 
-## 🏹 Trouble Shooting
+<!-- ## 🏹 Trouble Shooting -->
 
-- 메인 리스트를 랜덤으로 뽑아 데이터를 뿌려주는 문제에서 큰 어려움을 겪은었는데, 거기에 대해서 서술 할꺼다~
+<!-- - 메인 리스트를 랜덤으로 뽑아 데이터를 뿌려주는 문제에서 큰 어려움을 겪은었는데, 거기에 대해서 서술 할꺼다~ -->
 
 <!-- - 후기 수정하기 부분에서 useSelector을 이용하여 포스트 상세페이지 정보를 가져왔는데 find함수를 이용해 후기의 Id값과 params의 commentId값이 같은 것을 반환해야하는데 반환하지 못하는 문제 발생
   → 서버에서 받아온 제이슨 형식 데이터 안의 후기 ID값은 보기엔 숫자형태처럼 보이지만 숫자가 아니었기에 ===가 아닌 ==을 써서 해결
